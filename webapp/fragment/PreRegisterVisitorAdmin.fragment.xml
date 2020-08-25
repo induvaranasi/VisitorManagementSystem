@@ -1,0 +1,145 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Pre-Registration" draggable="true" contentWidth="40rem" resizable="true" class="sapUiSizeCompact" verticalScrolling="true">
+		<content>
+			<!--<HBox>-->
+			<f:SimpleForm id="idSimpleForm" editable="true">
+				<f:content>
+					<core:Title text="Visitor Details"></core:Title>
+					<!--<HBox>-->
+					<!--	<VBox>-->
+					<Label text="First Name" required="true"/>
+					<Input id="idFirstName" value="{oAdminModel>/visitorData/firstName}" liveChange="handleUserInput"/>
+					<Label text="Last Name" required="true"/>
+					<Input id="idLastName" value="{oAdminModel>/visitorData/lastName}" liveChange="handleUserInput"></Input>
+					<Label text="Mobile" required="true"/>
+					<Input id="idMobile" value="{oAdminModel>/visitorData/contactNo}" liveChange="handleUserInput"></Input>
+					<Label text="Email" required="true"/>
+					<Input id="idEmail" value="{oAdminModel>/visitorData/email}" type="Email" liveChange="handleUserInput"></Input>
+					<!--<Label text="Meeting Date" required="true"/>-->
+					<!--<DatePicker id="DP1" placeholder="Enter Date ..." value="{oAdminModel>/oFormData/date}"/>-->
+					<!--<Label text="Meeting Start Time" required="true"/>-->
+					<!--<Button></Button>-->
+					<!--<TimePicker id="TP1" value="{oAdminModel>/oFormData/beginTime}" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange"/>-->
+					<Label text="ID Type" required="true"></Label>
+					<ComboBox selectedKey="{oAdminModel>/visitorData/proofType}">
+						<core:Item text="Aadhar" key="Aadhar"/>
+						<core:Item text="Passport" key="Passport"/>
+						<core:Item text="Voter Id" key="Voter Id"/>
+						<core:Item text="Driving Licence" key="Driving Licence"/>
+						<core:Item text="Pancard" key="Pancard"/>
+					</ComboBox>
+					<Label text="ID No"/>
+					<Input id="idIDNo" value="{oAdminModel>/visitorData/proofNo}"/>
+					<!--</VBox>-->
+					<!--<VBox class="sapUiLargeMarginBegin">-->
+					<Label text="Locality"/>
+					<Input id="idLocality" value="{oAdminModel>/visitorData/locality}"></Input>
+					<Label text="Organization"/>
+					<Input id="idOrganization" value="{oAdminModel>/visitorData/organisation}"></Input>
+					<!--<Label text="Meeting End Time" required="true"/>-->
+					<!--<TimePicker id="TP2" value="{oAdminModel>/oFormData/endTime}" valueFormat="HH:mm" displayFormat="HH:mm"/>-->
+					<!--	</VBox>-->
+					<!--</HBox>-->
+				</f:content>
+			</f:SimpleForm>
+			<!--</HBox>-->
+			<f:SimpleForm id="idSimpleForm2" editable="true">
+				<f:content>
+					<core:Title text="Meeting Details"></core:Title>
+					<Label text="Meeting Date" required="true"/>
+					<DatePicker id="DP1" valueFormat="MMM dd, yyyy" value="{oAdminModel>/oMeetingData/date}" minDate="{oViewModel>/newdate}"/>
+					<Label text="Purpose Of Visit" required="true"/>
+					<ComboBox selectedKey="{oAdminModel>/oMeetingData/purpose}">
+						<core:Item text="Client Meeting" key="Client Meeting"/>
+						<core:Item text="Interview" key="Interview"/>
+						<core:Item text="Others" key="Others"/>
+					</ComboBox>
+					<Label text="Meeting Start Time" required="true"/>
+					<TimePicker id="TP1" value="{oAdminModel>/oMeetingData/beginTime}" valueFormat="HH:mm" displayFormat="HH:mm"/>
+					<Label text="Meeting End Time" required="true"/>
+					<TimePicker id="TP2" value="{oAdminModel>/oMeetingData/endTime}" valueFormat="HH:mm" displayFormat="HH:mm"/>
+					<Label text="Capacity" required="true"></Label>
+					<Input id="idCapacity" value="{oAdminModel>/oMeetingData/capacity}"></Input>
+					<!--<Label text="Choose your Room No:"/>-->
+					<Label text="Choose Your Room Facilities"/>
+					<CheckBox text="Wi-Fi"/>
+					<CheckBox text="Conference Calling"/>
+					<CheckBox text="Board"/>
+					<Button text="Check Availability" type="Success" press="onAvailabilityPress"></Button>
+					<Label text="Available Rooms"/>
+					<ComboBox id="idRoomAvailability" items="{oAdminModel>/AvailableRooms}" selectedKey="{oAdminModel>/oMeetingData/rId}" visible="false"
+						selectionChange="onRoomChange">
+						<core:Item text="{oAdminModel>name}" key="{oAdminModel>rid}"/>
+					</ComboBox>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm>
+				<f:content>
+					<core:Title text="Parking Details"></core:Title>
+					<Label text="vehicle Type"></Label>
+					<ComboBox selectedKey="{oAdminModel>/visitorData/parkingType}">
+						<core:Item text="Two Wheeler" key="2"></core:Item>
+						<core:Item text="Four Wheeler" key="4"></core:Item>
+					</ComboBox>
+					<Button text="Check Availability" type="Success" press="onParkingAvailabilityPress"></Button>
+					<Label text="Available Parking Slots"/>
+					<ComboBox id="idParkingAvailability" visible="false" items="{oAdminModel>/AvailableParkingSlots}"
+						selectedKey="{oAdminModel>/visitorData/pId}">
+						<core:Item text="{oAdminModel>parkingSlot}" key="{oAdminModel>pId}"/>
+					</ComboBox>
+				</f:content>
+			</f:SimpleForm>
+			<Link text="Add Visitor" emphasized="true" class="sapUiSmallMarginBegin" press="onAddVisitor"/>
+			<Table id="idAddVisitorsTable" inset="false" alternateRowColors="true" class="sapUiTinyMarginTop sapUiSizeCompact"
+				items="{oAdminModel>/Visitors}" visible="false">
+				<headerToolbar class="sapUiLargeMarginTop">
+					<OverflowToolbar>
+						<content>
+							<Title text="Visitors" level="H3"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="12em">
+						<Text text="Visitor Name"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Email"/>
+					</Column>
+					<Column minScreenWidth="Desktop" demandPopin="true">
+						<Text text="Mobile"/>
+					</Column>
+					<Column minScreenWidth="Desktop" demandPopin="true">
+						<Text text="Organization"/>
+					</Column>
+					<!--<Column minScreenWidth="Desktop" demandPopin="true">-->
+					<!--	<Text text="Date of Visit"/>-->
+					<!--</Column>-->
+					<Column minScreenWidth="Desktop" demandPopin="true">
+						<Text text="Action"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{oAdminModel>firstName} {oAdminModel>lastName}"/>
+							<Text text="{oAdminModel>email}"/>
+							<Text text="{oAdminModel>contactNo}"/>
+							<Text text="{oAdminModel>organisation}"/>
+							<!--<Text text="{oAdminModel>DateVisited}"/>-->
+							<HBox>
+								<Button icon="sap-icon://edit" press="onPressEditBtn" type="Accept"></Button>
+								<Button icon="sap-icon://delete" press="onPressDeleteBtn" class="sapUiTinyMarginBegin" type="Reject"></Button>
+							</HBox>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<Toolbar>
+			<ToolbarSpacer></ToolbarSpacer>
+			<Button text="Register" type="Accept" press="onRegisterMain"/>
+			<Button text="Cancel" type="Reject" press="onCancelMain"/>
+		</Toolbar>
+	</Dialog>
+</core:FragmentDefinition>

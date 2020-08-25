@@ -1,0 +1,85 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="com.incture.VMSApplicationUI5.controller.Parking" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.f" xmlns:card="sap.f.cards">
+	<App>
+		<pages>
+			<Page title="Title" class="stylePage login">
+				<customHeader>
+					<Bar class="styleBar">
+						<contentLeft>
+							<Image src="./Images/logo_old.png" alt="Image not found" height="80%" press="onImagePress"></Image>
+						</contentLeft>
+						<contentMiddle>
+							<Label text="VISITOR MANAGEMENT SYSTEM"></Label>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<content>
+					<f:Card class="loginbox sapUiResponsiveLayout" width="300px" height="350px">
+						<!--<f:header class="header">-->
+						<!--	<card:Header title="PARKING" class="title"/>-->
+						<!--</f:header>-->
+						<f:content>
+							<IconTabBar expand="false" stretchContentHeight="true">
+								<items>
+									<IconTabFilter text="Sign In">
+										<VBox id="idParkingSignIn" visible="true" justifyContent="Center">
+											<items>
+												<Text text="Click On CheckIn/CheckOut To Scan The QR Code" width="100%" class="sapUiTinyMargin"></Text>
+												<!--<Button icon="sap-icon://bar-code" press="onScanQRCode"/>-->
+												<!--<Input width="100%" id="idVhid"></Input>-->
+												<Button text="CheckIn" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onScancodeCheckIn"/>
+												<Button text="CheckOut" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onScanCodeCheckOut"/>
+											</items>
+										</VBox>
+										<VBox id="idParking" visible="false" justifyContent="Center">
+											<items>
+												<Label text="Your Parking Slot"/>
+												<Input value="{oParkingModel>/visitorParkingData/parkingSlot}" editable="false"></Input>
+												<Label text="Enter Your Vehicle Number" required="true"/>
+												<Input id="idVehicleNumber" value="{oParkingModel>/visitorParkingData/vehicleNo}"></Input>
+												<Button text="Submit" press="onLoginSubmitPress" width="100%" type="Emphasized"></Button>
+											</items>
+										</VBox>
+									</IconTabFilter>
+									<IconTabFilter text="Register">
+										<VBox justifyContent="Center">
+											<items>
+												<Label text="Enter Your Vehicle Type" required="true"/>
+												<ComboBox width="100%" selectedKey="{oParkingModel>/oFormData/parkingType}">
+													<core:Item text="Two Wheeler" key="2"/>
+													<core:Item text="Four Wheeler" key="4"/>
+												</ComboBox>
+												<Label text="Enter Your Vehicle Number"/>
+												<Input id="idVehicleNumber2" value="{oParkingModel>/oFormData/vehicleNo}"></Input>
+												<Button text="Check Availability" type="Success" press="onParkingAvailabilityPress" width="100%"></Button>
+												<Label text="Available Parking Slots" visible="false"/>
+												<ComboBox id="idParkingAvailability" visible="false" items="{oParkingModel>/AvailableParkingSlots}"
+													selectedKey="{oParkingModel>/oFormData/pId}" width="100%">
+													<core:Item text="{oParkingModel>parkingSlot}" key="{oParkingModel>pId}"/>
+												</ComboBox>
+												<Button text="Submit" width="100%" type="Emphasized" press="onRegisterSubmitPress"></Button>
+											</items>
+										</VBox>
+									</IconTabFilter>
+									<IconTabFilter text="CheckOut">
+										<VBox>
+											<items>
+												<Label text="Please Choose Your Parking Slot and Click On CheckOut" required="true" width="100%"/>
+												<ComboBox  items="{oParkingModel>/AllParkingSlots}"
+													selectedKey="{oParkingModel>/sSelectedKey}" width="100%">
+													<core:Item text="{oParkingModel>parkingSlot}" key="{oParkingModel>pId}"/>
+												</ComboBox>
+												<Button text="CheckOut" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onCheckOut"/>
+											</items>
+										</VBox>
+									</IconTabFilter>
+								</items>
+							</IconTabBar>
+						</f:content>
+					</f:Card>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

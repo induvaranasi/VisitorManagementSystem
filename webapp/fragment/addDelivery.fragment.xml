@@ -1,0 +1,24 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="New Delivery" draggable="true" contentWidth="20rem" resizable="true" class="sapUiSizeCompact" verticalScrolling="true">
+		<content>
+			<f:SimpleForm id="idSimpleForm" editable="true">
+				<f:content>
+					<VBox alignContent="Center">
+						<Label text="{i18n>Employee}" required="true"/>
+						<Input value="{oSecurityModel>/oDeliveryData/mobileNo}" width="12rem"/>
+						<Label text="{i18n>Type}" required="true"/>
+						<ComboBox width="12rem" selectedKey="{oSignatureModel>/sSelectedKey}">
+							<core:Item text="Signature" key="Signature"/>
+							<core:Item text="No Signature" key="No Signature"/>
+						</ComboBox>
+					</VBox>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<Toolbar>
+			<ToolbarSpacer/>
+			<Button text="{i18n>Send}" type="Accept" press="onSendDelivery"></Button>
+			<Button text="{i18n>Cancel}" type="Reject" press="onCancel"/>
+		</Toolbar>
+	</Dialog>
+</core:FragmentDefinition>

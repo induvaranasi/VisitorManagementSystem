@@ -1,0 +1,134 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Visitors" draggable="true" contentWidth="35rem" resizable="true" class="sapUiSizeCompact sapUiResponsiveLayout "
+		verticalScrolling="true">
+		<Table id="idFrequentVisitors" items="{oAdminModel>/FrequentVisitors}" visible="false">
+			<headerToolbar>
+				<OverflowToolbar>
+					<content>
+						<Title text="Visitors" level="H3"/>
+						<ToolbarSpacer></ToolbarSpacer>
+						<Button text="Close" type="Default" press="onCancel"></Button>
+					</content>
+				</OverflowToolbar>
+			</headerToolbar>
+			<columns>
+				<Column width="12em" minScreenWidth="phone" demandPopin="true">
+					<Text text="{i18n>Visitor Name}"/>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true">
+					<Text text="{i18n>Mail ID}"/>
+				</Column>
+				<Column minScreenWidth="Desktop" demandPopin="true">
+					<Text text="{i18n>Mobile No}"/>
+				</Column>
+				<!--<Column minScreenWidth="Desktop" demandPopin="true">-->
+				<!--	<Text text="{i18n>Purpose}"/>-->
+				<!--</Column>-->
+				<!--<Column minScreenWidth="Desktop" demandPopin="true">-->
+				<!--	<Text text="{i18n>Organization}"/>-->
+				<!--</Column>-->
+				<!--<Column minScreenWidth="Desktop" demandPopin="true">-->
+				<!--	<Text text="{i18n>Status}"/>-->
+				<!--</Column>-->
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{oAdminModel>name}"/>
+						<Text text="{oAdminModel>email}"/>
+						<Text text="{oAdminModel>contactNo}"/>
+						<!--<Text text="{oAdminModel>purpose}"/>-->
+						<!--<Text text="{oAdminModel>organisation}"/>-->
+						<!--<Text text="{path: 'oAdminModel>status', formatter:'com.incture.VMSApplicationUI5.utility.formatter.changeColor'}"/>-->
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<Table id="idUpcomingVisitorsAdmin" items="{oAdminModel>/UpcomingVisitors}" visible="false">
+			<headerToolbar>
+				<OverflowToolbar>
+					<content>
+						<Title text="Visitors" level="H3"/>
+						<ToolbarSpacer></ToolbarSpacer>
+						<Button text="Close" type="Default" press="onCancel"></Button>
+					</content>
+				</OverflowToolbar>
+			</headerToolbar>
+			<columns>
+				<Column width="12em" minScreenWidth="phone" demandPopin="true">
+					<Text text="{i18n>Visitor Name}"/>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true">
+					<Text text="{i18n>Mail ID}"/>
+				</Column>
+				<Column minScreenWidth="Desktop" demandPopin="true">
+					<Text text="{i18n>Mobile No}"/>
+				</Column>
+				<!--<Column minScreenWidth="Desktop" demandPopin="true">-->
+				<!--	<Text text="{i18n>Purpose}"/>-->
+				<!--</Column>-->
+				<!--<Column minScreenWidth="Desktop" demandPopin="true">-->
+				<!--	<Text text="{i18n>Organization}"/>-->
+				<!--</Column>-->
+				<!--<Column minScreenWidth="Desktop" demandPopin="true">-->
+				<!--	<Text text="{i18n>Status}"/>-->
+				<!--</Column>-->
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{oAdminModel>name}"/>
+						<Text text="{oAdminModel>email}"/>
+						<Text text="{oAdminModel>contactNo}"/>
+						<!--<Text text="{oAdminModel>purpose}"/>-->
+						<!--<Text text="{oAdminModel>organisation}"/>-->
+						<!--<Text text="{path: 'oAdminModel>status', formatter:'com.incture.VMSApplicationUI5.utility.formatter.changeColor'}"/>-->
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<Table id="idUpcomingVisitorsHost" items="{oHostModel>/UpcomingVisitors}" visible="false">
+			<headerToolbar>
+				<OverflowToolbar>
+					<content>
+						<Title text="Visitors" level="H3"/>
+						<ToolbarSpacer></ToolbarSpacer>
+						<Button text="Close" type="Default" press="onCancel"></Button>
+					</content>
+				</OverflowToolbar>
+			</headerToolbar>
+			<columns>
+				<Column width="12em" minScreenWidth="phone" demandPopin="true">
+					<Text text="{i18n>Visitor Name}"/>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true">
+					<Text text="{i18n>Mail ID}"/>
+				</Column>
+				<Column minScreenWidth="Desktop" demandPopin="true">
+					<Text text="{i18n>Mobile No}"/>
+				</Column>
+				<!--<Column minScreenWidth="Desktop" demandPopin="true">-->
+				<!--	<Text text="{i18n>Purpose}"/>-->
+				<!--</Column>-->
+				<!--<Column minScreenWidth="Desktop" demandPopin="true">-->
+				<!--	<Text text="{i18n>Organization}"/>-->
+				<!--</Column>-->
+				<!--<Column minScreenWidth="Desktop" demandPopin="true">-->
+				<!--	<Text text="{i18n>Status}"/>-->
+				<!--</Column>-->
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{oHostModel>name}"/>
+						<Text text="{oHostModel>email}"/>
+						<Text text="{oHostModel>contactNo}"/>
+						<!--<Text text="{oAdminModel>purpose}"/>-->
+						<!--<Text text="{oAdminModel>organisation}"/>-->
+						<!--<Text text="{path: 'oAdminModel>status', formatter:'com.incture.VMSApplicationUI5.utility.formatter.changeColor'}"/>-->
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</Dialog>
+</core:FragmentDefinition>

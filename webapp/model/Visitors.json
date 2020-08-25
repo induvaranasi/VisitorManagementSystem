@@ -1,0 +1,142 @@
+{
+	"Details": [{
+
+		"VisitorName": "Sarath",
+		"Host Name": "John",
+		"Mail": "sarath@gmail.com",
+		"Mobile": 9867450162,
+		"Purpose": "Meeting",
+		"organisation": "TCS",
+		"DateVisited": "05 03 2020",
+		"Status": "Check In"
+
+	}, {
+
+		"VisitorName": "Indu",
+		"Host Name": "Sarath",
+		"Mail": "indu@gmail.com",
+		"Mobile": 88674506543,
+		"Purpose": "Interview",
+		"organisation": "SAP",
+		"DateVisited": "25 02 2020",
+		"Status": "Check Out"
+
+	}, {
+
+		"VisitorName": "Sreeraj",
+		"Host Name": "Peter",
+		"Mail": "sreeraj@gmail.com",
+		"Mobile": 7985640292,
+		"Purpose": "Meeting",
+		"organisation": "Infosys",
+		"DateVisited": "16 01 2020",
+		"Status": "waiting"
+
+	}, {
+
+		"VisitorName": "Lakhu",
+		"Host Name": "Indu",
+		"Mail": "lakhu@gmail.com",
+		"Mobile": 9867450162,
+		"Purpose": "Other",
+		"organisation": "TCS",
+		"DateVisited": "10 01 2020",
+		"Status": "Check In"
+
+	}],
+	"BlackListed": [{
+
+		"VisitorName": "Lakhu",
+		"Mail": "lakhu@gmail.com",
+		"Mobile": 9867450162,
+		"Purpose": "Other",
+		"organisation": "TCS",
+		"DateVisited": "10 01 2020",
+		"Status": "Check In",
+		"BlackListedBy": "Sarath",
+		"Remarks": "Rudebehaviour"
+
+	}, {
+
+		"VisitorName": "Indu",
+		"Mail": "indu@gmail.com",
+		"Mobile": 88674506543,
+		"Purpose": "Interview",
+		"organisation": "SAP",
+		"DateVisited": "25 02 2020",
+		"Status": "Check Out",
+		"BlackListedBy": "Sreeraj",
+		"Remarks": "-"
+
+	}],
+	"RoomsStatus": [{
+		"Room ID": 1,
+		"Capacity": "10 seater",
+		"Status": "In Use"
+	}, {
+		"Room ID": 2,
+		"Capacity": "10 seater",
+		"Status": "In Use"
+	}, {
+		"Room ID": 3,
+		"Capacity": "15 seater",
+		"Status": "Available"
+	}, {
+		"Room ID": 4,
+		"Capacity": "20 seater",
+		"Status": "Available"
+	}, {
+		"Room ID": 5,
+		"Capacity": "20 seater",
+		"Status": "In Use"
+	}],
+	"Requests": [{
+		"S.No": "1",
+		"Request For": "Parking Space"
+	}, {
+		"S.No": "2",
+		"Request For": "Parking Space"
+	}, {
+		"S.No": "3",
+		"Request For": "Room"
+	}],
+	"ParkingDetails": [{
+		"Parking ID": 1,
+		"Type": "Two Wheeler",
+		"Status": "Available"
+	}, {
+		"Parking ID": 2,
+		"Type": "Two Wheeler",
+		"Status": "In Use"
+	}, {
+		"Parking ID": 3,
+		"Type": "Four Wheeler",
+		"Status": "In Use"
+	}, {
+		"Parking ID": 1,
+		"Type": "Two Wheeler",
+		"Status": "Available"
+	}],
+	"DeliveryDetails": [{
+		"HostName": "Indu",
+		"Mail": "indu@gmail.com",
+		"Mobile": 9867450162,
+		"DeliveryType": "No Signature",
+		"DateVisited": "19 02 2020",
+		"Status": "Delivered"
+	}, {
+		"HostName": "John",
+		"Mail": "johngmail.com",
+		"Mobile": 9865678162,
+		"DeliveryType": "Signature",
+		"DateVisited": "25 02 2020",
+		"Status": "Not Delivered"
+	}, {
+		"HostName": "Raman",
+		"Mail": "raman@yahoo.com",
+		"Mobile": 9867234562,
+		"DeliveryType": "No Signature",
+		"DateVisited": "28 02 2020",
+		"Status": "Delivered"
+	}]
+}

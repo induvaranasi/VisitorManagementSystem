@@ -1,0 +1,482 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.incture.VMSApplicationUI5.controller.Host"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:tnt="sap.tnt" xmlns:l="sap.ui.layout">
+	<App id="Host">
+		<tnt:ToolPage id="toolPage">
+			<tnt:header>
+				<tnt:ToolHeader class="sapUiResponsive">
+					<Bar>
+						<contentLeft>
+							<Button id="sideNavigationToggleButton" icon="sap-icon://menu2" type="Transparent" press=".onMenuPress">
+								<layoutData>
+									<OverflowToolbarLayoutData priority="NeverOverflow"/>
+								</layoutData>
+							</Button>
+							<Image src="./Images/logo_old.png" alt="Image not found" height="80%" press="onImagePress"></Image>
+						</contentLeft>
+						<contentMiddle>
+							<Label text="VISITOR MANAGEMENT SYSTEM"></Label>
+						</contentMiddle>
+						<contentRight>
+							<!--<Button icon="sap-icon://bell" press="onNotificationPress"></Button>-->
+							<core:Icon src="sap-icon://bell" tooltip="Notification" press="onNotificationPress" class="iconSize"></core:Icon >
+							<Text text="{oHostModel>/Notificationcount}" class="number"/>
+							<!--<Button icon="sap-icon://customer" press="onUserPress"></Button>-->
+							<Avatar src="data:image/png;base64,{oHostModel>/userDetails/photo}" press="onUserPress" displaySize="XS"></Avatar>
+						</contentRight>
+					</Bar>
+				</tnt:ToolHeader>
+			</tnt:header>
+			<tnt:sideContent>
+				<tnt:SideNavigation expanded="true" itemSelect=".onItemSelect" class="masterPage">
+					<tnt:NavigationList >
+						<tnt:NavigationListItem icon="sap-icon://bbyd-dashboard" text="Dashboard" key="detail1"/>
+						<tnt:NavigationListItem icon="sap-icon://activity-individual" text="Pre-registration" key="detail2"/>
+						<tnt:NavigationListItem icon="sap-icon://employee-rejections" text="BlackListed Visitors" key="detail3"/>
+					</tnt:NavigationList>
+				</tnt:SideNavigation>
+			</tnt:sideContent>
+			<tnt:mainContents>
+				<NavContainer id="pageContainer" initialPage="detail1">
+					<pages>
+						<ScrollContainer id="detail1" horizontal="false" vertical="true" height="100%" class="sapUiSizeCompact">
+							<HBox>
+								<Label text="Date" class="sapUiTinyMargin"></Label>
+								<DatePicker id="date" valueFormat="MMM dd, yyyy" change="onDate" value="{oHostModel>/date}" displayFormat="MMM dd, yyyy"></DatePicker>
+							</HBox>
+							<l:VerticalLayout width="100%">
+								<l:Grid>
+									<l:content>
+										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout styleTile" header="Check In" press="CheckInPress" id="checkin"
+											headerImage="sap-icon://trend-down">
+											<layoutData>
+												<l:GridData span="XL3 L3 M6 S12"/>
+											</layoutData>
+										</GenericTile>
+										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout styleTile" header="Check Out" press="CheckOutPress" id="checkout"
+											headerImage="sap-icon://trend-up">
+											<layoutData>
+												<l:GridData span="XL3 L3 M6 S12"/>
+											</layoutData>
+										</GenericTile>
+										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout styleTile" header="Yet To Visit" press="YetToVisitPress"
+											id="yettovisit" headerImage="sap-icon://pull-down">
+											<layoutData>
+												<l:GridData span="XL3 L3 M6 S12"/>
+											</layoutData>
+										</GenericTile>
+									</l:content>
+								</l:Grid>
+							</l:VerticalLayout>
+							<Table id="idVisitorsTable" inset="false" alternateRowColors="true" class="sapUiTinyMarginTop sapUiSizeCompact"
+								items="{oHostModel>/Details}">
+								<headerToolbar class="sapUiLargeMarginTop">
+									<OverflowToolbar>
+										<content>
+											<Title text="Visitors" level="H3"/>
+											<ToolbarSpacer></ToolbarSpacer>
+											<SearchField width="20%" liveChange="onSearch"></SearchField>
+										</content>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em">
+										<Text text="Visitor Name"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="Email"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Mobile"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Purpose"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Organization"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Status"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{oHostModel>visitorName}"/>
+											<Text text="{oHostModel>email}"/>
+											<Text text="{oHostModel>contactNo}"/>
+											<Text text="{oHostModel>purpose}"/>
+											<Text text="{oHostModel>organisation}"/>
+											<Text text="{path: 'oHostModel>status', formatter:'com.incture.VMSApplicationUI5.utility.formatter.changeColor'}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</ScrollContainer>
+						<ScrollContainer id="idFilters" horizontal="false" vertical="true" height="100%" class="sapUiSizeCompact">
+							<HBox>
+								<Label text="Date" class="sapUiTinyMargin"></Label>
+								<DatePicker valueFormat="MMM dd, yyyy" change="onDate" value="{oHostModel>/date}" displayFormat="MMM dd, yyyy"></DatePicker>
+							</HBox>
+							<l:VerticalLayout width="100%">
+								<l:Grid>
+									<l:content>
+										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout styleTile" header="Check In" press="CheckInPress" id="idCheckin"
+											headerImage="sap-icon://trend-down">
+											<layoutData>
+												<l:GridData span="XL3 L3 M6 S12"/>
+											</layoutData>
+										</GenericTile>
+										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout styleTile" header="Check Out" press="CheckOutPress" id="idCheckout"
+											headerImage="sap-icon://trend-up">
+											<layoutData>
+												<l:GridData span="XL3 L3 M6 S12"/>
+											</layoutData>
+										</GenericTile>
+										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout styleTile" header="Yet To Visit" press="YetToVisitPress"
+											id="idYettovisit" headerImage="sap-icon://pull-down">
+											<layoutData>
+												<l:GridData span="XL3 L3 M6 S12"/>
+											</layoutData>
+										</GenericTile>
+									</l:content>
+								</l:Grid>
+							</l:VerticalLayout>
+							<Table id="idCheckInTable" inset="false" alternateRowColors="true" class="sapUiTinyMarginTop sapUiSizeCompact"
+								items="{oHostModel>/CheckInDetails}">
+								<headerToolbar class="sapUiLargeMarginTop">
+									<OverflowToolbar>
+										<content>
+											<Title text="Visitors" level="H3"/>
+											<ToolbarSpacer></ToolbarSpacer>
+											<SearchField width="20%" liveChange="onSearch"></SearchField>
+										</content>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em">
+										<Text text="Visitor Name"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="Email"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Mobile"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Purpose"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Date Visited"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Status"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{oHostModel>visitorName}"/>
+											<Text text="{oHostModel>email}"/>
+											<Text text="{oHostModel>contactNo}"/>
+											<Text text="{oHostModel>purpose}"/>
+											<Text text="{oHostModel>organisation}"/>
+											<Text text="{path: 'oHostModel>status', formatter:'com.incture.VMSApplicationUI5.utility.formatter.changeColor'}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+							<Table id="idCheckOutTable" inset="false" alternateRowColors="true" class="sapUiTinyMarginTop sapUiSizeCompact"
+								items="{oHostModel>/CheckOutDetails}" visible="false">
+								<headerToolbar class="sapUiLargeMarginTop">
+									<OverflowToolbar>
+										<content>
+											<Title text="Visitors" level="H3"/>
+											<ToolbarSpacer></ToolbarSpacer>
+											<SearchField width="20%" liveChange="onSearch"></SearchField>
+										</content>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em">
+										<Text text="Visitor Name"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="Email"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Mobile"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Purpose"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Date Visited"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Status"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Action"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{oHostModel>visitorName}"/>
+											<Text text="{oHostModel>email}"/>
+											<Text text="{oHostModel>contactNo}"/>
+											<Text text="{oHostModel>purpose}"/>
+											<Text text="{oHostModel>organisation}"/>
+											<Text text="{path: 'oHostModel>status', formatter:'com.incture.VMSApplicationUI5.utility.formatter.changeColor'}"/>
+											<Button text="AddToBlackList" type="Critical" press="onAddToBlackListPress"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+							<Table id="idYetToVisitTable" inset="false" alternateRowColors="true" class="sapUiTinyMarginTop sapUiSizeCompact"
+								items="{oHostModel>/ExpectedVisitorDetails}" visible="false">
+								<headerToolbar class="sapUiLargeMarginTop">
+									<OverflowToolbar>
+										<content>
+											<Title text="Visitors" level="H3"/>
+											<ToolbarSpacer></ToolbarSpacer>
+											<SearchField width="20%" liveChange="onSearch"></SearchField>
+										</content>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em">
+										<Text text="Visitor Name"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="Email"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Mobile"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Purpose"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Date Visited"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Status"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{oHostModel>visitorName}"/>
+											<Text text="{oHostModel>email}"/>
+											<Text text="{oHostModel>contactNo}"/>
+											<Text text="{oHostModel>purpose}"/>
+											<Text text="{oHostModel>organisation}"/>
+											<Text text="{path: 'oHostModel>status', formatter:'com.incture.VMSApplicationUI5.utility.formatter.changeColor'}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</ScrollContainer>
+						<ScrollContainer id="detail2" horizontal="false" vertical="true" height="100%" class="sapUiSizeCompact">
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiSmallMarginBottom tileLayout styleTile" header="Upcoming Meetings"
+								press="onUpcomingPress" headerImage="sap-icon://customer-history"></GenericTile>
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiSmallMarginBottom tileLayout styleTile" header="Pre-Registered"
+								press="onPreregistrationPress" headerImage="sap-icon://employee-approvals"></GenericTile>
+							<Table id="idVisitorsTable1" inset="false" alternateRowColors="true" class="sapUiTinyMarginTop sapUiSizeCompact"
+								items="{oHostModel>/Details}" visible="true">
+								<headerToolbar class="sapUiLargeMarginTop">
+									<OverflowToolbar>
+										<content>
+											<Title text="Visitors" level="H3"/>
+											<ToolbarSpacer></ToolbarSpacer>
+											<SearchField width="20%" liveChange="onSearch"></SearchField>
+										</content>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em">
+										<Text text="Visitor Name"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="Email"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Mobile"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Purpose"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Date of Visit"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="Organization"/>
+									</Column>
+									<!--<Column>-->
+									<!--	<Text text="Action"/>-->
+									<!--</Column>-->
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{oHostModel>visitorName}"/>
+											<Text text="{oHostModel>email}"/>
+											<Text text="{oHostModel>contactNo}"/>
+											<Text text="{oHostModel>purpose}"/>
+											<Text text="{oHostModel>date}"/>
+											<Text text="{oHostModel>organisation}"/>
+											<!--<Button type="Accept" text="Add" class="styleAcceptBtn"/>-->
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</ScrollContainer>
+						<ScrollContainer id="idUpcomingMeetings" horizontal="false" vertical="true" height="100%" class="sapUiSizeCompact">
+							<GenericTile id="idUpcoming" class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiSmallMarginBottom tileLayout styleTile"
+								header="Upcoming Meetings" press="onUpcomingPress" headerImage="sap-icon://customer-history"></GenericTile>
+							<GenericTile id="idPreRegistration" class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiSmallMarginBottom tileLayout styleTile"
+								header="Pre-Registration" press="onPreregistrationPress" headerImage="sap-icon://employee-approvals"></GenericTile>
+							<Table id="idUpcomingMeetingsTable" items="{oHostModel>/UpcomingMeetings}" alternateRowColors="true" class="sapUiSizeCompact"
+								visible="false">
+								<headerToolbar>
+									<OverflowToolbar>
+										<content>
+											<Title text="Visitors" level="H3"/>
+											<ToolbarSpacer></ToolbarSpacer>
+											<SearchField width="20%" liveChange="onSearch"></SearchField>
+										</content>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em" minScreenWidth="phone" demandPopin="true">
+										<Text text="{i18n>Meeting Purpose}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>Begin Time}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>End Time}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Room Name}"/>
+									</Column>
+									<!--<Column minScreenWidth="Desktop" demandPopin="true">-->
+									<!--	<Text text="{i18n>Organization}"/>-->
+									<!--</Column>-->
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Status}"/>
+									</Column>
+									<Column>
+										<Text text="{i18n>Action}"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{oHostModel>title}"/>
+											<Text text="{oHostModel>beginTime}"/>
+											<Text text="{oHostModel>endTime}"/>
+											<Text text="{oHostModel>roomName}"/>
+											<Text text="{path: 'oHostModel>status', formatter:'com.incture.VMSApplicationUI5.utility.formatter.changeColorUpcomingMeetings'}"/>
+											<Link text="Show Visitors" press="onShowUpcomingVisitorsPress"></Link>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+							<Table id="preregisteredtable" items="{oHostModel>/PreRegistration}" alternateRowColors="true" class="sapUiSizeCompact" visible="false">
+								<headerToolbar>
+									<OverflowToolbar>
+										<content>
+											<Title text="Visitors" level="H3"/>
+											<ToolbarSpacer></ToolbarSpacer>
+											<Button text="Add New" icon="sap-icon://add-employee" press="onAddNewPress" type="Emphasized" class="sapUiTinyMargin"></Button>
+											<SearchField width="20%" liveChange="onSearch"></SearchField>
+										</content>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em" minScreenWidth="phone" demandPopin="true">
+										<Text text="{i18n>Visitor Name}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>Mail ID}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Mobile No}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Purpose}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Organization}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Status}"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{oHostModel>visitorName}"/>
+											<Text text="{oHostModel>email}"/>
+											<Text text="{oHostModel>contactNo}"/>
+											<Text text="{oHostModel>purpose}"/>
+											<Text text="{oHostModel>organisation}"/>
+											<Text text="{path: 'oHostModel>status', formatter:'com.incture.VMSApplicationUI5.utility.formatter.changeColor'}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</ScrollContainer>
+						<ScrollContainer id="detail3" horizontal="false" vertical="true" height="100%" class="sapUiSizeCompact">
+							<Table id="idBlacklistedVisitors" inset="false" alternateRowColors="true" items="{oHostModel>/BlackListed}" class="sapUiSizeCompact">
+								<headerToolbar class="sapUiLargeMarginTop">
+									<OverflowToolbar>
+										<content>
+											<Title text="Black-Listed Visitors" level="H3"/>
+											<ToolbarSpacer></ToolbarSpacer>
+											<SearchField width="20%" liveChange="onSearch"></SearchField>
+										</content>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em" minScreenWidth="phone" demandPopin="true">
+										<Text text="{i18n>Visitor Name}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>Host Name}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Date Visited}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Remarks}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Action}"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{oHostModel>visitorName}"/>
+											<Text text="{oHostModel>hostName}"/>
+											<Text text="{oHostModel>date}"/>
+											<Text text="{oHostModel>remarks}"/>
+											<Button text="Unblock" type="Accept" class="styleAcceptBtn" press="onPressUnblock"></Button>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+							<!--<Toolbar>-->
+							<!--	<ToolbarSpacer/>-->
+							<!--	<Button icon="sap-icon://add" text="Add" type="Emphasized" press="onAddBlackListPress"></Button>-->
+							<!--</Toolbar>-->
+						</ScrollContainer>
+					</pages>
+				</NavContainer>
+			</tnt:mainContents>
+		</tnt:ToolPage>
+	</App>
+</mvc:View>

@@ -1,0 +1,18 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+    <Dialog title="Confirmation" draggable="true" contentWidth="20rem" resizable="true" icon="sap-icon://message-warning"
+        class="sapUiSizeCompact" verticalScrolling="true">
+        <content>
+            <VBox>
+                <Text text="Are you sure you want to Blacklist the Visitor?" class="sapUiTinyMarginTop sapUiTinyMarginBegin"></Text>
+                <Text text="If Yes then Please add Remarks.." class="sapUiTinyMarginTop sapUiTinyMarginBegin"></Text>
+                <Label text="Remarks" design="Bold" required="true" class="sapUiTinyMarginTop sapUiTinyMarginBegin"></Label>
+                <TextArea id="idTarea" width="90%" class="sapUiTinyMarginEnd sapUiTinyMarginBegin"></TextArea>
+            </VBox>
+        </content>
+        <Toolbar>
+            <ToolbarSpacer></ToolbarSpacer>
+            <Button text="Confirm" type="Critical" press="onConfirmBlackList"/>
+            <Button text="Cancel" type="Attention" press="onCancel"></Button>
+        </Toolbar>
+    </Dialog>
+</core:FragmentDefinition>

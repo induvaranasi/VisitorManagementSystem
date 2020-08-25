@@ -1,0 +1,8 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Popover class="sapUiSizeCompact" placement="Bottom" contentHeight="60px"  showHeader="false">
+		<VBox>
+			<Link text="Edit Profile" class="sapUiTinyMarginTop sapUiTinyMarginBegin" press="onEditProfilePress"></Link>
+			<Link text="Log Out" class="sapUiTinyMarginBegin" press="onLogOutPress"></Link>
+		</VBox>
+	</Popover>
+</core:FragmentDefinition>

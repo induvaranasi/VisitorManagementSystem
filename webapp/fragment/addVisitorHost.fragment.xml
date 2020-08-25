@@ -1,0 +1,59 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Add Visitor" draggable="true" contentWidth="35rem" resizable="true" class="sapUiSizeCompact" verticalScrolling="true">
+		<content>
+			<f:SimpleForm id="idSimpleForm" editable="true">
+				<f:content>
+					<core:Title text="Visitor Details"></core:Title>
+					<HBox>
+						<VBox>
+							<Label text="First Name" required="true"/>
+							<Input id="idFirstName" value="{oHostModel>/addvisitorData/firstName}" liveChange="handleUserInput"/>
+							<Label text="Email" required="true"/>
+							<Input id="idEmail" value="{oHostModel>/addvisitorData/email}" type="Email" liveChange="handleUserInput"></Input>
+							<Label text="Locality"/>
+							<Input id="idLocality" value="{oHostModel>/addvisitorData/locality}"></Input>
+							<Label text="ID Type" required="true"></Label>
+							<ComboBox selectedKey="{oHostModel>/addvisitorData/proofType}">
+								<core:Item text="Aadhar" key="Aadhar"/>
+								<core:Item text="Passport" key="Passport"/>
+								<core:Item text="Voter Id" key="Voter Id"/>
+								<core:Item text="Driving Licence" key="Driving Licence"/>
+								<core:Item text="Pancard" key="Pancard"/>
+							</ComboBox>
+						</VBox>
+						<VBox class="sapUiLargeMarginBegin">
+							<Label text="Last Name" required="true"/>
+							<Input id="idLastName" value="{oHostModel>/addvisitorData/lastName}" liveChange="handleUserInput"></Input>
+							<Label text="Mobile" required="true"/>
+							<Input id="idMobile" value="{oHostModel>/addvisitorData/contactNo}" liveChange="handleUserInput"></Input>
+							<Label text="Organization"/>
+							<Input id="idOrganization" value="{oHostModel>/addvisitorData/organisation}"></Input>
+							<Label text="ID No"/>
+							<Input id="idIDNo" value="{oHostModel>/addvisitorData/proofNo}"/>
+						</VBox>
+					</HBox>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm>
+				<f:content>
+					<core:Title text="Parking Details"></core:Title>
+					<Label text="vehicle Type"></Label>
+					<ComboBox selectedKey="{oHostModel>/addvisitorData/parkingType}">
+						<core:Item text="Two Wheeler" key="2"></core:Item>
+						<core:Item text="Four Wheeler" key="4"></core:Item>
+					</ComboBox>
+					<Button text="Check Availability" type="Success" press="onAddParkingAvailabilityPress"></Button>
+					<Label text="Available Parking Slots"/>
+					<ComboBox id="idAddParkingAvailability" visible="false" items="{oHostModel>/AvailableParkingSlots}" selectedKey="{oHostModel>/addvisitorData/pId}">
+						<core:Item text="{oHostModel>parkingSlot}" key="{oHostModel>pId}"/>
+					</ComboBox>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<Toolbar>
+			<ToolbarSpacer></ToolbarSpacer>
+			<Button text="Add" type="Accept" press="onAdd"/>
+			<Button text="Cancel" type="Reject" press="onCancel"/>
+		</Toolbar>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,33 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Send Alert!!" draggable="true" contentWidth="25rem" contentHeight="12rem" resizable="true" class="sapUiSizeCompact"
+		verticalScrolling="true">
+		<!--<customHeader>-->
+		<!--	<Bar class="styleDialog">-->
+		<!--		<contentLeft>-->
+		<!--			<Text text="Send Alert"></Text>-->
+		<!--		</contentLeft>-->
+		<!--	</Bar>-->
+		<!--</customHeader>-->
+		<content>
+			<f:SimpleForm id="idSimpleForm" editable="true">
+				<f:content>
+					<VBox>
+						<Label text="{i18n>Alert}"></Label>
+						<TextArea id="idtarea" width="20rem"></TextArea>
+						<RadioButtonGroup id="idRadio">
+							<!--<HBox>-->
+							<RadioButton groupName="GroupA" text="All Hosts and Visitors"/>
+							<RadioButton groupName="GroupB" text="Only Visitors"/>
+							<!--</HBox>-->
+						</RadioButtonGroup>
+					</VBox>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<Toolbar>
+			<ToolbarSpacer/>
+			<Button text="{i18n>Send}" type="Emphasized" press="onSendEvacuation"/>
+			<Button text="{i18n>Cancel}" type="Reject" press="onCancel" class="styleRejectBtn"/>
+		</Toolbar>
+	</Dialog>
+</core:FragmentDefinition>

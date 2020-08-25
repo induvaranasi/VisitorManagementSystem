@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Popover class="sapUiSizeCompact" placement="Bottom" showHeader="false">
+		<VBox>
+			<List items="{oHostModel>/notificationList}">
+				<NotificationListItem title="{oHostModel>title}" description="{oHostModel>content}" showCloseButton="true"
+					datetime="1 hour" unread="true" priority="None" close=".onItemClose" press=".onListItemPress"
+					authorPicture="data:image/png;base64,{oHostModel>image}">
+					<buttons>
+						<Button text="Accept Request" press="onAcceptPress"/>
+						<Button text="Reject Request" press="onRejectPress"/>
+					</buttons>
+				</NotificationListItem>
+			</List>
+		</VBox>
+	</Popover>
+</core:FragmentDefinition>

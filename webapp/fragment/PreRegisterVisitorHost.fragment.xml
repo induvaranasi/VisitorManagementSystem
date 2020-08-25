@@ -1,0 +1,132 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Pre-Registration" draggable="true" contentWidth="40rem" resizable="true" class="sapUiSizeCompact" verticalScrolling="true">
+		<content>
+			<!--<HBox>-->
+			<f:SimpleForm id="idSimpleForm" editable="true">
+				<f:content>
+					<core:Title text="Visitor Details"></core:Title>
+					<!--<HBox>-->
+					<!--	<VBox>-->
+					<Label text="First Name" required="true"/>
+					<Input id="idFirstName" value="{oHostModel>/visitorData/firstName}" liveChange="handleUserInput"/>
+					<Label text="Last Name" required="true"/>
+					<Input id="idLastName" value="{oHostModel>/visitorData/lastName}" liveChange="handleUserInput"></Input>
+					<Label text="Email" required="true"/>
+					<Input id="idEmail" value="{oHostModel>/visitorData/email}" type="Email" liveChange="handleUserInput"></Input>
+					<Label text="Mobile" required="true"/>
+					<Input id="idMobile" value="{oHostModel>/visitorData/contactNo}" liveChange="handleUserInput"></Input>
+					<Label text="Locality"/>
+					<Input id="idLocality" value="{oHostModel>/visitorData/locality}"></Input>
+					<Label text="Organization"/>
+					<Input id="idOrganization" value="{oHostModel>/visitorData/organisation}"></Input>
+					<Label text="ID Type" required="true"></Label>
+					<ComboBox selectedKey="{oHostModel>/visitorData/proofType}">
+						<core:Item text="Aadhar" key="Aadhar"/>
+						<core:Item text="Passport" key="Passport"/>
+						<core:Item text="Voter Id" key="Voter Id"/>
+						<core:Item text="Driving Licence" key="Driving Licence"/>
+						<core:Item text="Pancard" key="Pancard"/>
+					</ComboBox>
+					<!--</VBox>-->
+					<!--<VBox class="sapUiLargeMarginBegin">-->
+					<Label text="ID No"/>
+					<Input id="idIDNo" value="{oHostModel>/visitorData/proofNo}"/>
+					<!--	</VBox>-->
+					<!--</HBox>-->
+				</f:content>
+			</f:SimpleForm>
+			<!--</HBox>-->
+			<f:SimpleForm id="idSimpleForm2" editable="true">
+				<f:content>
+					<core:Title text="Meeting Details"></core:Title>
+					<Label text="Meeting Date" required="true"/>
+					<DatePicker id="DP1" valueFormat="MMM dd, yyyy" value="{oHostModel>/oMeetingData/date}" minDate="{oViewModel>/newdate}"/>
+					<Label text="Purpose Of Visit" required="true"/>
+					<ComboBox selectedKey="{oHostModel>/oMeetingData/purpose}">
+						<core:Item text="Client Meeting" key="Client Meeting"/>
+						<core:Item text="Interview" key="Interview"/>
+						<core:Item text="Others" key="Others"/>
+					</ComboBox>
+					<Label text="Meeting Start Time" required="true"/>
+					<TimePicker id="TP1" value="{oHostModel>/oMeetingData/beginTime}" valueFormat="HH:mm" displayFormat="HH:mm"/>
+					<Label text="Meeting End Time" required="true"/>
+					<TimePicker id="TP2" value="{oHostModel>/oMeetingData/endTime}" valueFormat="HH:mm" displayFormat="HH:mm"/>
+					<Label text="Capacity" required="true"></Label>
+					<Input id="idCapacity" value="{oHostModel>/oMeetingData/capacity}"></Input>
+					<Label text="Choose Your Room Facilities"/>
+					<CheckBox id="idwifi" text="Wi-Fi" select="onCheck"/>
+					<CheckBox id="idconference" text="Conference Calling" select="onCheck"/>
+					<CheckBox id="idboard" text="Board" select="onCheck"/>
+					<Button text="Availability" type="Success" press="onAvailabilityPress"></Button>
+					<Label text="Available Rooms"/>
+					<ComboBox id="idRoomAvailability" items="{oHostModel>/AvailableRooms}" selectedKey="{oHostModel>/oMeetingData/rId}" visible="false"
+						selectionChange="onselectroom">
+						<core:Item text="{oHostModel>name}" key="{oHostModel>rid}"/>
+					</ComboBox>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm>
+				<f:content>
+					<core:Title text="Parking Details"></core:Title>
+					<Label text="vehicle Type"></Label>
+					<ComboBox selectedKey="{oHostModel>/visitorData/parkingType}">
+						<core:Item text="Two Wheeler" key="2"></core:Item>
+						<core:Item text="Four Wheeler" key="4"></core:Item>
+					</ComboBox>
+					<Button text="Availability" type="Success" press="onParkingAvailabilityPress"></Button>
+					<Label text="Available Parking Slots"/>
+					<ComboBox id="idParkingAvailability" visible="false" items="{oHostModel>/AvailableParkingSlots}" selectedKey="{oHostModel>/visitorData/pId}">
+						<core:Item text="{oHostModel>parkingSlot}" key="{oHostModel>pId}"/>
+					</ComboBox>
+				</f:content>
+			</f:SimpleForm>
+			<Link text="Add Visitor" emphasized="true" class="sapUiSmallMarginBegin" press="onAddVisitor"/>
+			<Table id="idAddVisitorsTable" inset="false" alternateRowColors="true" class="sapUiTinyMarginTop sapUiSizeCompact"
+				items="{oHostModel>/Visitors}" visible="false">
+				<headerToolbar class="sapUiLargeMarginTop">
+					<OverflowToolbar>
+						<content>
+							<Title text="Visitors" level="H3"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="12em">
+						<Text text="Visitor Name"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Email"/>
+					</Column>
+					<Column minScreenWidth="Desktop" demandPopin="true">
+						<Text text="Mobile"/>
+					</Column>
+					<Column minScreenWidth="Desktop" demandPopin="true">
+						<Text text="Organization"/>
+					</Column>
+					<Column minScreenWidth="Desktop" demandPopin="true">
+						<Text text="Action"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{oHostModel>firstName} {oHostModel>lastName}"/>
+							<Text text="{oHostModel>email}"/>
+							<Text text="{oHostModel>contactNo}"/>
+							<Text text="{oHostModel>organisation}"/>
+							<HBox>
+								<Button icon="sap-icon://edit" press="onPressEditBtn" type="Accept"></Button>
+								<Button icon="sap-icon://delete" press="onPressDeleteBtn" class="sapUiTinyMarginBegin" type="Reject"></Button>
+							</HBox>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<Toolbar>
+			<ToolbarSpacer></ToolbarSpacer>
+			<Button text="Register" type="Accept" press="onRegisterMain"/>
+			<Button text="Cancel" type="Reject" press="onCancelMain"/>
+		</Toolbar>
+	</Dialog>
+</core:FragmentDefinition>

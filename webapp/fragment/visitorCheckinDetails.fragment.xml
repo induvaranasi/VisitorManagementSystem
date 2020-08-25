@@ -1,0 +1,67 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Please Check Your Details" draggable="true" resizable="true" contentWidth="35rem" class="sapUiSizeCompact"
+		verticalScrolling="true">
+		<content>
+			<f:SimpleForm id="idSimpleForm" editable="false">
+				<f:content>
+					<Label text="First Name"></Label>
+					<Text text="{oVisitorModel>/userDetails/firstName}"></Text>
+					<Label text="Last Name"></Label>
+					<Text text="{oVisitorModel>/userDetails/lastName}"></Text>
+					<Label text="Mobile No"></Label>
+					<Text text="{oVisitorModel>/userDetails/contactNo}"></Text>
+					<Label text="Mail Id"></Label>
+					<Text text="{oVisitorModel>/userDetails/email}"></Text>
+					<Label text="Id Type"></Label>
+					<Text text="{oVisitorModel>/userDetails/proofType}"></Text>
+					<!--<ComboBox selectedKey="{oVisitorModel>/userDetails/Idtype}">-->
+					<!--	<core:Item text="Aadhar"/>-->
+					<!--	<core:Item text="Passport"/>-->
+					<!--	<core:Item text="Voter Id"/>-->
+					<!--	<core:Item text="Drving Licence"/>-->
+					<!--	<core:Item text="Pancard"/>-->
+					<!--</ComboBox>-->
+					<Label text="Id No"></Label>
+					<Text text="{oVisitorModel>/userDetails/proofNo}"></Text>
+					<Label text="Locality"></Label>
+					<Text text="{oVisitorModel>/userDetails/locality}"></Text>
+					<Label text="Organization"></Label>
+					<Text text="{oVisitorModel>/userDetails/organisation}"></Text>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm id="idSimpleFormEditable" editable="true" visible="false">
+				<f:content>
+					<Label text="First Name"></Label>
+					<Input value="{oVisitorModel>/userDetails/firstName}"></Input>
+					<Label text="Last Name"></Label>
+					<Input value="{oVisitorModel>/userDetails/lastName}"></Input>
+					<Label text="Mobile No"></Label>
+					<Input value="{oVisitorModel>/userDetails/contactNo}"></Input>
+					<Label text="Mail Id"></Label>
+					<Input value="{oVisitorModel>/userDetails/email}"></Input>
+					<Label text="Id Type"></Label>
+					<ComboBox selectedKey="{oVisitorModel>/userDetails/proofType}">
+						<core:Item text="Aadhar" key="Aadhar"/>
+						<core:Item text="Passport" key="Passport"/>
+						<core:Item text="Voter Id" key="Voter Id"/>
+						<core:Item text="Drving Licence" key="Drving Licence"/>
+						<core:Item text="Pancard" key="Pancard"/>
+					</ComboBox>
+					<Label text="Id No"></Label>
+					<Input value="{oVisitorModel>/userDetails/proofNo}"></Input>
+					<Label text="Locality"></Label>
+					<Input value="{oVisitorModel>/userDetails/locality}"></Input>
+					<Label text="Organization"></Label>
+					<Input value="{oVisitorModel>/userDetails/organisation}"></Input>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<Toolbar>
+			<Button text="Edit" type="Emphasized" press="onEditDetails"/>
+			<!--<Link text="Edit" emphasized="true" press="onEditDetails"></Link>-->
+			<ToolbarSpacer></ToolbarSpacer>
+			<Button text="Confirm" type="Emphasized" press="onConfirmDetails"></Button>
+			<!--<Link text="Confirm" emphasized="true" press="onConfirmDetails"></Link>-->
+		</Toolbar>
+	</Dialog>
+</core:FragmentDefinition>

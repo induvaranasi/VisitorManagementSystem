@@ -1,0 +1,80 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="com.incture.VMSApplicationUI5.controller.AdminLogin" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.f" xmlns:card="sap.f.cards">
+	<App id="AdminLogin">
+		<pages>
+			<Page title="Title" class="stylePage login">
+				<customHeader>
+					<Bar class="styleBar">
+						<contentLeft>
+							<Image src="./Images/logo_old.png" alt="Image not found" height="80%" press="onPressImage"></Image>
+						</contentLeft>
+						<contentMiddle>
+							<Label text="VISITOR MANAGEMENT SYSTEM"></Label>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<!--<VBox justifyContent="Center" class="loginbox sapUiSizeCompact">-->
+				<!--	<Title text="LOGIN" level="H3" class="link sapUiTinyMarginTop sapUiTinyMarginBottom"></Title>-->
+				<!--	<Label text="User Name" design="Bold"></Label>-->
+				<!--	<Input value="{oLoginModel>/username}"></Input>-->
+				<!--	<Label text="Password" design="Bold" class="password"></Label>-->
+				<!--	<Input type="Password" value="{oLoginModel>/password}"></Input>-->
+				<!--	<Button text="Login" type="Emphasized" press="onLoginPress" class="loginbutton sapUiTinyMarginTop"></Button>-->
+				<!--	<Link text="Forgot Password?" class="link sapUiTinyMarginTop sapUiTinyMarginBottom"></Link>-->
+				<!--</VBox>-->
+				<f:Card class="loginbox sapUiResponsiveLayout" width="270px" height="270px" id="idLogin" visible="true">
+					<f:header class="header">
+						<card:Header title="LOGIN" class="title"/>
+					</f:header>
+					<f:content>
+						<VBox>
+							<items>
+								<Label text="User Name" design="Bold"></Label>
+								<Input width="100%" value="{oLoginModel>/oLoginFormData/username}"></Input>
+								<Label text="Password" design="Bold" class="password"></Label>
+								<Input type="Password" width="100%" value="{oLoginModel>/oLoginFormData/password}"></Input>
+								<Button text="Login" width="100%" type="Emphasized" press="onLoginPress"></Button>
+								<Link text="Forgot Password?" class="link sapUiTinyMarginTop" press="onForgotpasswordPress"></Link>
+							</items>
+						</VBox>
+					</f:content>
+				</f:Card>
+				<f:Card class="loginbox sapUiResponsiveLayout" width="270px" height="150px" id="idForgtPassword" visible="false">
+					<!--<f:header class="header">-->
+					<!--	<card:Header title="FORGOT PASSWORD" class="title"/>-->
+					<!--</f:header>-->
+					<f:content>
+						<VBox id="idvbox1" visible="true">
+							<items>
+								<Label text="Enter your User Name"></Label>
+								<Input width="100%" value="{oLoginModel>/oForgotPasswordData/username}"></Input>
+								<!--<Label text="Enter your Mail Id"></Label>-->
+								<!--<Input width="100%" value="{oLoginModel>/oForgotPasswordData/mail}"></Input>-->
+								<Button text="Submit" width="100%" type="Emphasized" press="onSubmitPress"></Button>
+							</items>
+						</VBox>
+					</f:content>
+				</f:Card>
+				<f:Card class="loginbox sapUiResponsiveLayout" width="270px" height="150px" id="idotp" visible="false">
+					<f:content>
+						<VBox>
+							<Label text="Enter the OTP sent to your Mail Id"></Label>
+							<Input type="Number" value="{oLoginModel>/oForgotPasswordData/otp}"></Input>
+							<Button text="Verify" press="onVerify" width="100%"></Button>
+						</VBox>
+					</f:content>
+				</f:Card>
+				<f:Card class="loginbox sapUiResponsiveLayout" width="270px" height="150px" id="idNewPassword" visible="false">
+					<f:content>
+						<VBox>
+							<Label text="Please Enter your New PassWord"></Label>
+							<Input value="{oLoginModel>/oForgotPasswordData/newPassword}"></Input>
+							<Button text="Change Password" type="Critical" press="onChangePassword" width="100%"></Button>
+						</VBox>
+					</f:content>
+				</f:Card>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

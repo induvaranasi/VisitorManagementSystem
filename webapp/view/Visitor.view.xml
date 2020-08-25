@@ -1,0 +1,154 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="com.incture.VMSApplicationUI5.controller.Visitor" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout">
+	<App id="Visitor">
+		<pages>
+			<Page id="page" title="{i18n>title}">
+				<customHeader>
+					<Bar class="styleBar">
+						<contentLeft>
+							<Image src="./Images/logo_old.png" alt="Image not found" height="80%" press="onImagePress"></Image>
+						</contentLeft>
+						<contentMiddle>
+							<Label text="VISITOR MANAGEMENT SYSTEM"></Label>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<content>
+					<IconTabBar expand="false" stretchContentHeight="true">
+						<items>
+							<IconTabFilter text="Sign In">
+								<VBox justifyContent="Center" class="styleVBox" width="220px" height="230px">
+									<Text text="Press CheckIn/CheckOut to Scan Your QR Code:" width="100%"/>
+									<!--<Input width="100%" id="idVhid"></Input>-->
+									<Button text="CheckIn" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onScancodeCheckin"/>
+									<Button text="CheckOut" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onScancodeCheckout"/>
+									<!--<Text text="Scan Your QR Code if you are Pre-Registered"></Text>-->
+									<!--	<Text text="Please Enter the vhId sent to you"></Text>-->
+									<!--	<Input width="20%" id="idVhid"></Input>-->
+									<!--	<HBox class="sapUiLargeMarginTop">-->
+									<!--		<Button text="Check In" press="onScancodeCheckin"></Button>-->
+									<!--		<Button text="Check Out" press="onScancodeCheckout" class="sapUiLargeMarginBegin"></Button>-->
+									<!--	</HBox>-->
+								</VBox>
+							</IconTabFilter>
+							<IconTabFilter text="Register">
+								<VBox class="sapUiSizeCompact">
+									<f:SimpleForm layout="ResponsiveGridLayout" labelSpanXL="3" columnsXL="6" emptySpanXL="3" labelSpanL="3" columnsL="6" emptySpanL="3"
+										labelSpanM="4" columnsM="6" emptySpanM="2" labelSpanS="4">
+										<f:content>
+											<core:Title text="VISITOR DETAILS:"></core:Title>
+											<Label text="First Name" required="true"></Label>
+											<Input liveChange="ValidateInput" id="fname" value="{oVisitorModel>/visitorData/firstName}"></Input>
+											<Label text="Last Name"></Label>
+											<Input value="{oVisitorModel>/visitorData/lastName}"></Input>
+											<Label text="Mobile No" required="true"></Label>
+											<Input type="Number" value="{oVisitorModel>/visitorData/contactNo}"></Input>
+											<Label text="Mail Id" required="true"></Label>
+											<Input type="Email" value="{oVisitorModel>/visitorData/email}"></Input>
+											<Label text="ID Type" required="true"></Label>
+											<ComboBox selectedKey="{oVisitorModel>/visitorData/proofType}">
+												<core:Item text="Aadhar" key="Aadhar"/>
+												<core:Item text="Passport" key="Passport"/>
+												<core:Item text="Voter Id" key="Voter Id"/>
+												<core:Item text="Driving Licence" key="Driving Licence"/>
+												<core:Item text="Pancard" key="Pancard"/>
+											</ComboBox>
+											<Label text="ID No" required="true"></Label>
+											<Input value="{oVisitorModel>/visitorData/proofNo}"></Input>
+											<Label text="Locality"></Label>
+											<Input value="{oVisitorModel>/visitorData/locality}"></Input>
+											<Label text="Company Name"></Label>
+											<Input value="{oVisitorModel>/visitorData/organisation}"></Input>
+										</f:content>
+									</f:SimpleForm>
+									<f:SimpleForm layout="ResponsiveGridLayout" labelSpanXL="3" columnsXL="6" emptySpanXL="3" labelSpanL="3" columnsL="6" emptySpanL="3"
+										labelSpanM="4" columnsM="6" emptySpanM="2" labelSpanS="4">
+										<f:content>
+											<core:Title text="HOST DETAILS:"></core:Title>
+											<Label text="Host Name" required="true"></Label>
+											<Input id="idHostName" class="InputBox" value="{oVisitorModel>/oMeetingData/hostName}" showSuggestion="true" showValueHelp="true"
+												suggestionItems="{oVisitorModel>/getEmployeeList}" selectedKey="{oVisitorModel>/oMeetingData/eId}">
+												<suggestionItems>
+													<core:Item text="{oVisitorModel>name}" key="{oVisitorModel>eId}"/>
+												</suggestionItems>
+											</Input>
+										</f:content>
+									</f:SimpleForm>
+									<f:SimpleForm layout="ResponsiveGridLayout" labelSpanXL="3" columnsXL="6" emptySpanXL="3" labelSpanL="3" columnsL="6" emptySpanL="3"
+										labelSpanM="4" columnsM="6" emptySpanM="2" labelSpanS="4">
+										<f:content>
+											<core:Title text="MEETING DETAILS:"></core:Title>
+											<Label text="Purpose of Visit" required="true"></Label>
+											<ComboBox selectedKey="{oVisitorModel>/oMeetingData/purpose}">
+												<core:Item text="Client Meeting" key="Client Meeting"/>
+												<core:Item text="Interview" key="Interview"/>
+												<core:Item text="Others" key="Others"/>
+											</ComboBox>
+											<Label text="Meeting Start Time" required="true"></Label>
+											<TimePicker id="TP1" value="{oVisitorModel>/oMeetingData/beginTime}" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange"/>
+											<Label text="Meeting End Time" required="true"></Label>
+											<TimePicker id="TP2" value="{oVisitorModel>/oMeetingData/endTime}" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange"/>
+										</f:content>
+									</f:SimpleForm>
+								</VBox>
+								<Link text="Add Visitor" emphasized="true" press="onAddvisitorPress"></Link>
+								<Table id="idAddVisitorsTable" inset="false" alternateRowColors="true" class="sapUiTinyMarginTop sapUiSizeCompact"
+									items="{oVisitorModel>/Visitors}" visible="false">
+									<headerToolbar class="sapUiLargeMarginTop">
+										<OverflowToolbar>
+											<content>
+												<Title text="Visitors" level="H3"/>
+											</content>
+										</OverflowToolbar>
+									</headerToolbar>
+									<columns>
+										<Column width="12em" minScreenWidth="phone">
+											<Text text="Visitor Name"/>
+										</Column>
+										<Column minScreenWidth="Tablet" demandPopin="true">
+											<Text text="Email"/>
+										</Column>
+										<Column minScreenWidth="Desktop" demandPopin="true">
+											<Text text="Mobile"/>
+										</Column>
+										<Column minScreenWidth="Desktop" demandPopin="true">
+											<Text text="Organization"/>
+										</Column>
+										<!--<Column minScreenWidth="Desktop" demandPopin="true">-->
+										<!--	<Text text="Date of Visit"/>-->
+										<!--</Column>-->
+										<Column minScreenWidth="phone" demandPopin="true">
+											<Text text="Action"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<Text text="{oVisitorModel>firstName} {oVisitorModel>lastName}"/>
+												<Text text="{oVisitorModel>email}"/>
+												<Text text="{oVisitorModel>contactNo}"/>
+												<Text text="{oVisitorModel>organisation}"/>
+												<!--<Text text="{oAdminModel>DateVisited}"/>-->
+												<HBox>
+													<Button icon="sap-icon://edit" press="onPressEditBtn" type="Accept"></Button>
+													<Button icon="sap-icon://delete" press="onPressDeleteBtn" class="sapUiTinyMarginBegin" type="Reject"></Button>
+												</HBox>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+								<Toolbar>
+									<!--<Link text="Add Visitor" press="onAddvisitorPress"></Link>-->
+									<ToolbarSpacer></ToolbarSpacer>
+									<Button text="Register" type="Emphasized" press="ValidateForm"></Button>
+								</Toolbar>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+					<!--<button></button>-->
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

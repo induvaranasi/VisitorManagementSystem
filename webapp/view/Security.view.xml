@@ -1,0 +1,438 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="com.incture.VMSApplicationUI5.controller.Security" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout"
+	xmlns:tnt="sap.tnt">
+	<App id="Security">
+		<tnt:ToolPage id="toolPage">
+			<tnt:header>
+				<tnt:ToolHeader class="sapUiResponsive">
+					<Bar>
+						<contentLeft>
+							<Button id="sideNavigationToggleButton" icon="sap-icon://menu2" type="Transparent" press=".onMenuPress">
+								<layoutData>
+									<OverflowToolbarLayoutData priority="NeverOverflow"/>
+								</layoutData>
+							</Button>
+							<Image src="./Images/logo_old.png" alt="Image not found" height="80%" press="onPressImage"></Image>
+						</contentLeft>
+						<contentMiddle>
+							<Label text="VISITOR MANAGEMENT SYSTEM"></Label>
+						</contentMiddle>
+						<contentRight>
+							<core:Icon src="sap-icon://bell" tooltip="Notification" press="onNotificationPress" class="iconSize"></core:Icon >
+							<Text text="{oSecurityModel>/Notificationcount}" class="number"/>
+							<!--<Button icon="sap-icon://bell" press="onNotificationPress"></Button>-->
+							<!--<Button icon="sap-icon://customer" press="onUserPress"></Button>-->
+							<Avatar src="data:image/png;base64,{oSecurityModel>/userDetails/photo}" press="onUserPress" displaySize="XS"></Avatar>
+						</contentRight>
+					</Bar>
+				</tnt:ToolHeader>
+			</tnt:header>
+			<tnt:sideContent>
+				<tnt:SideNavigation expanded="true" itemSelect=".onItemSelect" class="masterPage">
+					<tnt:NavigationList>
+						<tnt:NavigationListItem icon="sap-icon://bbyd-dashboard" text="Dashboard" key="detail1"/>
+						<tnt:NavigationListItem icon="sap-icon://employee-rejections" text="BlackListed Visitors" key="detail3"/>
+						<tnt:NavigationListItem icon="sap-icon://alert" text="Evacuation" key="detail4"/>
+						<tnt:NavigationListItem icon="sap-icon://supplier" text="Delivery" key="detail5"/>
+					</tnt:NavigationList>
+				</tnt:SideNavigation>
+			</tnt:sideContent>
+			<tnt:mainContents>
+				<NavContainer id="pageContainer" initialPage="detail1">
+					<pages>
+						<ScrollContainer id="detail1" horizontal="false" vertical="true" height="100%" class="sapUiSizeCompact">
+							<HBox>
+								<Label text="Date" class="sapUiTinyMargin"></Label>
+								<DatePicker id="date" valueFormat="MMM dd, yyyy" change="onDate" value="{oSecurityModel>/date}" displayFormat="MMM dd, yyyy"></DatePicker>
+							</HBox>
+							<l:VerticalLayout width="100%">
+								<l:Grid>
+									<l:content>
+										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiSmallMarginBottom tileLayout styleTile" header="Check In"
+											press="onCheckInPress" headerImage="sap-icon://trend-down">
+											<layoutData>
+												<l:GridData span="XL3 L3 M6 S12"/>
+											</layoutData>
+										</GenericTile>
+										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiSmallMarginBottom tileLayout styleTile" header="Check Out"
+											press="onCheckOutPress" headerImage="sap-icon://trend-up">
+											<layoutData>
+												<l:GridData span="XL3 L3 M6 S12"/>
+											</layoutData>
+										</GenericTile>
+										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiSmallMarginBottom tileLayout styleTile" header="Yet to Visit"
+											press="onYetToVisitPress" headerImage="sap-icon://pull-down">
+											<layoutData>
+												<l:GridData span="XL3 L3 M6 S12"/>
+											</layoutData>
+										</GenericTile>
+										<!--<GenericTile class="sapUiSmallMarginBegin sapUiTinyMarginTop sapUiSmallMarginBottom tileLayout styleTile" header="Requests"-->
+										<!--	press="RequestsPress"></GenericTile>-->
+									</l:content>
+								</l:Grid>
+							</l:VerticalLayout>
+							<Table id="idSecurityDashboardtable" items="{oSecurityModel>/Details}" alternateRowColors="true" class="sapUiSizeCompact">
+								<headerToolbar>
+									<OverflowToolbar>
+										<content>
+											<Title text="Visitors" level="H3"/>
+											<ToolbarSpacer></ToolbarSpacer>
+											<SearchField width="20%" liveChange="onSearch"></SearchField>
+										</content>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em" minScreenWidth="phone" demandPopin="true">
+										<Text text="{i18n>Visitor Name}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>Mail ID}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Mobile No}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Purpose}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Organization}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Status}"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{oSecurityModel>visitorName}"/>
+											<Text text="{oSecurityModel>email}"/>
+											<Text text="{oSecurityModel>contactNo}"/>
+											<Text text="{oSecurityModel>purpose}"/>
+											<Text text="{oSecurityModel>organisation}"/>
+											<Text text="{path: 'oSecurityModel>status', formatter:'com.incture.VMSApplicationUI5.utility.formatter.changeColor'}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</ScrollContainer>
+						<ScrollContainer id="idFilters" horizontal="false" vertical="true" height="100%" class="sapUiSizeCompact">
+							<HBox>
+								<Label text="Date" class="sapUiTinyMargin"></Label>
+								<DatePicker valueFormat="MMM dd, yyyy" change="onDate" value="{oSecurityModel>/date}" displayFormat="MMM dd, yyyy"></DatePicker>
+							</HBox>
+							<!--<l:Grid defaultSpan="L3 M6 S12" class="sapUiLargeMarginTop">-->
+							<l:VerticalLayout width="100%">
+								<l:Grid>
+									<l:content>
+										<GenericTile id="idCheckin" class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiSmallMarginBottom tileLayout styleTile" header="Check In"
+											press="onCheckInPress" headerImage="sap-icon://trend-down">
+											<layoutData>
+												<l:GridData span="XL3 L3 M6 S12"/>
+											</layoutData>
+										</GenericTile>
+										<GenericTile id="idCheckout" class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiSmallMarginBottom tileLayout styleTile" header="Check Out"
+											press="onCheckOutPress" headerImage="sap-icon://trend-up">
+											<layoutData>
+												<l:GridData span="XL3 L3 M6 S12"/>
+											</layoutData>
+										</GenericTile>
+										<GenericTile id="idYettovisit" class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiSmallMarginBottom tileLayout styleTile"
+											header="Yet to Visit" press="onYetToVisitPress" headerImage="sap-icon://pull-down">
+											<layoutData>
+												<l:GridData span="XL3 L3 M6 S12"/>
+											</layoutData>
+										</GenericTile>
+										<!--<GenericTile class="sapUiSmallMarginBegin sapUiTinyMarginTop sapUiSmallMarginBottom tileLayout styleTile" header="Requests"-->
+										<!--	press="RequestsPress"></GenericTile>-->
+									</l:content>
+								</l:Grid>
+							</l:VerticalLayout>
+							<Table id="idCheckInTable" items="{oSecurityModel>/CheckInDetails}" alternateRowColors="true" class="sapUiSizeCompact">
+								<headerToolbar>
+									<OverflowToolbar>
+										<content>
+											<Title text="Visitors" level="H3"/>
+											<ToolbarSpacer></ToolbarSpacer>
+											<SearchField width="20%" liveChange="onSearch"></SearchField>
+										</content>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em" minScreenWidth="phone" demandPopin="true">
+										<Text text="{i18n>Visitor Name}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>Mail ID}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Mobile No}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Purpose}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Organization}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Status}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Action}"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{oSecurityModel>visitorName}"/>
+											<Text text="{oSecurityModel>email}"/>
+											<Text text="{oSecurityModel>contactNo}"/>
+											<Text text="{oSecurityModel>purpose}"/>
+											<Text text="{oSecurityModel>organisation}"/>
+											<Text text="{path: 'oSecurityModel>status', formatter:'com.incture.VMSApplicationUI5.utility.formatter.changeColor'}"/>
+											<Button icon="sap-icon://business-card" press="onAssignAccessCard"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+							<Table id="idCheckOutTable" items="{oSecurityModel>/CheckedOutDetails}" alternateRowColors="true" class="sapUiSizeCompact" visible="false">
+								<headerToolbar>
+									<OverflowToolbar>
+										<content>
+											<Title text="Visitors" level="H3"/>
+											<ToolbarSpacer></ToolbarSpacer>
+											<SearchField width="20%" liveChange="onSearch"></SearchField>
+										</content>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em" minScreenWidth="phone" demandPopin="true">
+										<Text text="{i18n>Visitor Name}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>Mail ID}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Mobile No}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Purpose}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Organization}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Status}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Action}"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{oSecurityModel>visitorName}"/>
+											<Text text="{oSecurityModel>email}"/>
+											<Text text="{oSecurityModel>contactNo}"/>
+											<Text text="{oSecurityModel>purpose}"/>
+											<Text text="{oSecurityModel>organisation}"/>
+											<Text text="{path: 'oSecurityModel>status', formatter:'com.incture.VMSApplicationUI5.utility.formatter.changeColor'}"/>
+											<Button text="AddToBlackList" type="Critical" press="onAddToBlackListPress"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+							<Table id="idYetToVisitTable" items="{oSecurityModel>/ExpectedVisitorDetails}" alternateRowColors="true" class="sapUiSizeCompact"
+								visible="false">
+								<headerToolbar>
+									<OverflowToolbar>
+										<content>
+											<Title text="Visitors" level="H3"/>
+											<ToolbarSpacer></ToolbarSpacer>
+											<SearchField width="20%" liveChange="onSearch"></SearchField>
+										</content>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em" minScreenWidth="phone" demandPopin="true">
+										<Text text="{i18n>Visitor Name}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>Mail ID}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Mobile No}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Purpose}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Organization}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Status}"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{oSecurityModel>visitorName}"/>
+											<Text text="{oSecurityModel>email}"/>
+											<Text text="{oSecurityModel>contactNo}"/>
+											<Text text="{oSecurityModel>purpose}"/>
+											<Text text="{oSecurityModel>organisation}"/>
+											<Text text="{path: 'oSecurityModel>status', formatter:'com.incture.VMSApplicationUI5.utility.formatter.changeColor'}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</ScrollContainer>
+						<ScrollContainer id="detail3" horizontal="false" vertical="true" height="100%" class="sapUiSizeCompact">
+							<!--<Toolbar>-->
+							<!--	<ToolbarSpacer/>-->
+							<!--	<Button icon="sap-icon://add" text="Add" press="onAddBlackListPress" type="Emphasized"></Button>-->
+							<!--</Toolbar>-->
+							<Table id="blacklistedtable" items="{oSecurityModel>/BlackListed}" alternateRowColors="true" class="sapUiSizeCompact">
+								<headerToolbar>
+									<OverflowToolbar>
+										<content>
+											<Title text="BlackListedVisitors" level="H3"/>
+											<ToolbarSpacer></ToolbarSpacer>
+											<SearchField width="20%" liveChange="onSearch"></SearchField>
+										</content>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em" minScreenWidth="phone" demandPopin="true">
+										<Text text="{i18n>Visitor Name}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>Host Name}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Date Visited}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Remarks}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Action}"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{oSecurityModel>visitorName}"/>
+											<Text text="{oSecurityModel>hostName}"/>
+											<Text text="{oSecurityModel>date}"/>
+											<Text text="{oSecurityModel>remarks}"/>
+											<Button text="Unblock" type="Accept" class="styleAcceptBtn" press="onUnblock"></Button>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</ScrollContainer>
+						<ScrollContainer id="detail4" horizontal="false" vertical="true" height="100%" class="sapUiSizeCompact">
+							<Toolbar>
+								<ToolbarSpacer/>
+								<Button text="Send Alert" type="Reject" press="onSendAlertPress" class="styleRejectBtn"></Button>
+							</Toolbar>
+							<Table id="idSecurityEvacuationtable" items="{oSecurityModel>/CheckInDetails}" alternateRowColors="true" mode="MultiSelect"
+								class="sapUiSizeCompact">
+								<headerToolbar>
+									<OverflowToolbar>
+										<content>
+											<Title text="Visitors" level="H3"/>
+											<ToolbarSpacer></ToolbarSpacer>
+											<SearchField width="20%" liveChange="onSearch"></SearchField>
+										</content>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em" minScreenWidth="phone" demandPopin="true">
+										<Text text="{i18n>Visitor Name}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>Mail ID}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Mobile No}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Purpose}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Organization}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" demandPopin="true">
+										<Text text="{i18n>Status}"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{oSecurityModel>visitorName}"/>
+											<Text text="{oSecurityModel>email}"/>
+											<Text text="{oSecurityModel>contactNo}"/>
+											<Text text="{oSecurityModel>purpose}"/>
+											<Text text="{oSecurityModel>organisation}"/>
+											<Text text="{path: 'oSecurityModel>status', formatter:'com.incture.VMSApplicationUI5.utility.formatter.changeColor'}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</ScrollContainer>
+						<ScrollContainer id="detail5" horizontal="false" vertical="true" height="100%" class="sapUiSizeCompact">
+							<Toolbar>
+								<ToolbarSpacer/>
+								<Button text="Contact" type="Emphasized" press="onContactPress"></Button>
+							</Toolbar>
+							<Table id="idDeliveryTable" alternateRowColors="true" items="{oSecurityModel>/DeliveryDetails}" class="sapUiSizeCompact">
+								<headerToolbar>
+									<OverflowToolbar>
+										<content>
+											<Title text="Recent Delivery" level="H3"/>
+											<ToolbarSpacer></ToolbarSpacer>
+											<SearchField width="20%" liveChange="onSearch"></SearchField>
+										</content>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em">
+										<Text text="{i18n>Host Name}"/>
+									</Column>
+									<Column>
+										<Text text="{i18n>Mail ID}"/>
+									</Column>
+									<Column>
+										<Text text="{i18n>Mobile No}"/>
+									</Column>
+									<Column>
+										<Text text="{i18n>Delivery}"/>
+									</Column>
+									<Column>
+										<Text text="{i18n>Date}"/>
+									</Column>
+									<Column>
+										<Text text="{i18n>Status}"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{oSecurityModel>hostName}"/>
+											<Text text="{oSecurityModel>email}"/>
+											<Text text="{oSecurityModel>contactNo}"/>
+											<Text text="{oSecurityModel>deliveryType}"/>
+											<Text text="{oSecurityModel>date}"/>
+											<Text text="{path: 'oSecurityModel>status', formatter:'com.incture.VMSApplicationUI5.utility.formatter.changeColorDelivery'}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</ScrollContainer>
+					</pages>
+				</NavContainer>
+			</tnt:mainContents>
+		</tnt:ToolPage>
+	</App>
+</mvc:View>

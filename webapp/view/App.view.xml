@@ -1,0 +1,48 @@
+<mvc:View controllerName="com.incture.VMSApplicationUI5.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:l="sap.ui.layout">
+	<App id="app">
+		<pages>
+			<Page id="page" title="{i18n>title}" class="stylePage">
+				<customHeader>
+					<Bar class="styleBar">
+						<contentLeft>
+							<Image src="./Images/logo_old.png" alt="Image not found" height="80%"></Image>
+						</contentLeft>
+						<contentMiddle>
+							<Label text="VISITOR MANAGEMENT SYSTEM"></Label>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<content>
+					<l:Grid defaultSpan="L2 M6 S12" class="sapUiLargeMarginTop">
+						<GenericTile header="HOST" subheader="Employee in the Organisation" press="onHostPress">
+							<TileContent>
+								<ImageContent src="sap-icon://employee-approvals"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile header="VISITOR" subheader="Otherthan the Employee in the Organisation" press="onVisitorPress">
+							<TileContent>
+								<ImageContent src="sap-icon://company-view"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile header="ADMIN" press="onAdminPress" subheader="Have the complete control of the VMS aapplication">
+							<TileContent>
+								<ImageContent src="sap-icon://key-user-settings"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile header="SECURITY" press="onSecurityPress" subheader="Handles the visitors">
+							<TileContent>
+								<ImageContent src="sap-icon://private"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile header="PARKING" subheader="Park your vehicle after registering here" press="onParkingPress">
+							<TileContent>
+								<ImageContent src="sap-icon://car-rental"/>
+							</TileContent>
+						</GenericTile>
+					</l:Grid>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
