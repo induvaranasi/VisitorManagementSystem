@@ -83,6 +83,154 @@ sap.ui.define([
 		getRouter: function () {
 			return UIComponent.getRouterFor(this);
 		},
+		onSubmitMail: function () {
+			var that = this;
+			var oVisitorModel = that.getView().getModel("oVisitorModel");
+			var visitordata = oVisitorModel.getProperty("/visitorData");
+			var mail = visitordata.email;
+			console.log(mail);
+			var sUrl = "/VMS_Service/visitor/validateEmail";
+			$.ajax({
+				url: sUrl,
+				data: {
+					"email": mail
+				},
+				// async: true,
+				// dataType: "json",
+				// contentType: "application/json; charset=utf-8",
+				error: function (err) {
+					sap.m.MessageToast.show("Destination Failed");
+				},
+				success: function (data) {
+					sap.m.MessageToast.show("Data Successfully Loaded");
+					console.log(data);
+					if (data.status === 200) {
+						that.getView().byId("idlabel").setVisible(true);
+						that.getView().byId("idotp").setVisible(true);
+						that.getView().byId("idsubmit").setVisible(true);
+					}
+
+					// oVisitorModel.setProperty("/getEmployeeList", data);
+					// console.log(oVisitorModel);
+
+				},
+				type: "POST"
+			});
+
+		},
+		onSubmitOTP: function () {
+			var that = this;
+			var oVisitorModel = that.getView().getModel("oVisitorModel");
+			var visitordata = oVisitorModel.getProperty("/visitorData");
+			var otp = visitordata.otp;
+			var mail = visitordata.email;
+			console.log(mail);
+			console.log(otp);
+			var sUrl = "/VMS_Service/visitor/verifyOtp";
+			$.ajax({
+				url: sUrl,
+				data: {
+					"email": mail,
+					"otp": otp
+				},
+				// async: true,
+				// dataType: "json",
+				// contentType: "application/json; charset=utf-8",
+				error: function (err) {
+					sap.m.MessageToast.show("Destination Failed");
+				},
+				success: function (data) {
+					sap.m.MessageToast.show("Data Successfully Loaded");
+					console.log(data);
+					if (data.status === 200) {
+						oVisitorModel.setProperty("/visitorData", data);
+					} else if (data.status === 300) {
+						MessageBox.warning("OTP verification failed..please try again");
+					} else {
+						MessageToast.show("Destination failed");
+					}
+
+					// oVisitorModel.setProperty("/getEmployeeList", data);
+					// console.log(oVisitorModel);
+
+				},
+				type: "POST"
+			});
+		},
+		onSubmitAnotherMail: function () {
+			var that = this;
+			var oVisitorModel = that.getView().getModel("oVisitorModel");
+			var visitordata = oVisitorModel.getProperty("/addvisitorData");
+			var mail = visitordata.email;
+			console.log(mail);
+			var sUrl = "/VMS_Service/visitor/validateEmail";
+			$.ajax({
+				url: sUrl,
+				data: {
+					"email": mail
+				},
+				// async: true,
+				// dataType: "json",
+				// contentType: "application/json; charset=utf-8",
+				error: function (err) {
+					sap.m.MessageToast.show("Destination Failed");
+				},
+				success: function (data) {
+					sap.m.MessageToast.show("Data Successfully Loaded");
+					console.log(data);
+					if (data.status === 200) {
+						Fragment.byId("idaddAnother", "label").setVisible(true);
+						Fragment.byId("idaddAnother", "idExistingadd").setVisible(true);
+
+					}
+
+					// oVisitorModel.setProperty("/getEmployeeList", data);
+					// console.log(oVisitorModel);
+
+				},
+				type: "POST"
+			});
+
+		},
+		onSubmitAddOtp: function () {
+			var that = this;
+			var oVisitorModel = that.getView().getModel("oVisitorModel");
+			var visitordata = oVisitorModel.getProperty("/addvisitorData");
+			var otp = visitordata.otp;
+			var mail = visitordata.email;
+			console.log(mail);
+			console.log(otp);
+			var sUrl = "/VMS_Service/visitor/verifyOtp";
+			$.ajax({
+				url: sUrl,
+				data: {
+					"email": mail,
+					"otp": otp
+				},
+				// async: true,
+				// dataType: "json",
+				// contentType: "application/json; charset=utf-8",
+				error: function (err) {
+					sap.m.MessageToast.show("Destination Failed");
+				},
+				success: function (data) {
+					sap.m.MessageToast.show("Data Successfully Loaded");
+					console.log(data);
+					if (data.status === 200) {
+						oVisitorModel.setProperty("/addvisitorData", data);
+					} else if (data.status === 300) {
+						MessageBox.warning("OTP verification failed..please try again");
+					} else {
+						MessageToast.show("Destination failed");
+					}
+
+					// oVisitorModel.setProperty("/getEmployeeList", data);
+					// console.log(oVisitorModel);
+
+				},
+				type: "POST"
+			});
+		},
 		onAddvisitorPress: function () {
 			var that = this;
 			this.bFlag = true;
@@ -294,7 +442,7 @@ sap.ui.define([
 					// / * process scan result * /
 				},
 				function (oError) {
-			     MessageBox.warning("Error");
+					MessageBox.warning("Error");
 					// / * handle scan error * /
 				},
 				function (oResult) {

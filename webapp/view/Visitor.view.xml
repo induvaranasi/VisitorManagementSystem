@@ -38,14 +38,19 @@
 										labelSpanM="4" columnsM="6" emptySpanM="2" labelSpanS="4">
 										<f:content>
 											<core:Title text="VISITOR DETAILS:"></core:Title>
+											<Label text="Mail Id" required="true"></Label>
+											<Input type="Email" value="{oVisitorModel>/visitorData/email}" change="onSubmitMail"></Input>
+											<!--<VBox id="idExisting" visible="false">-->
+											<Label text="Enter the OTP sent to your Mail" id="idlabel" visible="false"></Label>
+											<Input placeholder="OTP" value="{oVisitorModel>/visitorData/otp}" id="idotp" visible="false"></Input>
+											<Button text="Submit" press="onSubmitOTP" class="sapUiTinyMarginBegin" id="idsubmit" visible="false"></Button>
+											<!--</VBox>-->
 											<Label text="First Name" required="true"></Label>
 											<Input liveChange="ValidateInput" id="fname" value="{oVisitorModel>/visitorData/firstName}"></Input>
 											<Label text="Last Name"></Label>
 											<Input value="{oVisitorModel>/visitorData/lastName}"></Input>
 											<Label text="Mobile No" required="true"></Label>
 											<Input type="Number" value="{oVisitorModel>/visitorData/contactNo}"></Input>
-											<Label text="Mail Id" required="true"></Label>
-											<Input type="Email" value="{oVisitorModel>/visitorData/email}"></Input>
 											<Label text="ID Type" required="true"></Label>
 											<ComboBox selectedKey="{oVisitorModel>/visitorData/proofType}">
 												<core:Item text="Aadhar" key="Aadhar"/>

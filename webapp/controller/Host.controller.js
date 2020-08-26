@@ -613,6 +613,7 @@ sap.ui.define([
 			var eId = oHostModel.getProperty("/userDetails").eId;
 			var sUrl = "/VMS_Service/employee/getAllNotifications?eId=" + eId;
 			this.fnGetData(sUrl, "/notificationList");
+			console.log(oHostModel);
 			if (!this._oPopover1) {
 				this._oPopover1 = sap.ui.xmlfragment("idNotifications", "com.incture.VMSApplicationUI5.fragment.notification", this);
 				this.getView().addDependent(this._oPopover1);

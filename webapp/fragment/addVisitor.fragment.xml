@@ -6,10 +6,10 @@
 					<core:Title text="Visitor Details"></core:Title>
 					<HBox>
 						<VBox>
+							<Label text="Email" required="true"/>
+							<Input id="idEmail" value="{oVisitorModel>/addvisitorData/email}" type="Email" liveChange="handleUserInput" change="onSubmitAnotherMail"></Input>
 							<Label text="First Name" required="true"/>
 							<Input id="idFirstName" value="{oVisitorModel>/addvisitorData/firstName}" liveChange="handleUserInput"/>
-							<Label text="Email" required="true"/>
-							<Input id="idEmail" value="{oVisitorModel>/addvisitorData/email}" type="Email" liveChange="handleUserInput"></Input>
 							<Label text="Locality"/>
 							<Input id="idLocality" value="{oVisitorModel>/addvisitorData/locality}"></Input>
 							<!--<Label text="Meeting Date" required="true"/>-->
@@ -26,6 +26,11 @@
 							</ComboBox>
 						</VBox>
 						<VBox class="sapUiLargeMarginBegin">
+							<Label text="Enter OTP" id="label" visible="false"></Label>
+							<HBox id="idExistingadd" visible="false">
+								<Input placeholder="Enter OTP" value="{oVisitorModel>/addvisitorData/otp}"></Input>
+								<Button text="Submit" press="onSubmitAddOtp"></Button>
+							</HBox>
 							<Label text="Last Name" required="true"/>
 							<Input id="idLastName" value="{oVisitorModel>/addvisitorData/lastName}" liveChange="handleUserInput"></Input>
 							<Label text="Mobile" required="true"/>
