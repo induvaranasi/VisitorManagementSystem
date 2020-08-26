@@ -13,13 +13,13 @@
 			</headerToolbar>
 			<columns>
 				<Column width="12em" minScreenWidth="phone" demandPopin="true">
-					<Text text="{i18n>Visitor Name}"/>
+					<Text text="{i18n>Visitor Name}" class="styleColumn"/>
 				</Column>
 				<Column minScreenWidth="Tablet" demandPopin="true">
-					<Text text="{i18n>Mail ID}"/>
+					<Text text="{i18n>Mail ID}" class="styleColumn"/>
 				</Column>
 				<Column minScreenWidth="Desktop" demandPopin="true">
-					<Text text="{i18n>Mobile No}"/>
+					<Text text="{i18n>Mobile No}" class="styleColumn"/>
 				</Column>
 				<!--<Column minScreenWidth="Desktop" demandPopin="true">-->
 				<!--	<Text text="{i18n>Purpose}"/>-->
@@ -56,13 +56,13 @@
 			</headerToolbar>
 			<columns>
 				<Column width="12em" minScreenWidth="phone" demandPopin="true">
-					<Text text="{i18n>Visitor Name}"/>
+					<Text text="{i18n>Visitor Name}" class="styleColumn"/>
 				</Column>
 				<Column minScreenWidth="Tablet" demandPopin="true">
-					<Text text="{i18n>Mail ID}"/>
+					<Text text="{i18n>Mail ID}" class="styleColumn"/>
 				</Column>
 				<Column minScreenWidth="Desktop" demandPopin="true">
-					<Text text="{i18n>Mobile No}"/>
+					<Text text="{i18n>Mobile No}" class="styleColumn"/>
 				</Column>
 				<!--<Column minScreenWidth="Desktop" demandPopin="true">-->
 				<!--	<Text text="{i18n>Purpose}"/>-->
@@ -99,13 +99,13 @@
 			</headerToolbar>
 			<columns>
 				<Column width="12em" minScreenWidth="phone" demandPopin="true">
-					<Text text="{i18n>Visitor Name}"/>
+					<Text text="{i18n>Visitor Name}" class="styleColumn"/>
 				</Column>
 				<Column minScreenWidth="Tablet" demandPopin="true">
-					<Text text="{i18n>Mail ID}"/>
+					<Text text="{i18n>Mail ID}" class="styleColumn"/>
 				</Column>
 				<Column minScreenWidth="Desktop" demandPopin="true">
-					<Text text="{i18n>Mobile No}"/>
+					<Text text="{i18n>Mobile No}" class="styleColumn"/>
 				</Column>
 				<!--<Column minScreenWidth="Desktop" demandPopin="true">-->
 				<!--	<Text text="{i18n>Purpose}"/>-->

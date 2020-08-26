@@ -50,7 +50,7 @@
 						<core:Item text="Two Wheeler" key="2"></core:Item>
 						<core:Item text="Four Wheeler" key="4"></core:Item>
 					</ComboBox>
-					<Button text="Check Availability" type="Success" press="onAddParkingAvailabilityPress"></Button>
+					<Button text="Availability" type="Success" press="onAddParkingAvailabilityPress"></Button>
 					<Label text="Available Parking Slots"/>
 					<ComboBox id="idAddParkingAvailability" visible="false" items="{oAdminModel>/AvailableParkingSlots}"
 						selectedKey="{oAdminModel>/addvisitorData/pId}">

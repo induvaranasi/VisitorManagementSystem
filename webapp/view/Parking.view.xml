@@ -25,11 +25,11 @@
 									<IconTabFilter text="Sign In">
 										<VBox id="idParkingSignIn" visible="true" justifyContent="Center">
 											<items>
-												<Text text="Click On CheckIn/CheckOut To Scan The QR Code" width="100%" class="sapUiTinyMargin"></Text>
+												<Text text="Click To Scan The QR Code" width="100%" class="sapUiTinyMargin"></Text>
 												<!--<Button icon="sap-icon://bar-code" press="onScanQRCode"/>-->
 												<!--<Input width="100%" id="idVhid"></Input>-->
-												<Button text="CheckIn" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onScancodeCheckIn"/>
-												<Button text="CheckOut" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onScanCodeCheckOut"/>
+												<Button text="Park Your Vehicle" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onScancodeCheckIn"/>
+												<Button text="BackOut" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onScanCodeCheckOut"/>
 											</items>
 										</VBox>
 										<VBox id="idParking" visible="false" justifyContent="Center">

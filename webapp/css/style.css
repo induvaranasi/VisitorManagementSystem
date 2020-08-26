@@ -185,6 +185,14 @@ html.sap-desktop .sapMGT:hover:not(.sapMGTPressActive):not(.sapMGTBackgroundImag
     margin-left: 20rem;
 }
 
+.sapMTableTH {
+    background: #354a5f;
+}
+
+.sapMListTbl .sapMText.styleColumn {
+    color: #f1fdf6;
+}
+
 
 /*.styleITB .sapMITBContent {*/
 

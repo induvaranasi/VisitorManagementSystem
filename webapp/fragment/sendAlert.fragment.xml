@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
-	<Dialog title="Send Alert!!" draggable="true" contentWidth="25rem" contentHeight="12rem" resizable="true" class="sapUiSizeCompact"
+	<Dialog title="Send Alert!!" draggable="true" contentWidth="25rem" contentHeight="14rem" resizable="true" class="sapUiSizeCompact"
 		verticalScrolling="true">
 		<!--<customHeader>-->
 		<!--	<Bar class="styleDialog">-->

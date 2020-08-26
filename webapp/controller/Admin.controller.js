@@ -116,16 +116,16 @@ sap.ui.define([
 			// var sUrl1 = "/VMS_Service/chat/1";
 			var webSocket = new WebSocket(sUrl3);
 			webSocket.onerror = function (event) {
-				alert(event.data);
+				// alert(event.data);
 
 			};
 			webSocket.onopen = function (event) {
-				alert(event.data);
+				// alert(event.data);
 
 			};
 			webSocket.onmessage = function (event) {
 
-				alert(event.data);
+				// alert(event.data);
 
 			};
 			var eId = oAdminModel.getProperty("/userDetails").eId;

@@ -231,6 +231,28 @@ sap.ui.define([
 			this.getView().addDependent(this._oDialog); // Adding the fragment to your current view
 			this._oDialog.open();
 		},
+		onAccessCardPress: function (oEvent) {
+			var oSecurityModel = this.getView().getModel("oSecurityModel");
+			var oSource = oEvent.getSource();
+			var spath = oSource.getParent().getBindingContextPath();
+			var oProperty = oSecurityModel.getProperty(spath);
+			var vhId = oProperty.vhId;
+			var sUrl = "/VMS_Service/visitor/getBadgeDetails?vhId="+vhId;
+			this.fnGetData(sUrl,"/CheckInVisitorDetails");
+		    console.log(oSecurityModel);
+			this.bFlag = true;
+			if (!this._oDialog) {
+				//this._oDialog = sap.ui.xmlfragment("com.demo.odata.Demo_Odata_Service.view.addItem", this);
+				this._oDialog = sap.ui.xmlfragment("idaccessCard", "com.incture.VMSApplicationUI5.fragment.accessCard", this); // Instantiating the Fragment
+			}
+			this.getView().addDependent(this._oDialog); // Adding the fragment to your current view
+			this._oDialog.open();
+		},
+		onAssignAccessCard: function(){
+			this._oDialog.close();
+			this._oDialog.destroy();
+			this._oDialog = null;
+		},
 		onCancel: function () {
 			this._oDialog.close();
 			this._oDialog.destroy();

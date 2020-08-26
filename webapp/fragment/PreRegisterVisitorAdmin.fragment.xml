@@ -65,7 +65,7 @@
 					<CheckBox text="Wi-Fi"/>
 					<CheckBox text="Conference Calling"/>
 					<CheckBox text="Board"/>
-					<Button text="Check Availability" type="Success" press="onAvailabilityPress"></Button>
+					<Button text="Availability" type="Success" press="onAvailabilityPress"></Button>
 					<Label text="Available Rooms"/>
 					<ComboBox id="idRoomAvailability" items="{oAdminModel>/AvailableRooms}" selectedKey="{oAdminModel>/oMeetingData/rId}" visible="false"
 						selectionChange="onRoomChange">
@@ -81,7 +81,7 @@
 						<core:Item text="Two Wheeler" key="2"></core:Item>
 						<core:Item text="Four Wheeler" key="4"></core:Item>
 					</ComboBox>
-					<Button text="Check Availability" type="Success" press="onParkingAvailabilityPress"></Button>
+					<Button text="Availability" type="Success" press="onParkingAvailabilityPress"></Button>
 					<Label text="Available Parking Slots"/>
 					<ComboBox id="idParkingAvailability" visible="false" items="{oAdminModel>/AvailableParkingSlots}"
 						selectedKey="{oAdminModel>/visitorData/pId}">
@@ -101,22 +101,22 @@
 				</headerToolbar>
 				<columns>
 					<Column width="12em">
-						<Text text="Visitor Name"/>
+						<Text text="Visitor Name" class="styleColumn"/>
 					</Column>
 					<Column minScreenWidth="Tablet" demandPopin="true">
-						<Text text="Email"/>
+						<Text text="Email" class="styleColumn"/>
 					</Column>
 					<Column minScreenWidth="Desktop" demandPopin="true">
-						<Text text="Mobile"/>
+						<Text text="Mobile" class="styleColumn"/>
 					</Column>
 					<Column minScreenWidth="Desktop" demandPopin="true">
-						<Text text="Organization"/>
+						<Text text="Organization" class="styleColumn"/>
 					</Column>
 					<!--<Column minScreenWidth="Desktop" demandPopin="true">-->
 					<!--	<Text text="Date of Visit"/>-->
 					<!--</Column>-->
 					<Column minScreenWidth="Desktop" demandPopin="true">
-						<Text text="Action"/>
+						<Text text="Action" class="styleColumn"/>
 					</Column>
 				</columns>
 				<items>

@@ -80,22 +80,22 @@
 								</headerToolbar>
 								<columns>
 									<Column width="12em">
-										<Text text="Visitor Name"/>
+										<Text text="Visitor Name" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Tablet" demandPopin="true">
-										<Text text="Email"/>
+										<Text text="Email" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Mobile"/>
+										<Text text="Mobile" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Purpose"/>
+										<Text text="Purpose" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Organization"/>
+										<Text text="Organization" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Status"/>
+										<Text text="Status" class="styleColumn"/>
 									</Column>
 								</columns>
 								<items>
@@ -154,22 +154,22 @@
 								</headerToolbar>
 								<columns>
 									<Column width="12em">
-										<Text text="Visitor Name"/>
+										<Text text="Visitor Name" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Tablet" demandPopin="true">
-										<Text text="Email"/>
+										<Text text="Email" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Mobile"/>
+										<Text text="Mobile" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Purpose"/>
+										<Text text="Purpose" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Date Visited"/>
+										<Text text="Date Visited" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Status"/>
+										<Text text="Status" class="styleColumn"/>
 									</Column>
 								</columns>
 								<items>
@@ -198,25 +198,25 @@
 								</headerToolbar>
 								<columns>
 									<Column width="12em">
-										<Text text="Visitor Name"/>
+										<Text text="Visitor Name" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Tablet" demandPopin="true">
-										<Text text="Email"/>
+										<Text text="Email" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Mobile"/>
+										<Text text="Mobile" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Purpose"/>
+										<Text text="Purpose" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Date Visited"/>
+										<Text text="Date Visited" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Status"/>
+										<Text text="Status" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Action"/>
+										<Text text="Action" class="styleColumn"/>
 									</Column>
 								</columns>
 								<items>
@@ -246,22 +246,22 @@
 								</headerToolbar>
 								<columns>
 									<Column width="12em">
-										<Text text="Visitor Name"/>
+										<Text text="Visitor Name" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Tablet" demandPopin="true">
-										<Text text="Email"/>
+										<Text text="Email" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Mobile"/>
+										<Text text="Mobile" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Purpose"/>
+										<Text text="Purpose" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Date Visited"/>
+										<Text text="Date Visited" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Status"/>
+										<Text text="Status" class="styleColumn"/>
 									</Column>
 								</columns>
 								<items>
@@ -296,22 +296,22 @@
 								</headerToolbar>
 								<columns>
 									<Column width="12em">
-										<Text text="Visitor Name"/>
+										<Text text="Visitor Name" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Tablet" demandPopin="true">
-										<Text text="Email"/>
+										<Text text="Email" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Mobile"/>
+										<Text text="Mobile" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Purpose"/>
+										<Text text="Purpose" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Date of Visit"/>
+										<Text text="Date of Visit" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Organization"/>
+										<Text text="Organization" class="styleColumn"/>
 									</Column>
 									<!--<Column>-->
 									<!--	<Text text="Action"/>-->
@@ -342,7 +342,7 @@
 								<headerToolbar>
 									<OverflowToolbar>
 										<content>
-											<Title text="Visitors" level="H3"/>
+											<Title text="Upcoming Meetings" level="H3"/>
 											<ToolbarSpacer></ToolbarSpacer>
 											<SearchField width="20%" liveChange="onSearch"></SearchField>
 										</content>
@@ -350,25 +350,25 @@
 								</headerToolbar>
 								<columns>
 									<Column width="12em" minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Meeting Purpose}"/>
+										<Text text="{i18n>Meeting Purpose}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Tablet" demandPopin="true">
-										<Text text="{i18n>Begin Time}"/>
+										<Text text="{i18n>Begin Time}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>End Time}"/>
+										<Text text="{i18n>End Time}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Room Name}"/>
+										<Text text="{i18n>Room Name}" class="styleColumn"/>
 									</Column>
 									<!--<Column minScreenWidth="Desktop" demandPopin="true">-->
 									<!--	<Text text="{i18n>Organization}"/>-->
 									<!--</Column>-->
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Status}"/>
+										<Text text="{i18n>Status}" class="styleColumn"/>
 									</Column>
 									<Column>
-										<Text text="{i18n>Action}"/>
+										<Text text="{i18n>Action}" class="styleColumn"/>
 									</Column>
 								</columns>
 								<items>
@@ -397,22 +397,22 @@
 								</headerToolbar>
 								<columns>
 									<Column width="12em" minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Visitor Name}"/>
+										<Text text="{i18n>Visitor Name}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Tablet" demandPopin="true">
-										<Text text="{i18n>Mail ID}"/>
+										<Text text="{i18n>Mail ID}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Mobile No}"/>
+										<Text text="{i18n>Mobile No}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Purpose}"/>
+										<Text text="{i18n>Purpose}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Organization}"/>
+										<Text text="{i18n>Organization}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Status}"/>
+										<Text text="{i18n>Status}" class="styleColumn"/>
 									</Column>
 								</columns>
 								<items>
@@ -442,19 +442,19 @@
 								</headerToolbar>
 								<columns>
 									<Column width="12em" minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Visitor Name}"/>
+										<Text text="{i18n>Visitor Name}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Tablet" demandPopin="true">
-										<Text text="{i18n>Host Name}"/>
+										<Text text="{i18n>Host Name}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Date Visited}"/>
+										<Text text="{i18n>Date Visited}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Remarks}"/>
+										<Text text="{i18n>Remarks}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Action}"/>
+										<Text text="{i18n>Action}" class="styleColumn"/>
 									</Column>
 								</columns>
 								<items>

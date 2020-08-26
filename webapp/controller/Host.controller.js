@@ -619,6 +619,9 @@ sap.ui.define([
 				this.getView().addDependent(this._oPopover1);
 			}
 			this._oPopover1.openBy(oEvent.getSource());
+			var count = oHostModel.getProperty("/Notificationcount");
+			count = "0";
+			oHostModel.setProperty("/Notificationcount",count);
 		},
 		onItemClose: function (oEvent) {
 			var that = this;

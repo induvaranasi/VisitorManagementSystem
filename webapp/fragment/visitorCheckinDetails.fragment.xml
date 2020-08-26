@@ -57,11 +57,9 @@
 			</f:SimpleForm>
 		</content>
 		<Toolbar>
-			<Button text="Edit" type="Emphasized" press="onEditDetails"/>
-			<!--<Link text="Edit" emphasized="true" press="onEditDetails"></Link>-->
+			<Button text="Edit" type="Emphasized" press=".onEditDetails"></Button>
 			<ToolbarSpacer></ToolbarSpacer>
-			<Button text="Confirm" type="Emphasized" press="onConfirmDetails"></Button>
-			<!--<Link text="Confirm" emphasized="true" press="onConfirmDetails"></Link>-->
+			<Button text="Confirm" type="Emphasized" press=".onConfirmDetails"></Button>
 		</Toolbar>
 	</Dialog>
 </core:FragmentDefinition>

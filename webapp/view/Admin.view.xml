@@ -140,22 +140,22 @@
 								</headerToolbar>
 								<columns>
 									<Column width="12em" minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Visitor Name}"/>
+										<Text text="{i18n>Visitor Name}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Tablet" demandPopin="true">
-										<Text text="{i18n>Mail ID}"/>
+										<Text text="{i18n>Mail ID}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Mobile No}"/>
+										<Text text="{i18n>Mobile No}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Purpose}"/>
+										<Text text="{i18n>Purpose}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Organization}"/>
+										<Text text="{i18n>Organization}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Status}"/>
+										<Text text="{i18n>Status}" class="styleColumn"/>
 									</Column>
 								</columns>
 								<items>
@@ -225,22 +225,22 @@
 								</headerToolbar>
 								<columns>
 									<Column width="12em" minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Visitor Name}"/>
+										<Text text="{i18n>Visitor Name}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Tablet" demandPopin="true">
-										<Text text="{i18n>Mail ID}"/>
+										<Text text="{i18n>Mail ID}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Mobile No}"/>
+										<Text text="{i18n>Mobile No}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Purpose}"/>
+										<Text text="{i18n>Purpose}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Organization}"/>
+										<Text text="{i18n>Organization}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Status}"/>
+										<Text text="{i18n>Status}" class="styleColumn"/>
 									</Column>
 								</columns>
 								<items>
@@ -268,25 +268,25 @@
 								</headerToolbar>
 								<columns>
 									<Column width="12em" minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Visitor Name}"/>
+										<Text text="{i18n>Visitor Name}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Tablet" demandPopin="true">
-										<Text text="{i18n>Mail ID}"/>
+										<Text text="{i18n>Mail ID}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Mobile No}"/>
+										<Text text="{i18n>Mobile No}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Purpose}"/>
+										<Text text="{i18n>Purpose}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Organization}"/>
+										<Text text="{i18n>Organization}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Status}"/>
+										<Text text="{i18n>Status}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="phone" demandPopin="true">
-										<Text text="Action"/>
+										<Text text="Action" class="styleColumn"/>
 									</Column>
 								</columns>
 								<items>
@@ -316,22 +316,22 @@
 								</headerToolbar>
 								<columns>
 									<Column width="12em" minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Visitor Name}"/>
+										<Text text="{i18n>Visitor Name}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Tablet" demandPopin="true">
-										<Text text="{i18n>Mail ID}"/>
+										<Text text="{i18n>Mail ID}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Mobile No}"/>
+										<Text text="{i18n>Mobile No}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Purpose}"/>
+										<Text text="{i18n>Purpose}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Organization}"/>
+										<Text text="{i18n>Organization}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Status}"/>
+										<Text text="{i18n>Status}" class="styleColumn"/>
 									</Column>
 								</columns>
 								<items>
@@ -359,19 +359,19 @@
 								</headerToolbar>
 								<columns>
 									<Column minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Host Name}"/>
+										<Text text="{i18n>Host Name}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Tablet" demandPopin="true">
-										<Text text="{i18n>Mail ID}"/>
+										<Text text="{i18n>Mail ID}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Mobile No}"/>
+										<Text text="{i18n>Mobile No}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Post}"/>
+										<Text text="{i18n>Post}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="phone">
-										<Text text="{i18n>Action}"/>
+										<Text text="{i18n>Action}" class="styleColumn"/>
 									</Column>
 								</columns>
 								<items>
@@ -408,22 +408,22 @@
 								</headerToolbar>
 								<columns>
 									<Column width="12em" minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Visitor Name}"/>
+										<Text text="{i18n>Visitor Name}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Tablet" demandPopin="true">
-										<Text text="{i18n>Mail ID}"/>
+										<Text text="{i18n>Mail ID}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Mobile No}"/>
+										<Text text="{i18n>Mobile No}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Purpose}"/>
+										<Text text="{i18n>Purpose}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Organization}"/>
+										<Text text="{i18n>Organization}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Status}"/>
+										<Text text="{i18n>Status}" class="styleColumn"/>
 									</Column>
 								</columns>
 								<items>
@@ -458,22 +458,22 @@
 								</headerToolbar>
 								<columns>
 									<Column width="12em" minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Meeting Purpose}"/>
+										<Text text="{i18n>Meeting Purpose}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Tablet" demandPopin="true">
-										<Text text="{i18n>}Begin Time"/>
+										<Text text="{i18n>}Begin Time" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>End Time}"/>
+										<Text text="{i18n>End Time}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Room Name}"/>
+										<Text text="{i18n>Room Name}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Status}"/>
+										<Text text="{i18n>Status}" class="styleColumn"/>
 									</Column>
 									<Column>
-										<Text text="{i18n>Action}"/>
+										<Text text="{i18n>Action}" class="styleColumn"/>
 									</Column>
 								</columns>
 								<items>
@@ -502,22 +502,22 @@
 								</headerToolbar>
 								<columns>
 									<Column width="12em" minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Visitor Name}"/>
+										<Text text="{i18n>Visitor Name}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Tablet" demandPopin="true">
-										<Text text="{i18n>Mail ID}"/>
+										<Text text="{i18n>Mail ID}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Mobile No}"/>
+										<Text text="{i18n>Mobile No}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Purpose}"/>
+										<Text text="{i18n>Purpose}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Organization}"/>
+										<Text text="{i18n>Organization}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Status}"/>
+										<Text text="{i18n>Status}" class="styleColumn"/>
 									</Column>
 								</columns>
 								<items>
@@ -547,19 +547,19 @@
 								</headerToolbar>
 								<columns>
 									<Column width="12em" minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Visitor Name}"/>
+										<Text text="{i18n>Visitor Name}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Tablet" demandPopin="true">
-										<Text text="{i18n>Host Name}"/>
+										<Text text="{i18n>Host Name}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Date Visited}"/>
+										<Text text="{i18n>Date Visited}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Remarks}"/>
+										<Text text="{i18n>Remarks}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Action}"/>
+										<Text text="{i18n>Action}" class="styleColumn"/>
 									</Column>
 								</columns>
 								<items>
@@ -592,22 +592,22 @@
 								</headerToolbar>
 								<columns>
 									<Column width="12em" minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Visitor Name}"/>
+										<Text text="{i18n>Visitor Name}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Tablet" demandPopin="true">
-										<Text text="{i18n>Mail ID}"/>
+										<Text text="{i18n>Mail ID}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Mobile No}"/>
+										<Text text="{i18n>Mobile No}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Purpose}"/>
+										<Text text="{i18n>Purpose}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Organization}"/>
+										<Text text="{i18n>Organization}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Status}"/>
+										<Text text="{i18n>Status}" class="styleColumn"/>
 									</Column>
 								</columns>
 								<items>
