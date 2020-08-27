@@ -1,6 +1,22 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
-	<Popover class="sapUiSizeCompact" placement="Bottom" contentHeight="60px"  showHeader="false">
+	<Popover class="sapUiSizeCompact" placement="Bottom" contentHeight="192px" contentWidth="250px" showHeader="false">
 		<VBox>
+			<HBox class="sapUiTinyMarginTop">
+				<Avatar src="data:image/png;base64,{oLoginModel>/userDetails/photo}" displaySize="S" class="sapUiTinyMarginBegin"></Avatar>
+				<Label text="{oLoginModel>/userDetails/name}" design="Bold" class=" sapUiTinyMarginBegin sapUiSmallMarginTop"></Label>
+			</HBox>
+			<HBox class="sapUiTinyMarginTop">
+				<Label text="Role:" design="Bold" class="sapUiTinyMarginBegin"></Label>
+				<Text text="{oLoginModel>/userDetails/role}"></Text>
+			</HBox>
+			<HBox class="sapUiTinyMarginTop">
+				<Label text="Mail:" design="Bold" class="sapUiTinyMarginBegin"></Label>
+				<Text text="{oLoginModel>/userDetails/mail}"></Text>
+			</HBox>
+			<HBox class="sapUiTinyMarginTop">
+				<Label text="Moblie:" design="Bold" class="sapUiTinyMarginBegin"></Label>
+				<Text text="{oLoginModel>/userDetails/contactno}"></Text>
+			</HBox>
 			<Link text="Edit Profile" class="sapUiTinyMarginTop sapUiTinyMarginBegin" press="onEditProfilePress"></Link>
 			<Link text="Log Out" class="sapUiTinyMarginBegin" press="onLogOutPress"></Link>
 		</VBox>

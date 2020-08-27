@@ -362,7 +362,7 @@ sap.ui.define([
 				dataType: 'json',
 				success: function (data, status, response) {
 					sap.m.MessageToast.show("Successfully Unblocked");
-					var oDialog = sap.m.BusyDialog();
+					var oDialog = new sap.m.BusyDialog();
 					oDialog.open();
 					setTimeout(function () {
 						oDialog.close();
@@ -427,7 +427,7 @@ sap.ui.define([
 					that._oDialog.close();
 					that._oDialog.destroy();
 					that._oDialog = null;
-					var oDialog = sap.m.BusyDialog();
+					var oDialog = new sap.m.BusyDialog();
 					oDialog.open();
 					setTimeout(function () {
 						oDialog.close();
@@ -496,7 +496,7 @@ sap.ui.define([
 						sap.m.MessageToast.show("Success");
 						console.log(status);
 						console.log(response);
-						var oDialog = sap.m.BusyDialog();
+						var oDialog = new sap.m.BusyDialog();
 						oDialog.open();
 						setTimeout(function () {
 							oDialog.close();

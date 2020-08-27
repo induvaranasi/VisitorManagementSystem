@@ -849,7 +849,7 @@ sap.ui.define([
 					// }]
 			};
 			console.log(payload);
-			var oDialog = sap.m.BusyDialog();
+			var oDialog = new sap.m.BusyDialog();
 			oDialog.open();
 			setTimeout(function () {
 				oDialog.close();
@@ -1284,7 +1284,7 @@ sap.ui.define([
 					that._oDialog.close();
 					that._oDialog.destroy();
 					that._oDialog = null;
-					var oDialog = sap.m.BusyDialog();
+					var oDialog = new sap.m.BusyDialog();
 					oDialog.open();
 					setTimeout(function () {
 						oDialog.close();

@@ -228,7 +228,7 @@
 											<Text text="{oHostModel>purpose}"/>
 											<Text text="{oHostModel>organisation}"/>
 											<Text text="{path: 'oHostModel>status', formatter:'com.incture.VMSApplicationUI5.utility.formatter.changeColor'}"/>
-											<Button text="AddToBlackList" type="Critical" press="onAddToBlackListPress"/>
+											<Button text="Add To BlackList" type="Critical" press="onAddToBlackListPress"/>
 										</cells>
 									</ColumnListItem>
 								</items>

@@ -552,7 +552,7 @@ sap.ui.define([
 					// }
 			};
 			console.log(payload);
-			var oDialog = sap.m.BusyDialog();
+			var oDialog = new sap.m.BusyDialog();
 			oDialog.open();
 			setTimeout(function () {
 				oDialog.close();
@@ -913,7 +913,7 @@ sap.ui.define([
 				dataType: "json",
 				success: function (data, status, response) {
 					sap.m.MessageToast.show("Successfully Unblocked");
-					var oDialog = sap.m.BusyDialog();
+					var oDialog = new sap.m.BusyDialog();
 					oDialog.open();
 					setTimeout(function () {
 						oDialog.close();
@@ -983,7 +983,7 @@ sap.ui.define([
 					that.fnGetData(sUrl2, "/CheckOutDetails");
 					that.fnGetData(sUrl1, "/BlackListed");
 					that.fnGetData(sUrl3, "/Details");
-					var oDialog = sap.m.BusyDialog();
+					var oDialog = new sap.m.BusyDialog();
 					oDialog.open();
 					setTimeout(function () {
 						oDialog.close();

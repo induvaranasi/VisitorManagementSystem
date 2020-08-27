@@ -236,7 +236,7 @@
 											<Text text="{oSecurityModel>purpose}"/>
 											<Text text="{oSecurityModel>organisation}"/>
 											<Text text="{path: 'oSecurityModel>status', formatter:'com.incture.VMSApplicationUI5.utility.formatter.changeColor'}"/>
-											<Button text="AddToBlackList" type="Critical" press="onAddToBlackListPress"/>
+											<Button text="Add To BlackList" type="Critical" press="onAddToBlackListPress"/>
 										</cells>
 									</ColumnListItem>
 								</items>
