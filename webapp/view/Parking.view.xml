@@ -52,7 +52,7 @@
 												</ComboBox>
 												<Label text="Enter Your Vehicle Number"/>
 												<Input id="idVehicleNumber2" value="{oParkingModel>/oFormData/vehicleNo}"></Input>
-												<Button text="Check Availability" type="Success" press="onParkingAvailabilityPress" width="100%"></Button>
+												<Button text="Check  Availability" type="Success" press="onParkingAvailabilityPress" width="100%"></Button>
 												<Label text="Available Parking Slots" visible="false"/>
 												<ComboBox id="idParkingAvailability" visible="false" items="{oParkingModel>/AvailableParkingSlots}"
 													selectedKey="{oParkingModel>/oFormData/pId}" width="100%">

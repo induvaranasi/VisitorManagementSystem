@@ -288,7 +288,7 @@ sap.ui.define([
 						MessageBox.success("Please Go ahead and Park Your Vehicle");
 
 					} else {
-						MessageToast.show("Something Went Wrong");
+						MessageBox.warning("Please Select Parking Slot by checking the Availability");
 					}
 
 					// that.fnGetData();

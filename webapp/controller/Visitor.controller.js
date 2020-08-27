@@ -84,6 +84,7 @@ sap.ui.define([
 			return UIComponent.getRouterFor(this);
 		},
 		onSubmitMail: function () {
+			MessageBox.information("Please wait..we are checking whether you are an Existing Visitor or New Visitor");
 			var that = this;
 			var oVisitorModel = that.getView().getModel("oVisitorModel");
 			var visitordata = oVisitorModel.getProperty("/visitorData");
@@ -105,9 +106,13 @@ sap.ui.define([
 					sap.m.MessageToast.show("Data Successfully Loaded");
 					console.log(data);
 					if (data.status === 200) {
+						MessageBox.success(
+							"You are an Existing visitor..Your Personal Details will be Auto filled after Successfull OTP verification");
 						that.getView().byId("idlabel").setVisible(true);
 						that.getView().byId("idotp").setVisible(true);
 						that.getView().byId("idsubmit").setVisible(true);
+					} else {
+						MessageBox.success("You are New Visitor..Please fill all the Details");
 					}
 
 					// oVisitorModel.setProperty("/getEmployeeList", data);
@@ -158,6 +163,7 @@ sap.ui.define([
 			});
 		},
 		onSubmitAnotherMail: function () {
+			MessageBox.information("Please wait..we are checking whether you are an Existing Visitor or New Visitor");
 			var that = this;
 			var oVisitorModel = that.getView().getModel("oVisitorModel");
 			var visitordata = oVisitorModel.getProperty("/addvisitorData");
