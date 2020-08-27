@@ -112,24 +112,10 @@ sap.ui.define([
 			this.fndoajax(sUrl2, "/OrganisationPercent");
 			this.fnGetData();
 			this.bFlag = true;
-			var sUrl3 = "wss://projectvmsp2002476966trial.hanatrial.ondemand.com/vms/chat/1";
-			// var sUrl1 = "/VMS_Service/chat/1";
-			var webSocket = new WebSocket(sUrl3);
-			webSocket.onerror = function (event) {
-				// alert(event.data);
 
-			};
-			webSocket.onopen = function (event) {
-				// alert(event.data);
-
-			};
-			webSocket.onmessage = function (event) {
-
-				// alert(event.data);
-
-			};
 			var eId = oAdminModel.getProperty("/userDetails").eId;
 			var sUrl5 = "/VMS_Service/admin/notificationCounter?eId=" + eId;
+			var count;
 			$.ajax({
 				url: sUrl5,
 				data: null,
@@ -145,7 +131,7 @@ sap.ui.define([
 				success: function (data) {
 					sap.m.MessageToast.show("Data Successfully Loaded");
 					console.log(data);
-					var count = data.count;
+					count = data.count;
 					var countupdated = count.toString();
 					oAdminModel.setProperty("/Notificationcount", countupdated);
 					console.log(countupdated);
@@ -154,6 +140,25 @@ sap.ui.define([
 				},
 				type: "GET"
 			});
+			var sUrl3 = "wss://projectvmsp2002476966trial.hanatrial.ondemand.com/vms/chat/"+eId;
+			// var sUrl1 = "/VMS_Service/chat/1";
+			var webSocket = new WebSocket(sUrl3);
+			webSocket.onerror = function (event) {
+				// alert(event.data);
+
+			};
+			webSocket.onopen = function (event) {
+				// alert(event.data);
+
+			};
+			webSocket.onmessage = function (event) {
+				// alert(event.data);
+				count = count + 1;
+				var countupdated = count.toString();
+				oAdminModel.setProperty("/Notificationcount", countupdated);
+				// alert(event.data);
+
+			};
 			// this.fndoajax(sUrl5, "/Notificationcount");
 			// var notificationcount = oAdminModel.getProperty("/Notificationcount");
 			// var count = notificationcount.toString();
@@ -213,12 +218,16 @@ sap.ui.define([
 			});
 		},
 		onNotificationPress: function (oEvent) {
+			var oAdminModel = this.getOwnerComponent().getModel("oAdminModel");
 			this.fnGetNotificationsData();
 			if (!this._oPopover1) {
 				this._oPopover1 = sap.ui.xmlfragment("idNotifications", "com.incture.VMSApplicationUI5.fragment.notification", this);
 				this.getView().addDependent(this._oPopover1);
 			}
 			this._oPopover1.openBy(oEvent.getSource());
+			var count = oAdminModel.getProperty("/Notificationcount");
+			count = "0";
+			oAdminModel.setProperty("/Notificationcount", count);
 		},
 		onItemClose: function (oEvent) {
 			// var oSecurityModel = this.getView().getModel("oSecurityModel");
@@ -1283,7 +1292,7 @@ sap.ui.define([
 					that.fnGetData(sUrl2, "/CheckedOutDetails");
 					that.fnGetData(sUrl1, "/BlackListed");
 					oSource.setEnabled(false);
-					if(data.status === 300){
+					if (data.status === 300) {
 						MessageBox.warning("Alredy Blacklisted");
 					}
 

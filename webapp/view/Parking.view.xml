@@ -15,23 +15,25 @@
 					</Bar>
 				</customHeader>
 				<content>
-					<f:Card class="loginbox sapUiResponsiveLayout" width="300px" height="350px">
+					<f:Card class="loginbox sapUiResponsiveLayout sapUiSizeCompact" width="300px" height="350px">
 						<!--<f:header class="header">-->
 						<!--	<card:Header title="PARKING" class="title"/>-->
 						<!--</f:header>-->
 						<f:content>
 							<IconTabBar expand="false" stretchContentHeight="true">
 								<items>
-									<IconTabFilter text="Sign In">
-										<VBox id="idParkingSignIn" visible="true" justifyContent="Center">
-											<items>
-												<Text text="Click To Scan The QR Code" width="100%" class="sapUiTinyMargin"></Text>
-												<!--<Button icon="sap-icon://bar-code" press="onScanQRCode"/>-->
-												<!--<Input width="100%" id="idVhid"></Input>-->
-												<Button text="Park Your Vehicle" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onScancodeCheckIn"/>
-												<Button text="BackOut" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onScanCodeCheckOut"/>
-											</items>
-										</VBox>
+									<IconTabFilter text="CheckIn">
+										<!--<VBox id="idParkingSignIn" visible="true" justifyContent="Center">-->
+										<!--	<items>-->
+										<!--		<Hbox>-->
+										<!--			<Text text="Click To Scan The QR Code If You Are Pre-Registered" width="70%"></Text>-->
+										<!--			<Button icon="sap-icon://bar-code" press="onScancodeCheckIn"/>-->
+										<!--		</Hbox>-->
+										<!--<Input width="100%" id="idVhid"></Input>-->
+										<!--<Button text="Park Your Vehicle" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onScancodeCheckIn"/>-->
+										<!--<Button text="BackOut" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onScanCodeCheckOut"/>-->
+										<!--	</items>-->
+										<!--</VBox>-->
 										<VBox id="idParking" visible="false" justifyContent="Center">
 											<items>
 												<Label text="Your Parking Slot"/>
@@ -41,18 +43,20 @@
 												<Button text="Submit" press="onLoginSubmitPress" width="100%" type="Emphasized"></Button>
 											</items>
 										</VBox>
-									</IconTabFilter>
-									<IconTabFilter text="Register">
-										<VBox justifyContent="Center">
+										<VBox justifyContent="Center" id="idRegister" visible="true">
+											<HBox>
+												<Text text="Click To Scan The QR Code If You Are Pre-Registered" class="sapUiTinyMarginTop sapUiTinyMarginRight sapUiTinyMarginBottom"></Text>
+												<Button icon="sap-icon://bar-code" press="onScancodeCheckIn" type="Emphasized" class="sapUiTinyMarginBegin" width="10px"/>
+											</HBox>
 											<items>
-												<Label text="Enter Your Vehicle Type" required="true"/>
+												<Label text="Enter Your Vehicle Type" required="true" class="sapUiTinyMarginTop"/>
 												<ComboBox width="100%" selectedKey="{oParkingModel>/oFormData/parkingType}">
 													<core:Item text="Two Wheeler" key="2"/>
 													<core:Item text="Four Wheeler" key="4"/>
 												</ComboBox>
 												<Label text="Enter Your Vehicle Number"/>
 												<Input id="idVehicleNumber2" value="{oParkingModel>/oFormData/vehicleNo}"></Input>
-												<Button text="Check  Availability" type="Success" press="onParkingAvailabilityPress" width="100%"></Button>
+												<Button text="Check Availability" type="Success" press="onParkingAvailabilityPress" width="100%"></Button>
 												<Label text="Available Parking Slots" visible="false"/>
 												<ComboBox id="idParkingAvailability" visible="false" items="{oParkingModel>/AvailableParkingSlots}"
 													selectedKey="{oParkingModel>/oFormData/pId}" width="100%">
@@ -63,11 +67,13 @@
 										</VBox>
 									</IconTabFilter>
 									<IconTabFilter text="CheckOut">
-										<VBox>
+										<VBox justifyContent="Center">
 											<items>
-												<Label text="Please Choose Your Parking Slot and Click On CheckOut" required="true" width="100%"/>
-												<ComboBox  items="{oParkingModel>/AllParkingSlots}"
-													selectedKey="{oParkingModel>/sSelectedKey}" width="100%">
+												<!--<Text text="Click To Scan The QR Code If You Are Pre-Registered"></Text>-->
+												<!--<Button icon="sap-icon://bar-code" press="onScanCodeCheckOut"/>-->
+												<!--<Text text="OR" class="sapLargeMarginBegin"/>-->
+												<Text text="Please Choose Your Parking Slot and Click On CheckOut" width="100%"/>
+												<ComboBox items="{oParkingModel>/AllParkingSlots}" selectedKey="{oParkingModel>/sSelectedKey}" width="100%">
 													<core:Item text="{oParkingModel>parkingSlot}" key="{oParkingModel>pId}"/>
 												</ComboBox>
 												<Button text="CheckOut" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onCheckOut"/>

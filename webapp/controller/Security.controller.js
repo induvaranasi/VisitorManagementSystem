@@ -66,6 +66,7 @@ sap.ui.define([
 			this.fnGetData(sUrl7, "/ExpectedVisitorDetails");
 			var eId = oSecurityModel.getProperty("/userDetails").eId;
 			var sUrl8 = "/VMS_Service/admin/notificationCounter?eId=" + eId;
+			var count;
 			$.ajax({
 				url: sUrl8,
 				data: null,
@@ -81,7 +82,7 @@ sap.ui.define([
 				success: function (data) {
 					sap.m.MessageToast.show("Data Successfully Loaded");
 					console.log(data);
-					var count = data.count;
+					count = data.count;
 					var countupdated = count.toString();
 					oSecurityModel.setProperty("/Notificationcount", countupdated);
 					console.log(countupdated);
@@ -90,6 +91,25 @@ sap.ui.define([
 				},
 				type: "GET"
 			});
+			var sUrl10 = "wss://projectvmsp2002476966trial.hanatrial.ondemand.com/vms/chat/" + eId;
+			// var sUrl1 = "/VMS_Service/chat/1";
+			var webSocket = new WebSocket(sUrl10);
+			webSocket.onerror = function (event) {
+				// alert(event.data);
+
+			};
+			webSocket.onopen = function (event) {
+				// alert(event.data);
+
+			};
+			webSocket.onmessage = function (event) {
+				// alert(event.data);
+				count = count + 1;
+				var countupdated = count.toString();
+				oSecurityModel.setProperty("/Notificationcount", countupdated);
+				// alert(event.data);
+
+			};
 		},
 		onPressImage: function () {
 
@@ -142,21 +162,27 @@ sap.ui.define([
 			});
 		},
 		onNotificationPress: function (oEvent) {
+			var oSecurityModel = this.getView().getModel("oSecurityModel");
 			this.fnGetNotificationsData();
 			if (!this._oPopover1) {
 				this._oPopover1 = sap.ui.xmlfragment("idNotifications", "com.incture.VMSApplicationUI5.fragment.notification", this);
 				this.getView().addDependent(this._oPopover1);
 			}
 			this._oPopover1.openBy(oEvent.getSource());
+			var count = oSecurityModel.getProperty("/Notificationcount");
+			count = "0";
+			oSecurityModel.setProperty("/Notificationcount", count);
 		},
 		onItemClose: function (oEvent) {
 			var that = this;
-			// var oSecurityModel = this.getView().getModel("oSecurityModel");
+			var oSecurityModel = this.getView().getModel("oSecurityModel");
 			var oHostModel = this.getOwnerComponent().getModel("oHostModel");
+			var date = oSecurityModel.getProperty("/date");
 			var oSource = oEvent.getSource();
 			var spath = oSource.getBindingContextPath();
 			var obj = oHostModel.getProperty(spath);
 			var sUrl = "/VMS_Service/employee/readNotifications";
+			var sUrl1 = "/VMS_Service/security/getRecentDelivery?date=" + date;
 			$.ajax({
 				url: sUrl,
 				type: "POST",
@@ -167,6 +193,7 @@ sap.ui.define([
 				dataType: "json",
 				success: function (data, status, response) {
 					this.fnGetNotificationsData();
+					this.fnGetData(sUrl1,"/DeliveryDetails");
 				},
 				error: function (e) {
 					sap.m.MessageToast.show("fail");
@@ -250,6 +277,10 @@ sap.ui.define([
 			this._oDialog.open();
 		},
 		onAssignAccessCard: function () {
+			var oSecurityModel = this.getView().getModel("oSecurityModel");
+			var vhId = oSecurityModel.getProperty("/CheckInVisitorDetails").vhId;
+			var sUrl = "/VMS_Service/security/printAccessCard?vhId=" + vhId;
+			sap.m.URLHelper.redirect(sUrl, true);
 			this._oDialog.close();
 			this._oDialog.destroy();
 			this._oDialog = null;

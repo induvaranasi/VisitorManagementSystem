@@ -86,6 +86,7 @@ sap.ui.define([
 			this.bFlag = true;
 			this.bParking = false;
 			var sUrl6 = "/VMS_Service/admin/notificationCounter?eId=" + eId;
+			var count;
 			$.ajax({
 				url: sUrl6,
 				data: null,
@@ -101,7 +102,7 @@ sap.ui.define([
 				success: function (data) {
 					sap.m.MessageToast.show("Data Successfully Loaded");
 					console.log(data);
-					var count = data.count;
+					 count = data.count;
 					var countupdated = count.toString();
 					oHostModel.setProperty("/Notificationcount", countupdated);
 					console.log(countupdated);
@@ -110,6 +111,25 @@ sap.ui.define([
 				},
 				type: "GET"
 			});
+			var sUrl8 = "wss://projectvmsp2002476966trial.hanatrial.ondemand.com/vms/chat/"+eId;
+			// var sUrl1 = "/VMS_Service/chat/1";
+			var webSocket = new WebSocket(sUrl8);
+			webSocket.onerror = function (event) {
+				// alert(event.data);
+
+			};
+			webSocket.onopen = function (event) {
+				// alert(event.data);
+
+			};
+			webSocket.onmessage = function (event) {
+				// alert(event.data);
+				count = count + 1;
+				var countupdated = count.toString();
+				oHostModel.setProperty("/Notificationcount", countupdated);
+				// alert(event.data);
+
+			};
 		},
 		onDate: function () {
 			var that = this;

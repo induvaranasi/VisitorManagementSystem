@@ -5,13 +5,20 @@ sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/core/Fragment",
 	"sap/m/MessageToast",
-	"sap/ndc/BarcodeScanner"
-], function (Controller, MessageBox, UIComponent, Fragment, MessageToast, BarcodeScanner) {
+	"sap/ndc/BarcodeScanner",
+	"sap/ui/model/json/JSONModel"
+], function (Controller, MessageBox, UIComponent, Fragment, MessageToast, BarcodeScanner, JSONModel) {
 	"use strict";
 
 	return Controller.extend("com.incture.VMSApplicationUI5.controller.Visitor", {
 
 		onInit: function () {
+			var oVisibilityData = {
+				"EmailPattern": false,
+				"MobilePattern": false
+			};
+			var oModel = new JSONModel(oVisibilityData);
+			this.getView().setModel(oModel, "oVisibilityModel");
 			var oMeetingData = {
 				"eId": "",
 				"hostName": "",
@@ -75,6 +82,7 @@ sap.ui.define([
 				type: "GET"
 			});
 			this.bFlag = true;
+			this.bform = false;
 		},
 		onImagePress: function () {
 			this.getRouter().navTo("RouteApp");
@@ -83,45 +91,72 @@ sap.ui.define([
 		getRouter: function () {
 			return UIComponent.getRouterFor(this);
 		},
+		fnValidateEmail: function () {
+			var email = this.getView().byId("idEmail").getValue();
+			if (email.length > 0) {
+				var noSpaces2 = email.replace(/ +/, "");
+				var isemail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+[.]+[a-zA-Z]{2,4}$/.test(noSpaces2);
+				if (isemail) {
+					this.getView().getModel("oVisibilityModel").setProperty("/EmailPattern", false);
+					this.bform = true;
+				} else {
+					this.getView().getModel("oVisibilityModel").setProperty("/EmailPattern", true);
+				}
+			}
+		},
+		fnValidateContactNo: function (oEvent) {
+			var contactnum = oEvent.getParameters().value;
+			var bIsPhone = /^[789]\d{9}$/.test(contactnum);
+			if (bIsPhone && contactnum.length > 0 && contactnum.length <= 10) {
+				this.getView().getModel("oVisibilityModel").setProperty("/MobilePattern", false);
+				// this.bform = true;
+
+			} else {
+				this.getView().getModel("oVisibilityModel").setProperty("/MobilePattern", true);
+				// this.bForm=false;
+			}
+		},
 		onSubmitMail: function () {
-			MessageBox.information("Please wait..we are checking whether you are an Existing Visitor or New Visitor");
-			var that = this;
-			var oVisitorModel = that.getView().getModel("oVisitorModel");
-			var visitordata = oVisitorModel.getProperty("/visitorData");
-			var mail = visitordata.email;
-			console.log(mail);
-			var sUrl = "/VMS_Service/visitor/validateEmail";
-			$.ajax({
-				url: sUrl,
-				data: {
-					"email": mail
-				},
-				// async: true,
-				// dataType: "json",
-				// contentType: "application/json; charset=utf-8",
-				error: function (err) {
-					sap.m.MessageToast.show("Destination Failed");
-				},
-				success: function (data) {
-					sap.m.MessageToast.show("Data Successfully Loaded");
-					console.log(data);
-					if (data.status === 200) {
-						MessageBox.success(
-							"You are an Existing visitor..Your Personal Details will be Auto filled after Successfull OTP verification");
-						that.getView().byId("idlabel").setVisible(true);
-						that.getView().byId("idotp").setVisible(true);
-						that.getView().byId("idsubmit").setVisible(true);
-					} else {
-						MessageBox.success("You are New Visitor..Please fill all the Details");
-					}
+			this.fnValidateEmail();
+			if (this.bform === true) {
+				MessageBox.information("Please wait..we are checking whether you are an Existing Visitor or New Visitor");
+				var that = this;
+				var oVisitorModel = that.getView().getModel("oVisitorModel");
+				var visitordata = oVisitorModel.getProperty("/visitorData");
+				var mail = visitordata.email;
+				console.log(mail);
+				var sUrl = "/VMS_Service/visitor/validateEmail";
+				$.ajax({
+					url: sUrl,
+					data: {
+						"email": mail
+					},
+					// async: true,
+					// dataType: "json",
+					// contentType: "application/json; charset=utf-8",
+					error: function (err) {
+						sap.m.MessageToast.show("Destination Failed");
+					},
+					success: function (data) {
+						sap.m.MessageToast.show("Data Successfully Loaded");
+						console.log(data);
+						if (data.status === 200) {
+							MessageBox.success(
+								"You are an Existing visitor..Your Personal Details will be Auto filled after Successfull OTP verification");
+							that.getView().byId("idlabel").setVisible(true);
+							that.getView().byId("idotp").setVisible(true);
+							that.getView().byId("idsubmit").setVisible(true);
+						} else {
+							MessageBox.success("You are New Visitor..Please fill all the Details");
+						}
 
-					// oVisitorModel.setProperty("/getEmployeeList", data);
-					// console.log(oVisitorModel);
+						// oVisitorModel.setProperty("/getEmployeeList", data);
+						// console.log(oVisitorModel);
 
-				},
-				type: "POST"
-			});
-
+					},
+					type: "POST"
+				});
+			}
 		},
 		onSubmitOTP: function () {
 			var that = this;
@@ -417,6 +452,7 @@ sap.ui.define([
 			var vhId;
 			sap.ndc.BarcodeScanner.scan(
 				function (oResult) {
+					console.log(oResult);
 					vhId = oResult.text;
 					console.log(vhId);
 					var sUrl = "/VMS_Service/visitor/getVisitorDetails?vhId=" + vhId;
@@ -439,7 +475,9 @@ sap.ui.define([
 						},
 						type: "GET"
 					});
-                    that.fnOpenDialog();
+					if (oResult.cancelled === false) {
+						that.fnOpenDialog();
+					}
 					// / * process scan result * /
 				},
 				function (oError) {
@@ -449,12 +487,12 @@ sap.ui.define([
 				function (oResult) {
 					// / * handle input dialog change * /
 				});
-			
+
 			// var vhId = this.getView().byId("idVhid").getValue();
 			// console.log(vhId);
 
 		},
-		fnOpenDialog: function(){
+		fnOpenDialog: function () {
 			if (!this._oDialog1) {
 				//this._oDialog = sap.ui.xmlfragment("com.demo.odata.Demo_Odata_Service.view.addItem", this);
 				this._oDialog1 = sap.ui.xmlfragment("idCheckinDetails", "com.incture.VMSApplicationUI5.fragment.visitorCheckinDetails", this); // Instantiating the Fragment

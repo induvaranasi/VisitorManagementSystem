@@ -72,32 +72,35 @@ sap.ui.define([
 					vhId = oResult.text;
 					// oParkingModel.setProperty("/vhId", vhId);
 					console.log(vhId);
-					sUrl = "/VMS_Service/security/getParkingSlotByvhId?vhId=" + vhId;
-					$.ajax({
-						url: sUrl,
-						type: "GET",
-						data: null,
+					if (oResult.cancelled === false) {
+						sUrl = "/VMS_Service/security/getParkingSlotByvhId?vhId=" + vhId;
+						$.ajax({
+							url: sUrl,
+							type: "GET",
+							data: null,
 
-						// dataType: "json",
-						success: function (data, status, response) {
-							// sap.m.MessageToast.show("Success");
-							console.log(data);
+							// dataType: "json",
+							success: function (data, status, response) {
+								// sap.m.MessageToast.show("Success");
+								console.log(data);
 
-							oParkingModel.setProperty("/visitorParkingData", data);
-							// console.log(status);
-							// console.log(response);
+								oParkingModel.setProperty("/visitorParkingData", data);
+								// console.log(status);
+								// console.log(response);
 
-							// that.fnGetData();
+								// that.fnGetData();
 
-						},
-						error: function (e) {
-							sap.m.MessageToast.show("fail");
+							},
+							error: function (e) {
+								sap.m.MessageToast.show("fail");
 
-						}
-					});
+							}
+						});
 
-					that.getView().byId("idParking").setVisible(true);
-					that.getView().byId("idParkingSignIn").setVisible(false);
+						that.getView().byId("idParking").setVisible(true);
+						// that.getView().byId("idParkingSignIn").setVisible(false);
+						that.getView().byId("idRegister").setVisible(false);
+					}
 					// alert("We got a bar code\n" +
 					// 	"Result: " + oResult.text + "\n" +
 					// 	"Format: " + oResult.format + "\n" +
@@ -205,8 +208,8 @@ sap.ui.define([
 				url: "/VMS_Service/visitor/setPakingStatusOnParking",
 				type: "POST",
 				data: {
-					"pId": 1,
-					"vehicleNo": "AP3537"
+					"pId": pId,
+					"vehicleNo": vehicleNumber
 				},
 				// headers: {
 				// 	"X-CSRF-Token": token
@@ -233,7 +236,7 @@ sap.ui.define([
 				}
 			});
 			this.getView().byId("idParking").setVisible(false);
-			this.getView().byId("idParkingSignIn").setVisible(true);
+			this.getView().byId("idRegister").setVisible(true);
 		},
 		onParkingAvailabilityPress: function () {
 			var oParkingModel = this.getView().getModel("oParkingModel");
@@ -316,7 +319,7 @@ sap.ui.define([
 					success: function (data, status, response) {
 
 						MessageBox.success("Thank You For Visiting!!Visit Again!!");
-						oParkingModel.setProperty("/sSelectedKey", {});
+						oParkingModel.setProperty("/sSelectedKey", "");
 						console.log(data);
 
 						// that.fnGetData();

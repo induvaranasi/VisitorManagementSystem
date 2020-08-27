@@ -47,10 +47,10 @@ com.incture.VMSApplicationUI5.utility.formatter = {
 			this.removeStyleClass("textGreen textRed textlightBlue");
 			if (sValue === "Upcoming") {
 				this.addStyleClass("textGreen");
-			} else if (sValue === "Pending") {
-				this.addStyleClass("textlightBlue");
-			} else {
+			} else if (sValue === "Rejected") {
 				this.addStyleClass("textRed");
+			} else {
+				this.addStyleClass("textlightBlue");
 			}
 			return sValue;
 		}

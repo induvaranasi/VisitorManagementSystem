@@ -18,11 +18,11 @@
 					<IconTabBar expand="false" stretchContentHeight="true">
 						<items>
 							<IconTabFilter text="Sign In">
-								<VBox justifyContent="Center" class="styleVBox" width="220px" height="230px">
+								<VBox justifyContent="Center" class="styleVBox" width="220px" height="250px">
 									<Text text="Press CheckIn/CheckOut to Scan Your QR Code:" width="100%"/>
 									<!--<Input width="100%" id="idVhid"></Input>-->
-									<Button text="CheckIn" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onScancodeCheckin"/>
-									<Button text="CheckOut" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onScancodeCheckout"/>
+									<Button text="Check In" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onScancodeCheckin"/>
+									<Button text="Check Out" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onScancodeCheckout"/>
 									<!--<Text text="Scan Your QR Code if you are Pre-Registered"></Text>-->
 									<!--	<Text text="Please Enter the vhId sent to you"></Text>-->
 									<!--	<Input width="20%" id="idVhid"></Input>-->
@@ -39,7 +39,10 @@
 										<f:content>
 											<core:Title text="VISITOR DETAILS:"></core:Title>
 											<Label text="Mail Id" required="true"></Label>
-											<Input type="Email" value="{oVisitorModel>/visitorData/email}" change="onSubmitMail"></Input>
+											<Input id="idEmail" type="Email" value="{oVisitorModel>/visitorData/email}" change="onSubmitMail"></Input>
+											<Label/>
+											<MessageStrip text="Mail Id should be in abc@domain.com format" showIcon="false" type="Error" visible="{oVisibilityModel>/EmailPattern}"
+												showCloseButton="false" class="sapUiSizeCompact"></MessageStrip>
 											<!--<VBox id="idExisting" visible="false">-->
 											<Label text="Enter the OTP sent to your Mail" id="idlabel" visible="false"></Label>
 											<Input placeholder="OTP" value="{oVisitorModel>/visitorData/otp}" id="idotp" visible="false"></Input>
@@ -47,12 +50,15 @@
 											<!--</VBox>-->
 											<Label text="First Name" required="true"></Label>
 											<Input liveChange="ValidateInput" id="fname" value="{oVisitorModel>/visitorData/firstName}"></Input>
-											<Label text="Last Name"></Label>
+											<Label text="Last Name" required="true"></Label>
 											<Input value="{oVisitorModel>/visitorData/lastName}"></Input>
 											<Label text="Mobile No" required="true"></Label>
-											<Input type="Number" value="{oVisitorModel>/visitorData/contactNo}"></Input>
+											<Input type="Number" value="{oVisitorModel>/visitorData/contactNo}" liveChange="fnValidateContactNo"></Input>
+											<Label/>
+											<MessageStrip text="Phone Number must be of 10 digits" showIcon="false" type="Error" visible="{oVisibilityModel>/MobilePattern}"
+												showCloseButton="false" class="sapUiSizeCompact"></MessageStrip>
 											<Label text="ID Type" required="true"></Label>
-											<ComboBox selectedKey="{oVisitorModel>/visitorData/proofType}">
+											<ComboBox selectedKey="{oVisitorModel>/visitorData/proofType}" placeholder="Select ID Type">
 												<core:Item text="Aadhar" key="Aadhar"/>
 												<core:Item text="Passport" key="Passport"/>
 												<core:Item text="Voter Id" key="Voter Id"/>
@@ -61,9 +67,9 @@
 											</ComboBox>
 											<Label text="ID No" required="true"></Label>
 											<Input value="{oVisitorModel>/visitorData/proofNo}"></Input>
-											<Label text="Locality"></Label>
+											<Label text="Locality" required="true"></Label>
 											<Input value="{oVisitorModel>/visitorData/locality}"></Input>
-											<Label text="Company Name"></Label>
+											<Label text="Company Name" required="true"></Label>
 											<Input value="{oVisitorModel>/visitorData/organisation}"></Input>
 										</f:content>
 									</f:SimpleForm>
@@ -85,7 +91,7 @@
 										<f:content>
 											<core:Title text="MEETING DETAILS:"></core:Title>
 											<Label text="Purpose of Visit" required="true"></Label>
-											<ComboBox selectedKey="{oVisitorModel>/oMeetingData/purpose}">
+											<ComboBox selectedKey="{oVisitorModel>/oMeetingData/purpose}" placeholder="Select">
 												<core:Item text="Client Meeting" key="Client Meeting"/>
 												<core:Item text="Interview" key="Interview"/>
 												<core:Item text="Others" key="Others"/>
