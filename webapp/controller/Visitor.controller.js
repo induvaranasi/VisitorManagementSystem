@@ -81,7 +81,7 @@ sap.ui.define([
 				},
 				type: "GET"
 			});
-			this.bFlag = true;
+			this.bFlag = false;
 			this.bform = false;
 		},
 		onImagePress: function () {
@@ -92,7 +92,12 @@ sap.ui.define([
 			return UIComponent.getRouterFor(this);
 		},
 		fnValidateEmail: function () {
-			var email = this.getView().byId("idEmail").getValue();
+			var email;
+			if (this.bFlag === false) {
+				email = this.getView().byId("idEmail").getValue();
+			} else {
+				email = Fragment.byId("idaddAnother", "idEmail").getValue();
+			}
 			if (email.length > 0) {
 				var noSpaces2 = email.replace(/ +/, "");
 				var isemail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+[.]+[a-zA-Z]{2,4}$/.test(noSpaces2);
@@ -198,40 +203,42 @@ sap.ui.define([
 			});
 		},
 		onSubmitAnotherMail: function () {
-			MessageBox.information("Please wait..we are checking whether you are an Existing Visitor or New Visitor");
-			var that = this;
-			var oVisitorModel = that.getView().getModel("oVisitorModel");
-			var visitordata = oVisitorModel.getProperty("/addvisitorData");
-			var mail = visitordata.email;
-			console.log(mail);
-			var sUrl = "/VMS_Service/visitor/validateEmail";
-			$.ajax({
-				url: sUrl,
-				data: {
-					"email": mail
-				},
-				// async: true,
-				// dataType: "json",
-				// contentType: "application/json; charset=utf-8",
-				error: function (err) {
-					sap.m.MessageToast.show("Destination Failed");
-				},
-				success: function (data) {
-					sap.m.MessageToast.show("Data Successfully Loaded");
-					console.log(data);
-					if (data.status === 200) {
-						Fragment.byId("idaddAnother", "label").setVisible(true);
-						Fragment.byId("idaddAnother", "idExistingadd").setVisible(true);
+			this.fnValidateEmail();
+			if (this.bform === true) {
+				MessageBox.information("Please wait..we are checking whether you are an Existing Visitor or New Visitor");
+				var that = this;
+				var oVisitorModel = that.getView().getModel("oVisitorModel");
+				var visitordata = oVisitorModel.getProperty("/addvisitorData");
+				var mail = visitordata.email;
+				console.log(mail);
+				var sUrl = "/VMS_Service/visitor/validateEmail";
+				$.ajax({
+					url: sUrl,
+					data: {
+						"email": mail
+					},
+					// async: true,
+					// dataType: "json",
+					// contentType: "application/json; charset=utf-8",
+					error: function (err) {
+						sap.m.MessageToast.show("Destination Failed");
+					},
+					success: function (data) {
+						sap.m.MessageToast.show("Data Successfully Loaded");
+						console.log(data);
+						if (data.status === 200) {
+							Fragment.byId("idaddAnother", "label").setVisible(true);
+							Fragment.byId("idaddAnother", "idExistingadd").setVisible(true);
 
-					}
+						}
 
-					// oVisitorModel.setProperty("/getEmployeeList", data);
-					// console.log(oVisitorModel);
+						// oVisitorModel.setProperty("/getEmployeeList", data);
+						// console.log(oVisitorModel);
 
-				},
-				type: "POST"
-			});
-
+					},
+					type: "POST"
+				});
+			}
 		},
 		onSubmitAddOtp: function () {
 			var that = this;
@@ -363,6 +370,14 @@ sap.ui.define([
 
 				}
 			});
+		},
+		onAcceptTandC: function () {
+			var bCheck = this.getView().byId("idTC").getSelected();
+			if (bCheck === true) {
+				this.getView().byId("idRegisterBtn").setEnabled(true);
+			} else {
+				this.getView().byId("idRegisterBtn").setEnabled(false);
+			}
 		},
 		ValidateForm: function (oEvent) {
 			var sUserInput = this.byId("fname").getValue();
@@ -500,8 +515,19 @@ sap.ui.define([
 			this.getView().addDependent(this._oDialog1); // Adding the fragment to your current view
 			this._oDialog1.open();
 		},
-		onDefaultPress: function () {
-			MessageToast.show("Default Btn Pressed");
+		onCapture: function () {
+			navigator.camera.getPicture(this.onSuccess, this.onFail, {
+				quality: 75,
+				targetWidth: 300,
+				targetHeight: 300,
+				sourceType: navigator.camera.PictureSourceType.CAMERA,
+				destinationType: navigator.camera.DestinationType.FILE_URI
+			});
+		},
+		onSuccess: function (imageData) {
+
+			console.log(imageData);
+
 		},
 		onEditDetails: function () {
 			Fragment.byId("idCheckinDetails", "idSimpleFormEditable").setVisible(true);
@@ -521,9 +547,9 @@ sap.ui.define([
 			var visitorData = oVisitorModel.getProperty("/userDetails");
 			// console.log(visitorData);
 			// var payload = visitorData;
-			var vhId = that.getView().byId("idVhid").getValue();
+			// var vhId = that.getView().byId("idVhid").getValue();
 			var payload = {
-				"vhId": vhId,
+				"vhId": visitorData.vhId,
 				"firstName": visitorData.firstName,
 				"lastName": visitorData.lastName,
 				"email": visitorData.email,

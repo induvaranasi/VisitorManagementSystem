@@ -14,13 +14,6 @@
 					<Text text="{oVisitorModel>/userDetails/email}"></Text>
 					<Label text="Id Type"></Label>
 					<Text text="{oVisitorModel>/userDetails/proofType}"></Text>
-					<!--<ComboBox selectedKey="{oVisitorModel>/userDetails/Idtype}">-->
-					<!--	<core:Item text="Aadhar"/>-->
-					<!--	<core:Item text="Passport"/>-->
-					<!--	<core:Item text="Voter Id"/>-->
-					<!--	<core:Item text="Drving Licence"/>-->
-					<!--	<core:Item text="Pancard"/>-->
-					<!--</ComboBox>-->
 					<Label text="Id No"></Label>
 					<Text text="{oVisitorModel>/userDetails/proofNo}"></Text>
 					<Label text="Locality"></Label>
@@ -53,6 +46,7 @@
 					<Input value="{oVisitorModel>/userDetails/locality}"></Input>
 					<Label text="Organization"></Label>
 					<Input value="{oVisitorModel>/userDetails/organisation}"></Input>
+					<Button text="Take Photo" press="onCapture" type="Emphasized"/>
 				</f:content>
 			</f:SimpleForm>
 		</content>

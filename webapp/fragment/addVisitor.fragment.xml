@@ -8,6 +8,9 @@
 						<VBox>
 							<Label text="Email" required="true"/>
 							<Input id="idEmail" value="{oVisitorModel>/addvisitorData/email}" type="Email" liveChange="handleUserInput" change="onSubmitAnotherMail"></Input>
+							<Label/>
+							<MessageStrip text="Mail Id should be in abc@domain.com format" showIcon="false" type="Error" visible="{oVisibilityModel>/EmailPattern}"
+								showCloseButton="false" class="sapUiSizeCompact"></MessageStrip>
 							<Label text="First Name" required="true"/>
 							<Input id="idFirstName" value="{oVisitorModel>/addvisitorData/firstName}" liveChange="handleUserInput"/>
 							<Label text="Locality"/>

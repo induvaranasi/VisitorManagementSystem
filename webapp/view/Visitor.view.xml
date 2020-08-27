@@ -51,7 +51,7 @@
 											<Label text="First Name" required="true"></Label>
 											<Input liveChange="ValidateInput" id="fname" value="{oVisitorModel>/visitorData/firstName}"></Input>
 											<Label text="Last Name" required="true"></Label>
-											<Input value="{oVisitorModel>/visitorData/lastName}"></Input>
+											<Input value="{oVisitorModel>/visitorData/lastName}" liveChange="ValidateInput"></Input>
 											<Label text="Mobile No" required="true"></Label>
 											<Input type="Number" value="{oVisitorModel>/visitorData/contactNo}" liveChange="fnValidateContactNo"></Input>
 											<Label/>
@@ -66,11 +66,11 @@
 												<core:Item text="Pancard" key="Pancard"/>
 											</ComboBox>
 											<Label text="ID No" required="true"></Label>
-											<Input value="{oVisitorModel>/visitorData/proofNo}"></Input>
+											<Input value="{oVisitorModel>/visitorData/proofNo}" liveChange="ValidateInput"></Input>
 											<Label text="Locality" required="true"></Label>
-											<Input value="{oVisitorModel>/visitorData/locality}"></Input>
+											<Input value="{oVisitorModel>/visitorData/locality}" liveChange="ValidateInput"></Input>
 											<Label text="Company Name" required="true"></Label>
-											<Input value="{oVisitorModel>/visitorData/organisation}"></Input>
+											<Input value="{oVisitorModel>/visitorData/organisation}" liveChange="ValidateInput"></Input>
 										</f:content>
 									</f:SimpleForm>
 									<f:SimpleForm layout="ResponsiveGridLayout" labelSpanXL="3" columnsXL="6" emptySpanXL="3" labelSpanL="3" columnsL="6" emptySpanL="3"
@@ -149,10 +149,11 @@
 										</ColumnListItem>
 									</items>
 								</Table>
+								<CheckBox id="idTC" text="Accept Terms and Conditions" select="onAcceptTandC"/>
 								<Toolbar>
 									<!--<Link text="Add Visitor" press="onAddvisitorPress"></Link>-->
 									<ToolbarSpacer></ToolbarSpacer>
-									<Button text="Register" type="Emphasized" press="ValidateForm"></Button>
+									<Button id="idRegisterBtn" text="Register" type="Emphasized" press="ValidateForm" enabled="false"></Button>
 								</Toolbar>
 							</IconTabFilter>
 						</items>
