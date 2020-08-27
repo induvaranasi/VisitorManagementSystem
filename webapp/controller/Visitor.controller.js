@@ -439,12 +439,7 @@ sap.ui.define([
 						},
 						type: "GET"
 					});
-					if (!that._oDialog1) {
-						//this._oDialog = sap.ui.xmlfragment("com.demo.odata.Demo_Odata_Service.view.addItem", this);
-						that._oDialog1 = sap.ui.xmlfragment("idCheckinDetails", "com.incture.VMSApplicationUI5.fragment.visitorCheckinDetails", this); // Instantiating the Fragment
-					}
-					that.getView().addDependent(that._oDialog1); // Adding the fragment to your current view
-					that._oDialog1.open();
+                    that.fnOpenDialog();
 					// / * process scan result * /
 				},
 				function (oError) {
@@ -454,9 +449,21 @@ sap.ui.define([
 				function (oResult) {
 					// / * handle input dialog change * /
 				});
+			
 			// var vhId = this.getView().byId("idVhid").getValue();
 			// console.log(vhId);
 
+		},
+		fnOpenDialog: function(){
+			if (!this._oDialog1) {
+				//this._oDialog = sap.ui.xmlfragment("com.demo.odata.Demo_Odata_Service.view.addItem", this);
+				this._oDialog1 = sap.ui.xmlfragment("idCheckinDetails", "com.incture.VMSApplicationUI5.fragment.visitorCheckinDetails", this); // Instantiating the Fragment
+			}
+			this.getView().addDependent(this._oDialog1); // Adding the fragment to your current view
+			this._oDialog1.open();
+		},
+		onDefaultPress: function () {
+			MessageToast.show("Default Btn Pressed");
 		},
 		onEditDetails: function () {
 			Fragment.byId("idCheckinDetails", "idSimpleFormEditable").setVisible(true);

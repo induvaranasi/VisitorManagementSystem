@@ -27,6 +27,7 @@
 					<Text text="{oVisitorModel>/userDetails/locality}"></Text>
 					<Label text="Organization"></Label>
 					<Text text="{oVisitorModel>/userDetails/organisation}"></Text>
+					<Button text="Default" press="onDefaultPress"/>
 				</f:content>
 			</f:SimpleForm>
 			<f:SimpleForm id="idSimpleFormEditable" editable="true" visible="false">
@@ -53,6 +54,7 @@
 					<Input value="{oVisitorModel>/userDetails/locality}"></Input>
 					<Label text="Organization"></Label>
 					<Input value="{oVisitorModel>/userDetails/organisation}"></Input>
+					<Button text="Default" press="onDefaultPress"/>
 				</f:content>
 			</f:SimpleForm>
 		</content>

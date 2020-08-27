@@ -43,7 +43,7 @@
 											<!--<VBox id="idExisting" visible="false">-->
 											<Label text="Enter the OTP sent to your Mail" id="idlabel" visible="false"></Label>
 											<Input placeholder="OTP" value="{oVisitorModel>/visitorData/otp}" id="idotp" visible="false"></Input>
-											<Button text="Submit" press="onSubmitOTP" class="sapUiTinyMarginBegin" id="idsubmit" visible="false"></Button>
+											<Button text="Submit" press="onSubmitOTP" id="idsubmit" visible="false"></Button>
 											<!--</VBox>-->
 											<Label text="First Name" required="true"></Label>
 											<Input liveChange="ValidateInput" id="fname" value="{oVisitorModel>/visitorData/firstName}"></Input>
