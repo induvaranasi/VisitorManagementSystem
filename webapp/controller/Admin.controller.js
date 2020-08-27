@@ -840,6 +840,11 @@ sap.ui.define([
 					// }]
 			};
 			console.log(payload);
+			var oDialog = sap.m.BusyDialog();
+			oDialog.open();
+			setTimeout(function () {
+				oDialog.close();
+			}, 3000);
 			// var oTokenModel = that.getView().getModel("oTokenModel");
 			// var oToken = oTokenModel.getData();
 			// var token = oToken.csrftoken;
@@ -1270,9 +1275,17 @@ sap.ui.define([
 					that._oDialog.close();
 					that._oDialog.destroy();
 					that._oDialog = null;
+					var oDialog = sap.m.BusyDialog();
+					oDialog.open();
+					setTimeout(function () {
+						oDialog.close();
+					}, 3000);
 					that.fnGetData(sUrl2, "/CheckedOutDetails");
 					that.fnGetData(sUrl1, "/BlackListed");
 					oSource.setEnabled(false);
+					if(data.status === 300){
+						MessageBox.warning("Alredy Blacklisted");
+					}
 
 				},
 				error: function (e) {

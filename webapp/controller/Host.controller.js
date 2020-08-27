@@ -130,6 +130,11 @@ sap.ui.define([
 			// this.fnGetData(sUrl2, "/BlackListed");
 			this.fnGetData(sUrl4, "/ExpectedVisitorDetails");
 			this.fnGetData(sUrl5, "/CheckInDetails");
+			var oDialog = new sap.m.BusyDialog();
+			oDialog.open();
+			setTimeout(function () {
+				oDialog.close();
+			}, 3000);
 		},
 		onItemSelect: function (oEvent) {
 			var oItem = oEvent.getParameter("item");
@@ -527,7 +532,11 @@ sap.ui.define([
 					// }
 			};
 			console.log(payload);
-
+			var oDialog = sap.m.BusyDialog();
+			oDialog.open();
+			setTimeout(function () {
+				oDialog.close();
+			}, 3000);
 			$.ajax({
 				url: "/VMS_Service/employee/preRegister",
 				type: "POST",
@@ -621,7 +630,7 @@ sap.ui.define([
 			this._oPopover1.openBy(oEvent.getSource());
 			var count = oHostModel.getProperty("/Notificationcount");
 			count = "0";
-			oHostModel.setProperty("/Notificationcount",count);
+			oHostModel.setProperty("/Notificationcount", count);
 		},
 		onItemClose: function (oEvent) {
 			var that = this;
@@ -884,6 +893,11 @@ sap.ui.define([
 				dataType: "json",
 				success: function (data, status, response) {
 					sap.m.MessageToast.show("Successfully Unblocked");
+					var oDialog = sap.m.BusyDialog();
+					oDialog.open();
+					setTimeout(function () {
+						oDialog.close();
+					}, 3000);
 					that.fnGetData(sUrl1, "/BlackListed");
 					that.fnGetData(sUrl2, "/CheckOutDetails");
 					that.fnGetData(sUrl3, "/Details");
@@ -949,7 +963,15 @@ sap.ui.define([
 					that.fnGetData(sUrl2, "/CheckOutDetails");
 					that.fnGetData(sUrl1, "/BlackListed");
 					that.fnGetData(sUrl3, "/Details");
+					var oDialog = sap.m.BusyDialog();
+					oDialog.open();
+					setTimeout(function () {
+						oDialog.close();
+					}, 3000);
 					oSource.setEnabled(false);
+					if (data.status === 300) {
+						MessageBox.warning("Already Blaacklisted");
+					}
 				},
 				error: function (e) {
 					sap.m.MessageToast.show("fail");

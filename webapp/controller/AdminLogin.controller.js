@@ -64,6 +64,11 @@ sap.ui.define([
 		// },
 
 		onLoginPress: function () {
+			var oDialog = sap.m.BusyDialog();
+			oDialog.open();
+			setTimeout(function () {
+				oDialog.close();
+			}, 3000);
 			var that = this;
 			var sUrl = "/VMS_Service/admin/login";
 			var oSecurityModel = this.getOwnerComponent().getModel("oSecurityModel");

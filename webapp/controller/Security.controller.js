@@ -6,8 +6,9 @@ sap.ui.define([
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
 	"../utility/formatter",
-	"sap/ui/core/Fragment"
-], function (Controller, UIComponent, MessageToast, JSONModel, Filter, FilterOperator, formatter, Fragment) {
+	"sap/ui/core/Fragment",
+	"sap/m/MessageBox"
+], function (Controller, UIComponent, MessageToast, JSONModel, Filter, FilterOperator, formatter, Fragment, MessageBox) {
 	"use strict";
 
 	return Controller.extend("com.incture.VMSApplicationUI5.controller.Security", {
@@ -237,9 +238,9 @@ sap.ui.define([
 			var spath = oSource.getParent().getBindingContextPath();
 			var oProperty = oSecurityModel.getProperty(spath);
 			var vhId = oProperty.vhId;
-			var sUrl = "/VMS_Service/visitor/getBadgeDetails?vhId="+vhId;
-			this.fnGetData(sUrl,"/CheckInVisitorDetails");
-		    console.log(oSecurityModel);
+			var sUrl = "/VMS_Service/visitor/getBadgeDetails?vhId=" + vhId;
+			this.fnGetData(sUrl, "/CheckInVisitorDetails");
+			console.log(oSecurityModel);
 			this.bFlag = true;
 			if (!this._oDialog) {
 				//this._oDialog = sap.ui.xmlfragment("com.demo.odata.Demo_Odata_Service.view.addItem", this);
@@ -248,7 +249,7 @@ sap.ui.define([
 			this.getView().addDependent(this._oDialog); // Adding the fragment to your current view
 			this._oDialog.open();
 		},
-		onAssignAccessCard: function(){
+		onAssignAccessCard: function () {
 			this._oDialog.close();
 			this._oDialog.destroy();
 			this._oDialog = null;
@@ -330,6 +331,11 @@ sap.ui.define([
 				dataType: 'json',
 				success: function (data, status, response) {
 					sap.m.MessageToast.show("Successfully Unblocked");
+					var oDialog = sap.m.BusyDialog();
+					oDialog.open();
+					setTimeout(function () {
+						oDialog.close();
+					}, 3000);
 					that.fnGetData(sUrl, "/BlackListed");
 				},
 				error: function (e) {
@@ -390,6 +396,11 @@ sap.ui.define([
 					that._oDialog.close();
 					that._oDialog.destroy();
 					that._oDialog = null;
+					var oDialog = sap.m.BusyDialog();
+					oDialog.open();
+					setTimeout(function () {
+						oDialog.close();
+					}, 3000);
 					that.fnGetData(sUrl2, "/CheckedOutDetails");
 					that.fnGetData(sUrl1, "/BlackListed");
 					that.fnGetData(sUrl3, "/Details");
@@ -454,12 +465,17 @@ sap.ui.define([
 						sap.m.MessageToast.show("Success");
 						console.log(status);
 						console.log(response);
+						var oDialog = sap.m.BusyDialog();
+						oDialog.open();
+						setTimeout(function () {
+							oDialog.close();
+						}, 3000);
 						that.fnGetData(sUrl, "/DeliveryDetails");
 
 					} else if (data.status === 300) {
-						sap.m.MessageToast.show("Enter The Correct Mobile Number");
+						MessageBox.warning("Enter The Correct Mobile Number");
 					} else {
-						sap.m.MessageToast.show("Something Went Wrong");
+						MessageBox.warning("Something Went Wrong..Plese try again");
 					}
 					that._oDialog.close();
 					that._oDialog.destroy();
