@@ -193,7 +193,21 @@ html.sap-desktop .sapMGT:hover:not(.sapMGTPressActive):not(.sapMGTBackgroundImag
     color: #f1fdf6;
 }
 
+.styleRegisterForm.sapMVBox {
+    padding: 20px;
+    border: 0.2px solid gray;
+    /*border-radius: 8px;*/
+    margin-top: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 90%;
+    height: 550px;
+   
+}
 
+.styleRegisterForm.sapMFlexBoxBGTransparent {
+    background-color: white;
+}
 /*.styleITB .sapMITBContent {*/
 
 

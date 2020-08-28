@@ -282,7 +282,6 @@ sap.ui.define([
 		onAddvisitorPress: function () {
 			var that = this;
 			this.bFlag = true;
-			this.iFragmentNo = 1;
 			var oVisitorModel = that.getView().getModel("oVisitorModel");
 			oVisitorModel.setProperty("/addvisitorData", {});
 			if (!this._oDialog1) {
@@ -519,9 +518,13 @@ sap.ui.define([
 			var that = this;
 			navigator.camera.getPicture(function (imageData) {
 				console.log(imageData);
-				Fragment.byId("idCheckinDetails", "idPhoto").setVisible(true);
 				var oVisitorModel = that.getView().getModel("oVisitorModel");
 				oVisitorModel.setProperty("/photo", imageData);
+				if (that.bEdit === true) {
+					Fragment.byId("idCheckinDetails", "idPhoto").setVisible(true);
+				} else {
+					that.getView().byId("idImage").setVisible(true);
+				}
 
 			}, that.onFail, {
 				quality: 75,
@@ -543,6 +546,7 @@ sap.ui.define([
 			alert("Failed because: " + message);
 		},
 		onEditDetails: function () {
+			this.bEdit = true;
 			Fragment.byId("idCheckinDetails", "idSimpleFormEditable").setVisible(true);
 			Fragment.byId("idCheckinDetails", "idSimpleForm").setVisible(false);
 		},
@@ -559,7 +563,7 @@ sap.ui.define([
 			var oVisitorModel = that.getOwnerComponent().getModel("oVisitorModel");
 			var visitorData = oVisitorModel.getProperty("/userDetails");
 			var image = oVisitorModel.getProperty("/photo");
-			var res= image.split("base64,");
+			var res = image.split("base64,");
 			// console.log(visitorData);
 			// var payload = visitorData;
 			// var vhId = that.getView().byId("idVhid").getValue();

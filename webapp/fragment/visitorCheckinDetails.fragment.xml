@@ -50,8 +50,12 @@
 							<Input value="{oVisitorModel>/userDetails/email}"></Input>
 							<Label text="ID No"></Label>
 							<Input value="{oVisitorModel>/userDetails/proofNo}"></Input>
+							<Label></Label>
+							<HBox>
 							<Button text="Take Photo" press="onCapture" type="Emphasized"/>
-							<Avatar id="idPhoto" src="{oVisitorModel>/photo}" displaySize="M" visible="false"></Avatar>
+							<Image id="idPhoto" src="{oVisitorModel>/photo}" visible="false" class="sapUiSmallMarginBegin" width="100px" height="100px"></Image>
+							<!--<Avatar id="idPhoto" src="{oVisitorModel>/photo}" displaySize="XL" visible="false" class="sapUiSmallMarginBegin"></Avatar>-->
+							</HBox>
 						</VBox>
 					</HBox>
 				</f:content>
