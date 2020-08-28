@@ -516,7 +516,14 @@ sap.ui.define([
 			this._oDialog1.open();
 		},
 		onCapture: function () {
-			navigator.camera.getPicture(this.onSuccess, this.onFail, {
+			var that = this;
+			navigator.camera.getPicture(function (imageData) {
+				console.log(imageData);
+				Fragment.byId("idCheckinDetails", "idPhoto").setVisible(true);
+				var oVisitorModel = that.getView().getModel("oVisitorModel");
+				oVisitorModel.setProperty("/photo", imageData);
+
+			}, that.onFail, {
 				quality: 75,
 				targetWidth: 300,
 				targetHeight: 300,
@@ -524,12 +531,15 @@ sap.ui.define([
 				destinationType: navigator.camera.DestinationType.FILE_URI
 			});
 		},
-		onSuccess: function (imageData) {
+		// onSuccess: function (imageData) {
+		// 	console.log(imageData);
+		// 	Fragment.byId("idCheckinDetails", "idPhoto").setVisible(true);
+		// 	var oVisitorModel = this.getView().getModel("oVisitorModel");
+		// 	oVisitorModel.setProperty("/photo", imageData);
 
-			console.log(imageData);
-
-		},
+		// },
 		onFail: function (message) {
+			var that = this;
 			alert("Failed because: " + message);
 		},
 		onEditDetails: function () {
@@ -548,6 +558,8 @@ sap.ui.define([
 			var that = this;
 			var oVisitorModel = that.getOwnerComponent().getModel("oVisitorModel");
 			var visitorData = oVisitorModel.getProperty("/userDetails");
+			var image = oVisitorModel.getProperty("/photo");
+			var res= image.split("base64,");
 			// console.log(visitorData);
 			// var payload = visitorData;
 			// var vhId = that.getView().byId("idVhid").getValue();
@@ -560,7 +572,8 @@ sap.ui.define([
 				"proofType": visitorData.proofType,
 				"proofNo": visitorData.proofNo,
 				"locality": visitorData.locality,
-				"organisation": visitorData.organisation
+				"organisation": visitorData.organisation,
+				"image": res[1]
 
 			};
 			// var vhId = 3;

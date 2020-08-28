@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
-	<Dialog title="Please Check Your Details" draggable="true" resizable="true" contentWidth="35rem" class="sapUiSizeCompact"
+	<Dialog title="Please Check Your Details" draggable="true" resizable="true" contentWidth="37rem" class="sapUiSizeCompact"
 		verticalScrolling="true">
 		<content>
 			<f:SimpleForm id="idSimpleForm" editable="false">
@@ -24,29 +24,36 @@
 			</f:SimpleForm>
 			<f:SimpleForm id="idSimpleFormEditable" editable="true" visible="false">
 				<f:content>
-					<Label text="First Name"></Label>
-					<Input value="{oVisitorModel>/userDetails/firstName}"></Input>
-					<Label text="Last Name"></Label>
-					<Input value="{oVisitorModel>/userDetails/lastName}"></Input>
-					<Label text="Mobile No"></Label>
-					<Input value="{oVisitorModel>/userDetails/contactNo}"></Input>
-					<Label text="Mail Id"></Label>
-					<Input value="{oVisitorModel>/userDetails/email}"></Input>
-					<Label text="Id Type"></Label>
-					<ComboBox selectedKey="{oVisitorModel>/userDetails/proofType}">
-						<core:Item text="Aadhar" key="Aadhar"/>
-						<core:Item text="Passport" key="Passport"/>
-						<core:Item text="Voter Id" key="Voter Id"/>
-						<core:Item text="Drving Licence" key="Drving Licence"/>
-						<core:Item text="Pancard" key="Pancard"/>
-					</ComboBox>
-					<Label text="Id No"></Label>
-					<Input value="{oVisitorModel>/userDetails/proofNo}"></Input>
-					<Label text="Locality"></Label>
-					<Input value="{oVisitorModel>/userDetails/locality}"></Input>
-					<Label text="Organization"></Label>
-					<Input value="{oVisitorModel>/userDetails/organisation}"></Input>
-					<Button text="Take Photo" press="onCapture" type="Emphasized"/>
+					<HBox>
+						<VBox width="100%">
+							<Label text="First Name"></Label>
+							<Input value="{oVisitorModel>/userDetails/firstName}"></Input>
+							<Label text="Mobile No"></Label>
+							<Input value="{oVisitorModel>/userDetails/contactNo}"></Input>
+							<Label text="ID Type"></Label>
+							<ComboBox selectedKey="{oVisitorModel>/userDetails/proofType}" width="100%">
+								<core:Item text="Aadhar" key="Aadhar"/>
+								<core:Item text="Passport" key="Passport"/>
+								<core:Item text="Voter Id" key="Voter Id"/>
+								<core:Item text="Drving Licence" key="Drving Licence"/>
+								<core:Item text="Pancard" key="Pancard"/>
+							</ComboBox>
+							<Label text="Locality"></Label>
+							<Input value="{oVisitorModel>/userDetails/locality}"></Input>
+							<Label text="Organization"></Label>
+							<Input value="{oVisitorModel>/userDetails/organisation}"></Input>
+						</VBox>
+						<VBox class="sapUiLargeMarginBegin" width="100%">
+							<Label text="Last Name"></Label>
+							<Input value="{oVisitorModel>/userDetails/lastName}"></Input>
+							<Label text="Mail Id"></Label>
+							<Input value="{oVisitorModel>/userDetails/email}"></Input>
+							<Label text="ID No"></Label>
+							<Input value="{oVisitorModel>/userDetails/proofNo}"></Input>
+							<Button text="Take Photo" press="onCapture" type="Emphasized"/>
+							<Avatar id="idPhoto" src="{oVisitorModel>/photo}" displaySize="M" visible="false"></Avatar>
+						</VBox>
+					</HBox>
 				</f:content>
 			</f:SimpleForm>
 		</content>
