@@ -46,20 +46,21 @@
 							<l:VerticalLayout width="100%">
 								<l:Grid>
 									<l:content>
-										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout styleTile" header="Check In" press="CheckInPress" id="checkin"
-											headerImage="sap-icon://trend-down">
+										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout styleTile"
+											header="Check In ({=${oHostModel>/CheckInDetails}.length})" press="CheckInPress" id="checkin" headerImage="sap-icon://trend-down">
 											<layoutData>
 												<l:GridData span="XL3 L3 M6 S12"/>
 											</layoutData>
 										</GenericTile>
-										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout styleTile" header="Check Out" press="CheckOutPress" id="checkout"
-											headerImage="sap-icon://trend-up">
+										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout styleTile"
+											header="Check Out ({=${oHostModel>/CheckOutDetails}.length})" press="CheckOutPress" id="checkout" headerImage="sap-icon://trend-up">
 											<layoutData>
 												<l:GridData span="XL3 L3 M6 S12"/>
 											</layoutData>
 										</GenericTile>
-										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout styleTile" header="Yet To Visit" press="YetToVisitPress"
-											id="yettovisit" headerImage="sap-icon://pull-down">
+										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout styleTile"
+											header="Yet To Visit ({=${oHostModel>/ExpectedVisitorDetails}.length})" press="YetToVisitPress" id="yettovisit"
+											headerImage="sap-icon://pull-down">
 											<layoutData>
 												<l:GridData span="XL3 L3 M6 S12"/>
 											</layoutData>
@@ -120,20 +121,21 @@
 							<l:VerticalLayout width="100%">
 								<l:Grid>
 									<l:content>
-										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout styleTile" header="Check In" press="CheckInPress" id="idCheckin"
-											headerImage="sap-icon://trend-down">
+										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout styleTile"
+											header="Check In ({=${oHostModel>/CheckInDetails}.length})" press="CheckInPress" id="idCheckin" headerImage="sap-icon://trend-down">
 											<layoutData>
 												<l:GridData span="XL3 L3 M6 S12"/>
 											</layoutData>
 										</GenericTile>
-										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout styleTile" header="Check Out" press="CheckOutPress" id="idCheckout"
-											headerImage="sap-icon://trend-up">
+										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout styleTile"
+											header="Check Out ({=${oHostModel>/CheckOutDetails}.length})" press="CheckOutPress" id="idCheckout" headerImage="sap-icon://trend-up">
 											<layoutData>
 												<l:GridData span="XL3 L3 M6 S12"/>
 											</layoutData>
 										</GenericTile>
-										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout styleTile" header="Yet To Visit" press="YetToVisitPress"
-											id="idYettovisit" headerImage="sap-icon://pull-down">
+										<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout styleTile"
+											header="Yet To Visit ({=${oHostModel>/ExpectedVisitorDetails}.length})" press="YetToVisitPress" id="idYettovisit"
+											headerImage="sap-icon://pull-down">
 											<layoutData>
 												<l:GridData span="XL3 L3 M6 S12"/>
 											</layoutData>

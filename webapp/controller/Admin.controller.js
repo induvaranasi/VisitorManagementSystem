@@ -88,6 +88,11 @@ sap.ui.define([
 			// var eId = oAdminModel.getProperty("/userDetails").eId;
 			var sUrl = "/VMS_Service/admin/getCheckedInVisitors?date=" + newdate;
 			this.fndoajax(sUrl, "/CheckInDetails");
+			var sUrl12 = "/VMS_Service/admin/getCheckedOutVisitors?date=" + newdate;
+			this.fndoajax(sUrl12, "/CheckOutDetails");
+			var sUrl13 = "/VMS_Service/admin/getExpectedVisitors?date=" + newdate;
+			this.fndoajax(sUrl13, "/ExpectedVisitorDetails");
+			console.log(oAdminModel);
 			var oViewData = {
 				"accept": "Accept",
 				"reject": "Reject",
@@ -140,7 +145,7 @@ sap.ui.define([
 				},
 				type: "GET"
 			});
-			var sUrl3 = "wss://projectvmsp2002476966trial.hanatrial.ondemand.com/vms/chat/"+eId;
+			var sUrl3 = "wss://projectvmsp2002476966trial.hanatrial.ondemand.com/vms/chat/" + eId;
 			// var sUrl1 = "/VMS_Service/chat/1";
 			var webSocket = new WebSocket(sUrl3);
 			webSocket.onerror = function (event) {
@@ -153,9 +158,18 @@ sap.ui.define([
 			};
 			webSocket.onmessage = function (event) {
 				// alert(event.data);
-				count = count + 1;
-				var countupdated = count.toString();
-				oAdminModel.setProperty("/Notificationcount", countupdated);
+				var jsonData = event.data;
+				console.log(jsonData);
+				if (jsonData.content != "Connected!") {
+					var count1 = oAdminModel.getProperty("/Notificationcount");
+					var count2 = parseInt(count1, 10);
+					count2 = count2 + 1;
+					var countupdated = count2.toString();
+					oAdminModel.setProperty("/Notificationcount", countupdated);
+				}
+				// count = count + 1;
+				// var countupdated = count.toString();
+				// oAdminModel.setProperty("/Notificationcount", countupdated);
 				// alert(event.data);
 
 			};
@@ -1074,7 +1088,7 @@ sap.ui.define([
 			var sUrl2 = "/VMS_Service/admin/getAllBlackListedVisitors";
 			var sUrl3 = "/VMS_Service/admin/getRoomAvailability";
 			var sUrl4 = "/VMS_Service/admin/getAllMeetingRequests";
-			var sUrl5 = "/VMS_Service/admin/getVisitorHistory?date=" + date + "&eId=" + eId;
+			var sUrl5 = "/VMS_Service/admin/getVisitorHistory?eId=" + eId + "&date=" + date;
 			console.log(sUrl5);
 
 			var sUrl7 = "/VMS_Service/admin/getFrequentVisitors";
@@ -1178,6 +1192,8 @@ sap.ui.define([
 					// oToken = response.getResponseHeader("x-csrf-token");
 					// // that.getView().getModel("oToken").setProperty("/csrftoken", oToken);
 					oAdminModel.setProperty("/AdminVisitors", data);
+					console.log("url5");
+					console.log(oAdminModel);
 
 				},
 				type: "GET"

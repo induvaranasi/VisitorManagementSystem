@@ -102,7 +102,7 @@ sap.ui.define([
 				success: function (data) {
 					sap.m.MessageToast.show("Data Successfully Loaded");
 					console.log(data);
-					 count = data.count;
+					count = data.count;
 					var countupdated = count.toString();
 					oHostModel.setProperty("/Notificationcount", countupdated);
 					console.log(countupdated);
@@ -111,7 +111,7 @@ sap.ui.define([
 				},
 				type: "GET"
 			});
-			var sUrl8 = "wss://projectvmsp2002476966trial.hanatrial.ondemand.com/vms/chat/"+eId;
+			var sUrl8 = "wss://projectvmsp2002476966trial.hanatrial.ondemand.com/vms/chat/" + eId;
 			// var sUrl1 = "/VMS_Service/chat/1";
 			var webSocket = new WebSocket(sUrl8);
 			webSocket.onerror = function (event) {
@@ -124,9 +124,19 @@ sap.ui.define([
 			};
 			webSocket.onmessage = function (event) {
 				// alert(event.data);
-				count = count + 1;
-				var countupdated = count.toString();
-				oHostModel.setProperty("/Notificationcount", countupdated);
+				var jsonData = event.data;
+				console.log(jsonData);
+				if (jsonData.content != "Connected!") {
+					var count1 = oHostModel.getProperty("/Notificationcount");
+					var count2 = parseInt(count1,10);
+					count2 = count2 + 1;
+					var countupdated = count2.toString();
+					oHostModel.setProperty("/Notificationcount", countupdated);
+				}
+				// var count1 = oHostModel.getProperty("/Notificationcount");
+				// count = count + 1;
+				// var countupdated = count.toString();
+				// oHostModel.setProperty("/Notificationcount", countupdated);
 				// alert(event.data);
 
 			};

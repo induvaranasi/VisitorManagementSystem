@@ -104,9 +104,18 @@ sap.ui.define([
 			};
 			webSocket.onmessage = function (event) {
 				// alert(event.data);
-				count = count + 1;
-				var countupdated = count.toString();
-				oSecurityModel.setProperty("/Notificationcount", countupdated);
+				var jsonData = event.data;
+				console.log(jsonData);
+				if (jsonData.content != "Connected!") {
+					var count1 = oSecurityModel.getProperty("/Notificationcount");
+					var count2 = parseInt(count1, 10);
+					count2 = count2 + 1;
+					var countupdated = count2.toString();
+					oSecurityModel.setProperty("/Notificationcount", countupdated);
+				}
+				// count = count + 1;
+				// var countupdated = count.toString();
+				// oSecurityModel.setProperty("/Notificationcount", countupdated);
 				// alert(event.data);
 
 			};
@@ -193,7 +202,7 @@ sap.ui.define([
 				dataType: "json",
 				success: function (data, status, response) {
 					this.fnGetNotificationsData();
-					this.fnGetData(sUrl1,"/DeliveryDetails");
+					this.fnGetData(sUrl1, "/DeliveryDetails");
 				},
 				error: function (e) {
 					sap.m.MessageToast.show("fail");
@@ -587,6 +596,12 @@ sap.ui.define([
 			oSecurityModel.setProperty("/date", date);
 			var sUrl = "/VMS_Service/security/getAllVisitorHistory?date=" + date;
 			that.fnGetData(sUrl, "/Details");
+			var sUrl5 = "/VMS_Service/security/getCheckedInVisitors?date=" + date;
+			var sUrl6 = "/VMS_Service/admin/getCheckedOutVisitors?date=" + date;
+			var sUrl7 = "/VMS_Service/security/getExpectedVisitors?date=" + date;
+			that.fnGetData(sUrl5, "/CheckInDetails");
+			that.fnGetData(sUrl6, "/CheckedOutDetails");
+			that.fnGetData(sUrl7, "/ExpectedVisitorDetails");
 		},
 		fnGetData: function (sUrl, sProperty) {
 			var that = this;

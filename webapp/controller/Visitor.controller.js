@@ -124,7 +124,7 @@ sap.ui.define([
 		onSubmitMail: function () {
 			this.fnValidateEmail();
 			if (this.bform === true) {
-				MessageBox.information("Please wait..we are checking whether you are an Existing Visitor or New Visitor");
+				// MessageBox.information("Please wait..we are checking whether you are an Existing Visitor or New Visitor");
 				var that = this;
 				var oVisitorModel = that.getView().getModel("oVisitorModel");
 				var visitordata = oVisitorModel.getProperty("/visitorData");
@@ -205,7 +205,7 @@ sap.ui.define([
 		onSubmitAnotherMail: function () {
 			this.fnValidateEmail();
 			if (this.bform === true) {
-				MessageBox.information("Please wait..we are checking whether you are an Existing Visitor or New Visitor");
+				// MessageBox.information("Please wait..we are checking whether you are an Existing Visitor or New Visitor");
 				var that = this;
 				var oVisitorModel = that.getView().getModel("oVisitorModel");
 				var visitordata = oVisitorModel.getProperty("/addvisitorData");
@@ -528,6 +528,9 @@ sap.ui.define([
 
 			console.log(imageData);
 
+		},
+		onFail: function (message) {
+			alert("Failed because: " + message);
 		},
 		onEditDetails: function () {
 			Fragment.byId("idCheckinDetails", "idSimpleFormEditable").setVisible(true);

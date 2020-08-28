@@ -11,11 +11,11 @@
 			</HBox>
 			<HBox class="sapUiTinyMarginTop">
 				<Label text="Mail:" design="Bold" class="sapUiTinyMarginBegin"></Label>
-				<Text text="{oLoginModel>/userDetails/mail}"></Text>
+				<Text text="{oLoginModel>/userDetails/email}"></Text>
 			</HBox>
 			<HBox class="sapUiTinyMarginTop">
 				<Label text="Moblie:" design="Bold" class="sapUiTinyMarginBegin"></Label>
-				<Text text="{oLoginModel>/userDetails/contactno}"></Text>
+				<Text text="{oLoginModel>/userDetails/contactNo}"></Text>
 			</HBox>
 			<Link text="Edit Profile" class="sapUiTinyMarginTop sapUiTinyMarginBegin" press="onEditProfilePress"></Link>
 			<Link text="Log Out" class="sapUiTinyMarginBegin" press="onLogOutPress"></Link>
