@@ -123,12 +123,13 @@ sap.ui.define([
 
 			};
 			webSocket.onmessage = function (event) {
-				// alert(event.data);
 				var jsonData = event.data;
 				console.log(jsonData);
+
+				console.log(jsonData.title);
 				if (jsonData.content != "Connected!") {
 					var count1 = oHostModel.getProperty("/Notificationcount");
-					var count2 = parseInt(count1,10);
+					var count2 = parseInt(count1, 10);
 					count2 = count2 + 1;
 					var countupdated = count2.toString();
 					oHostModel.setProperty("/Notificationcount", countupdated);
@@ -731,6 +732,34 @@ sap.ui.define([
 
 					}
 				});
+			} else if (obj.title === "Overstay Alert") {
+				$.ajax({
+					url: "/VMS_Service/employee/meetingExtension",
+					type: "POST",
+					data: {
+						"mId": obj.mId,
+						"action": "accept",
+						"nId": obj.nId
+					},
+
+					dataType: "json",
+					success: function (data, status, response) {
+						if (data.status === 200) {
+							MessageBox.success("Your Meeting had Extended by 15 minutes");
+
+						} else {
+							sap.m.MessageToast.show("Something Went Wrong");
+						}
+
+						// that.fnGetData(sUrl1, "/BlackListed");
+						// that.fnGetData(sUrl2, "/CheckOutDetails");
+						// that.fnGetData(sUrl3, "/Details");
+					},
+					error: function (e) {
+						sap.m.MessageToast.show("fail");
+
+					}
+				});
 			} else {
 				$.ajax({
 					url: "/VMS_Service/employee/manageMeetingRequest",
@@ -783,6 +812,34 @@ sap.ui.define([
 					dataType: "json",
 					success: function (data, status, response) {
 						sap.m.MessageToast.show("Delivery Rejected");
+						// that.fnGetData(sUrl1, "/BlackListed");
+						// that.fnGetData(sUrl2, "/CheckOutDetails");
+						// that.fnGetData(sUrl3, "/Details");
+					},
+					error: function (e) {
+						sap.m.MessageToast.show("fail");
+
+					}
+				});
+			} else if (obj.title === "Overstay Alert") {
+				$.ajax({
+					url: "/VMS_Service/employee/meetingExtension",
+					type: "POST",
+					data: {
+						"mId": obj.mId,
+						"action": "reject",
+						"nId": obj.nId
+					},
+
+					dataType: "json",
+					success: function (data, status, response) {
+						if (data.status === 200) {
+							MessageBox.success("Your Meeting has Ended");
+
+						} else {
+							sap.m.MessageToast.show("Something Went Wrong");
+						}
+
 						// that.fnGetData(sUrl1, "/BlackListed");
 						// that.fnGetData(sUrl2, "/CheckOutDetails");
 						// that.fnGetData(sUrl3, "/Details");
@@ -882,7 +939,8 @@ sap.ui.define([
 			// console.log(aVisitorList);
 			if (!that._oDialog) {
 				//this._oDialog = sap.ui.xmlfragment("com.demo.odata.Demo_Odata_Service.view.addItem", this);
-				that._oDialog = sap.ui.xmlfragment("idFrequentVisitsFragAdmin", "com.incture.VMSApplicationUI5.fragment.displayFrequentVisits",
+				that._oDialog = sap.ui.xmlfragment("idFrequentVisitsFragAdmin",
+					"com.incture.VMSApplicationUI5.fragment.displayFrequentVisits",
 					this); // Instantiating the Fragment
 			}
 			that.getView().addDependent(that._oDialog); // Adding the fragment to your current view

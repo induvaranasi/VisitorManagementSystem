@@ -104,14 +104,21 @@ sap.ui.define([
 			};
 			webSocket.onmessage = function (event) {
 				// alert(event.data);
+				// var that=this;
+				// console.log(that);
 				var jsonData = event.data;
 				console.log(jsonData);
+				// var sUrl15 = "/VMS_Service/security/getRecentDelivery?date=" + newdate;
+				// console.log(sUrl15);
+				// that.fnGetData(sUrl15, "/DeliveryDetails");
 				if (jsonData.content != "Connected!") {
 					var count1 = oSecurityModel.getProperty("/Notificationcount");
 					var count2 = parseInt(count1, 10);
 					count2 = count2 + 1;
 					var countupdated = count2.toString();
+					console.log(countupdated);
 					oSecurityModel.setProperty("/Notificationcount", countupdated);
+					MessageBox.information(jsonData.content);
 				}
 				// count = count + 1;
 				// var countupdated = count.toString();
@@ -201,8 +208,8 @@ sap.ui.define([
 
 				dataType: "json",
 				success: function (data, status, response) {
-					this.fnGetNotificationsData();
-					this.fnGetData(sUrl1, "/DeliveryDetails");
+					that.fnGetNotificationsData();
+					that.fnGetData(sUrl1, "/DeliveryDetails");
 				},
 				error: function (e) {
 					sap.m.MessageToast.show("fail");
