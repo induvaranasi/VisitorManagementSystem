@@ -101,12 +101,12 @@
 											<Label text="Meeting End Time" required="true"></Label>
 											<TimePicker id="TP2" value="{oVisitorModel>/oMeetingData/endTime}" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange"/>
 											<Label/>
-											<Button text="Take Photo" type="Emphasized" press="onCapture"/>
-											<Image id="idImage" src="{oVisitorModel>/photo}" visible="false"/>
+											<Button text="Take Photo" type="Emphasized" press="onCapture" width="70%"/>
+											<Image id="idImage" src="{oVisitorModel>/photo}" visible="false" width="100px" height="100px"/>
 										</f:content>
 									</f:SimpleForm>
 								</VBox>
-								<Link text="Add Visitor" emphasized="true" press="onAddvisitorPress"></Link>
+								<!--<Link text="Add Visitor" emphasized="true" press="onAddvisitorPress"></Link>-->
 								<Table id="idAddVisitorsTable" inset="false" alternateRowColors="true" class="sapUiTinyMarginTop sapUiSizeCompact"
 									items="{oVisitorModel>/Visitors}" visible="false">
 									<headerToolbar class="sapUiLargeMarginTop">
@@ -156,6 +156,7 @@
 								<Toolbar style="Clear">
 									<!--<Link text="Add Visitor" press="onAddvisitorPress"></Link>-->
 									<ToolbarSpacer></ToolbarSpacer>
+									<Button text="Add Visitor" type="Emphasized" press="onAddvisitorPress"></Button>
 									<Button id="idRegisterBtn" text="Register" type="Emphasized" press="ValidateForm" enabled="false"></Button>
 								</Toolbar>
 							</IconTabFilter>

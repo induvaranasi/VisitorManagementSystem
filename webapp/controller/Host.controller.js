@@ -604,9 +604,9 @@ sap.ui.define([
 					// that.fnGetData();
 					var date = oHostModel.getProperty("/date");
 					var sUrl1 = "/VMS_Service/employee/getUpcomingMeetings?eId=" + eId + "&date=" + date;
-					this.fnGetData(sUrl1, "/UpcomingMeetings");
+					that.fnGetData(sUrl1, "/UpcomingMeetings");
 					var sUrl2 = "/VMS_Service/employee/getPreregistredVisitors?eId=" + eId;
-					this.fnGetData(sUrl2, "/PreRegistration");
+					that.fnGetData(sUrl2, "/PreRegistration");
 
 				},
 				error: function (e) {

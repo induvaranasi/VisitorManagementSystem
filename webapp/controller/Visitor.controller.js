@@ -537,8 +537,10 @@ sap.ui.define([
 				oVisitorModel.setProperty("/photo", imageData);
 				if (that.bEdit === true) {
 					Fragment.byId("idCheckinDetails", "idPhoto").setVisible(true);
-				} else {
+				} else if (that.bEdit === false) {
 					that.getView().byId("idImage").setVisible(true);
+				} else {
+					Fragment.byId("idaddAnother", "idImage").setVisible(true);
 				}
 
 			}, that.onFail, {

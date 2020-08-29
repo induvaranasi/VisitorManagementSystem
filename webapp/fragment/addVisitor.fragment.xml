@@ -5,10 +5,10 @@
 				<f:content>
 					<core:Title text="Visitor Details"></core:Title>
 					<HBox>
-						<VBox>
+						<VBox width="100%">
 							<Label text="Email" required="true"/>
 							<Input id="idEmail" value="{oVisitorModel>/addvisitorData/email}" type="Email" liveChange="handleUserInput" change="onSubmitAnotherMail"></Input>
-							<Label/>
+							<Label visible="false"/>
 							<MessageStrip text="Mail Id should be in abc@domain.com format" showIcon="false" type="Error" visible="{oVisibilityModel>/EmailPattern}"
 								showCloseButton="false" class="sapUiSizeCompact"></MessageStrip>
 							<Label text="First Name" required="true"/>
@@ -20,15 +20,17 @@
 							<!--<Label text="Meeting Start Time" required="true"/>-->
 							<!--<TimePicker id="TP1" value="{oAdminModel>/oFormData/beginTime}" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange"/>-->
 							<Label text="ID Type" required="true"></Label>
-							<ComboBox selectedKey="{oVisitorModel>/addvisitorData/proofType}">
+							<ComboBox selectedKey="{oVisitorModel>/addvisitorData/proofType}" width="100%">
 								<core:Item text="Aadhar" key="Aadhar"/>
 								<core:Item text="Passport" key="Passport"/>
 								<core:Item text="Voter Id" key="Voter Id"/>
 								<core:Item text="Driving Licence" key="Driving Licence"/>
 								<core:Item text="Pancard" key="Pancard"/>
 							</ComboBox>
+							<Label text="ID No"/>
+							<Input id="idIDNo" value="{oVisitorModel>/addvisitorData/proofNo}"/>
 						</VBox>
-						<VBox class="sapUiLargeMarginBegin">
+						<VBox class="sapUiLargeMarginBegin" width="100%">
 							<Label text="Enter OTP" id="label" visible="false"></Label>
 							<HBox id="idExistingadd" visible="false">
 								<Input placeholder="Enter OTP" value="{oVisitorModel>/addvisitorData/otp}"></Input>
@@ -38,14 +40,13 @@
 							<Input id="idLastName" value="{oVisitorModel>/addvisitorData/lastName}" liveChange="handleUserInput"></Input>
 							<Label text="Mobile" required="true"/>
 							<Input id="idMobile" value="{oVisitorModel>/addvisitorData/contactNo}" liveChange="handleUserInput"></Input>
-							<!--<Label text="Purpose Of Visit" required="true"/>-->
-							<!--<Input id="idPurpose" value="{oAdminModel>/oFormData/purpose}" liveChange="handleUserInput"></Input>-->
 							<Label text="Organization"/>
-							<Input id="idOrganization" value="{oVisitorModel>/addvisitorData/organisation}"></Input>
-							<!--<Label text="Meeting End Time" required="true"/>-->
-							<!--<TimePicker id="TP2" value="{oAdminModel>/oFormData/endTime}" valueFormat="HH:mm" displayFormat="HH:mm"/>-->
-							<Label text="ID No"/>
-							<Input id="idIDNo" value="{oVisitorModel>/addvisitorData/proofNo}"/>
+							<Input id="idOrganization" value="{oVisitorModel>/addvisitorData/organisation}" liveChange="handleUserInput"></Input>
+							<Label/>
+							<HBox>
+							<Button text="Take Photo" type="Emphasized" press="onCapture"/>
+							<Image id="idImage" class="sapUiSmallMarginBegin" src="{oVisitorModel>/photo}" visible="false" width="100px" height="100px"/>
+							</HBox>
 						</VBox>
 					</HBox>
 				</f:content>

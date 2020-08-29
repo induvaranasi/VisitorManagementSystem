@@ -1270,6 +1270,7 @@ sap.ui.define([
 			var date = oAdminModel.getProperty("/date");
 			var sUrl1 = "/VMS_Service/admin/getAllBlackListedVisitors";
 			var sUrl2 = "/VMS_Service/admin/getCheckedOutVisitors?date=" + date;
+			var sUrl3 = "/VMS_Service/admin/getAllVisitorHistory?date=" + date;
 			var oSource = oAdminModel.getProperty("/BlackListedSource");
 			var spath = oAdminModel.getProperty("/BlackListedPath");
 			console.log(spath);
@@ -1305,11 +1306,12 @@ sap.ui.define([
 					setTimeout(function () {
 						oDialog.close();
 					}, 3000);
-					that.fnGetData(sUrl2, "/CheckedOutDetails");
-					that.fnGetData(sUrl1, "/BlackListed");
+					that.fndoajax(sUrl2, "/CheckedOutDetails");
+					that.fndoajax(sUrl1, "/BlackListed");
+					that.fndoajax(sUrl3, "/Details");
 					oSource.setEnabled(false);
 					if (data.status === 300) {
-						MessageBox.warning("Alredy Blacklisted");
+						MessageBox.warning("Already Blacklisted");
 					}
 
 				},
@@ -1331,6 +1333,9 @@ sap.ui.define([
 			// console.log(oToken);
 			// console.log(token);
 			var oAdminModel = that.getOwnerComponent().getModel("oAdminModel");
+			var date = oAdminModel.getProperty("/date");
+			var sUrl2 = "/VMS_Service/admin/getCheckedOutVisitors?date=" + date;
+			var sUrl3 = "/VMS_Service/admin/getAllVisitorHistory?date=" + date;
 			var oSource = oEvent.getSource();
 			var spath = oSource.getParent().getBindingContextPath();
 			var obj = oAdminModel.getProperty(spath);
@@ -1348,8 +1353,9 @@ sap.ui.define([
 				dataType: 'json',
 				success: function (data, status, response) {
 					sap.m.MessageToast.show("Successfully Unblocked");
-					that.fnGetData(sUrl, "/BlackListed");
-
+					that.fndoajax(sUrl, "/BlackListed");
+					that.fndoajax(sUrl2, "/CheckedOutDetails");
+					that.fndoajax(sUrl3, "/Details");
 				},
 				error: function (e) {
 					sap.m.MessageToast.show("fail");

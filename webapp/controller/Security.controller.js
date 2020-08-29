@@ -350,7 +350,7 @@ sap.ui.define([
 		},
 
 		onUnblock: function (oEvent) {
-			var sUrl = "/VMS_Service/admin/getAllBlackListedVisitors";
+			var sUrl1 = "/VMS_Service/admin/getAllBlackListedVisitors";
 			var that = this;
 			// var token = "72063d69217c16b7-w5C-zqZHSREgWqD9tZ_V5ktcDTc";
 			// var oTokenModel = that.getView().getModel("oTokenModel");
@@ -361,6 +361,9 @@ sap.ui.define([
 			// console.log(oToken);
 			// console.log(token);
 			var oSecurityModel = that.getOwnerComponent().getModel("oSecurityModel");
+			var date = oSecurityModel.getProperty("/date");
+			var sUrl2 = "/VMS_Service/security/getAllVisitorHistory?date=" + date;
+			var sUrl3 = "/VMS_Service/admin/getCheckedOutVisitors?date=" + date;
 			var oSource = oEvent.getSource();
 			var spath = oSource.getParent().getBindingContextPath();
 			var obj = oSecurityModel.getProperty(spath);
@@ -384,7 +387,9 @@ sap.ui.define([
 					setTimeout(function () {
 						oDialog.close();
 					}, 3000);
-					that.fnGetData(sUrl, "/BlackListed");
+					that.fnGetData(sUrl1, "/BlackListed");
+					that.fnGetData(sUrl2, "/Details");
+					that.fnGetData(sUrl3, "/CheckedOutDetails");
 				},
 				error: function (e) {
 					sap.m.MessageToast.show("fail");
