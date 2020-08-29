@@ -267,6 +267,7 @@ sap.ui.define([
 			this.getView().byId("idParkingAvailability").setVisible(true);
 		},
 		onRegisterSubmitPress: function () {
+			var that = this;
 			var oParkingModel = this.getView().getModel("oParkingModel");
 			var oFormData = oParkingModel.getProperty("/oFormData");
 			// var vehicleNumber = this.getView().byId("idVehicleNumber").getValue();
@@ -289,6 +290,8 @@ sap.ui.define([
 						oParkingModel.setProperty("/oFormData", {});
 
 						MessageBox.success("Please Go ahead and Park Your Vehicle");
+						var sUrl = "/VMS_Service/visitor/getAllParking";
+						that.fnGetData(sUrl, "/AllParkingSlots");
 
 					} else {
 						MessageBox.warning("Please Select Parking Slot by checking the Availability");
@@ -305,57 +308,55 @@ sap.ui.define([
 			this.getView().byId("idParkingAvailability").setVisible(false);
 		},
 		onCheckOut: function () {
-				var oParkingModel = this.getView().getModel("oParkingModel");
-				var pId = oParkingModel.getProperty("/sSelectedKey");
-				$.ajax({
-					url: "/VMS_Service/admin/setParkingStatus",
-					type: "POST",
-					data: {
-						"pId": pId,
-						"status": 0
-					},
+			var oParkingModel = this.getView().getModel("oParkingModel");
+			var pId = oParkingModel.getProperty("/sSelectedKey");
+			$.ajax({
+				url: "/VMS_Service/admin/setParkingStatus",
+				type: "POST",
+				data: {
+					"pId": pId,
+					"status": 0
+				},
 
-					// dataType: "json",
-					success: function (data, status, response) {
+				// dataType: "json",
+				success: function (data, status, response) {
 
-						MessageBox.success("Thank You For Visiting!!Visit Again!!");
-						oParkingModel.setProperty("/sSelectedKey", "");
-						console.log(data);
+					MessageBox.success("Thank You For Visiting!!Visit Again!!");
+					oParkingModel.setProperty("/sSelectedKey", "");
+					console.log(data);
 
-						// that.fnGetData();
+					// that.fnGetData();
 
-					},
-					error: function (e) {
-						sap.m.MessageToast.show("fail");
+				},
+				error: function (e) {
+					sap.m.MessageToast.show("fail");
 
-					}
-				});
-			}
-			/**
-			 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
-			 * (NOT before the first rendering! onInit() is used for that one!).
-			 * @memberOf com.incture.VMSApplicationUI5.view.Parking
-			 */
-			//	onBeforeRendering: function() {
-			//
-			//	},
+				}
+			});
+		},
+		fnGetData: function (sUrl, sProperty) {
+			var that = this;
+			var oSecurityModel = that.getOwnerComponent().getModel("oSecurityModel");
+			$.ajax({
+				url: sUrl,
+				data: null,
+				async: true,
+				headers: {
+					dataType: "json",
+					contentType: "application/json; charset=utf-8"
 
-		/**
-		 * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
-		 * This hook is the same one that SAPUI5 controls get after being rendered.
-		 * @memberOf com.incture.VMSApplicationUI5.view.Parking
-		 */
-		//	onAfterRendering: function() {
-		//
-		//	},
+				},
+				error: function (err) {
+					sap.m.MessageToast.show("Destination Failed");
+				},
+				success: function (data) {
+					sap.m.MessageToast.show("Data Successfully Loaded");
+					oSecurityModel.setProperty(sProperty, data);
 
-		/**
-		 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
-		 * @memberOf com.incture.VMSApplicationUI5.view.Parking
-		 */
-		//	onExit: function() {
-		//
-		//	}
+				},
+				type: "GET"
+			});
+		}
 
 	});
 

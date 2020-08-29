@@ -122,6 +122,11 @@ sap.ui.define([
 			}
 		},
 		onSubmitMail: function () {
+			var oDialog = new sap.m.BusyDialog();
+			oDialog.open();
+			setTimeout(function () {
+				oDialog.close();
+			}, 3000);
 			this.fnValidateEmail();
 			if (this.bform === true) {
 				// MessageBox.information("Please wait..we are checking whether you are an Existing Visitor or New Visitor");
@@ -189,6 +194,9 @@ sap.ui.define([
 					console.log(data);
 					if (data.status === 200) {
 						oVisitorModel.setProperty("/visitorData", data);
+						that.getView().byId("idlabel").setVisible(false);
+						that.getView().byId("idotp").setVisible(false);
+						that.getView().byId("idsubmit").setVisible(false);
 					} else if (data.status === 300) {
 						MessageBox.warning("OTP verification failed..please try again");
 					} else {
@@ -203,6 +211,11 @@ sap.ui.define([
 			});
 		},
 		onSubmitAnotherMail: function () {
+			var oDialog = new sap.m.BusyDialog();
+			oDialog.open();
+			setTimeout(function () {
+				oDialog.close();
+			}, 3000);
 			this.fnValidateEmail();
 			if (this.bform === true) {
 				// MessageBox.information("Please wait..we are checking whether you are an Existing Visitor or New Visitor");
@@ -266,6 +279,8 @@ sap.ui.define([
 					console.log(data);
 					if (data.status === 200) {
 						oVisitorModel.setProperty("/addvisitorData", data);
+						Fragment.byId("idaddAnother", "label").setVisible(false);
+						Fragment.byId("idaddAnother", "idExistingadd").setVisible(false);
 					} else if (data.status === 300) {
 						MessageBox.warning("OTP verification failed..please try again");
 					} else {
@@ -641,6 +656,8 @@ sap.ui.define([
 
 								MessageBox.success("Thank You For Visiting!!Please HandOver the Access Card to the Security.");
 
+							} else if (data.status === 300) {
+								MessageBox.information("Already Checked out");
 							} else {
 								MessageToast.show("Something Went Wrong");
 							}

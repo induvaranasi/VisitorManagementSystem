@@ -117,9 +117,9 @@ sap.ui.define([
 					var countupdated = count2.toString();
 					console.log(countupdated);
 					oSecurityModel.setProperty("/Notificationcount", countupdated);
-					var msg = jsonData.parse();
-					console.log(msg.content);
-					MessageBox.information(msg.content);
+					// var msg = jsonData.parse();
+					// console.log(msg.content);
+					MessageBox.information("You have one New Notification");
 				}
 				// count = count + 1;
 				// var countupdated = count.toString();
