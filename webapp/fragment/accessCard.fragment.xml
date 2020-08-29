@@ -1,20 +1,47 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
 	<Dialog title="Access Card" draggable="true" contentWidth="35rem" resizable="true" class="sapUiSizeCompact" verticalScrolling="true">
 		<content>
-			<f:SimpleForm id="idSimpleForm" editable="false">
-				<f:content>
-					<Label text="Visitor Name"></Label>
-					<Text text="{oSecurityModel>/CheckInVisitorDetails/visitorName}"></Text>
-					<Label text="Email"></Label>
-					<Text text="{oSecurityModel>/CheckInVisitorDetails/email}"></Text>
-					<Label text="Host Name"></Label>
-					<Text text="{oSecurityModel>/CheckInVisitorDetails/hostName}"></Text>
-					<Label text="Room Name"></Label>
-					<Text text="{oSecurityModel>/CheckInVisitorDetails/roomName}"></Text>
-					<Label text="AccessCard No"></Label>
+			<VBox>
+				<HBox class="sapUiTinyMarginTop">
+					<!--<Avatar src="data:image/png;base64,{oAdminModel>/userDetails/photo}" displaySize="M" class="sapUiTinyMarginBegin avatarStyle"></Avatar>-->
+					<!--<Label text="Sarath Kumar" design="Bold" class=" sapUiTinyMarginBegin sapUiSmallMarginTop"></Label>-->
+					<Image src="./Images/sarathprofile.jpg" alt="Image not found" height="80px" width="80px" class="sapUiTinyMarginBegin avatarStyle"></Image>
+				</HBox>
+				<HBox class="sapUiTinyMarginTop">
+					<Label text="Name:" design="Bold" class="sapUiTinyMarginBegin"></Label>
+					<Text text="{oSecurityModel>/CheckInVisitorDetails/visitorName}" class="sapUiTinyMarginBegin"></Text>
+				</HBox>
+				<HBox class="sapUiTinyMarginTop">
+					<Label text="Email:" design="Bold" class="sapUiTinyMarginBegin"></Label>
+					<Text text="{oSecurityModel>/CheckInVisitorDetails/email}" class="sapUiTinyMarginBegin"></Text>
+				</HBox>
+				<HBox class="sapUiTinyMarginTop">
+					<Label text="Host Name:" design="Bold" class="sapUiTinyMarginBegin"></Label>
+					<Text text="{oSecurityModel>/CheckInVisitorDetails/hostName}" class="sapUiTinyMarginBegin"></Text>
+				</HBox>
+				<HBox class="sapUiTinyMarginTop">
+					<Label text="Room Name:" design="Bold" class="sapUiTinyMarginBegin"></Label>
+					<Text text="{oSecurityModel>/CheckInVisitorDetails/roomName}" class="sapUiTinyMarginBegin"></Text>
+				</HBox>
+				<HBox class="sapUiTinyMarginTop">
+					<Label text="Accescard No:" design="Bold" class="sapUiTinyMarginBegin"></Label>
 					<Text></Text>
-				</f:content>
-			</f:SimpleForm>
+				</HBox>
+			</VBox>
+			<!--<f:SimpleForm id="idSimpleForm" editable="false">-->
+			<!--	<f:content>-->
+			<!--		<Label text="Visitor Name"></Label>-->
+			<!--		<Text text="{oSecurityModel>/CheckInVisitorDetails/visitorName}"></Text>-->
+			<!--		<Label text="Email"></Label>-->
+			<!--		<Text text="{oSecurityModel>/CheckInVisitorDetails/email}"></Text>-->
+			<!--		<Label text="Host Name"></Label>-->
+			<!--		<Text text="{oSecurityModel>/CheckInVisitorDetails/hostName}"></Text>-->
+			<!--		<Label text="Room Name"></Label>-->
+			<!--		<Text text="{oSecurityModel>/CheckInVisitorDetails/roomName}"></Text>-->
+			<!--		<Label text="AccessCard No"></Label>-->
+			<!--		<Text></Text>-->
+			<!--	</f:content>-->
+			<!--</f:SimpleForm>-->
 		</content>
 		<Toolbar>
 			<ToolbarSpacer></ToolbarSpacer>

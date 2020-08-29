@@ -112,6 +112,7 @@ sap.ui.define([
 				type: "GET"
 			});
 			var sUrl8 = "wss://projectvmsp2002476966trial.hanatrial.ondemand.com/vms/chat/" + eId;
+			var that = this;
 			// var sUrl1 = "/VMS_Service/chat/1";
 			var webSocket = new WebSocket(sUrl8);
 			webSocket.onerror = function (event) {
@@ -124,15 +125,17 @@ sap.ui.define([
 			};
 			webSocket.onmessage = function (event) {
 				var jsonData = event.data;
-				console.log(jsonData);
-
-				console.log(jsonData.title);
-				if (jsonData.content != "Connected!") {
+				var msg = JSON.parse(jsonData);
+				console.log(msg.title);
+				if (msg.content !== "Connected!") {
 					var count1 = oHostModel.getProperty("/Notificationcount");
 					var count2 = parseInt(count1, 10);
 					count2 = count2 + 1;
 					var countupdated = count2.toString();
 					oHostModel.setProperty("/Notificationcount", countupdated);
+					MessageBox.information(msg.content);
+					that.fnGetData(sUrl1, "/Details");
+					that.fnGetData(sUrl5, "/CheckInDetails");
 				}
 				// var count1 = oHostModel.getProperty("/Notificationcount");
 				// count = count + 1;
@@ -145,7 +148,6 @@ sap.ui.define([
 		onDate: function () {
 			var that = this;
 			var date = that.getView().byId("date").getValue();
-			console.log(date);
 			var oHostModel = that.getOwnerComponent().getModel("oHostModel");
 			oHostModel.setProperty("/date", date);
 			var eId = oHostModel.getProperty("/userDetails").eId;
@@ -966,6 +968,7 @@ sap.ui.define([
 			var sUrl1 = "/VMS_Service/employee/getAllBlacklistedVisitors?eId=" + eId;
 			var sUrl2 = "/VMS_Service/employee/getCheckedOutVisitors?eId=" + eId + "&date=" + date;
 			var sUrl3 = "/VMS_Service/employee/getVisitorHistory?eId=" + eId + "&date=" + date;
+			var oTableModel = this.getView().byId("idCheckOutTable").getModel("oHostModel");
 			var oSource = oEvent.getSource();
 			var spath = oSource.getParent().getBindingContextPath();
 			var obj = oHostModel.getProperty(spath);
@@ -989,6 +992,7 @@ sap.ui.define([
 					that.fnGetData(sUrl1, "/BlackListed");
 					that.fnGetData(sUrl2, "/CheckOutDetails");
 					that.fnGetData(sUrl3, "/Details");
+					oTableModel.refresh();
 				},
 				error: function (e) {
 					sap.m.MessageToast.show("fail");

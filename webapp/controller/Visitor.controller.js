@@ -42,7 +42,8 @@ sap.ui.define([
 				"proofType": "",
 				"proofNo": "",
 				"locality": "",
-				"organisation": ""
+				"organisation": "",
+				"photo":""
 					// "parkingType": "",
 					// "pId": ""
 			};
@@ -55,7 +56,8 @@ sap.ui.define([
 				"proofType": "",
 				"proofNo": "",
 				"locality": "",
-				"organisation": ""
+				"organisation": "",
+				"photo":""
 					// "parkingType": "",
 					// "pId": ""
 			};

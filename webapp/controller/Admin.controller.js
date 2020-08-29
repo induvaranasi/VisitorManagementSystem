@@ -146,6 +146,7 @@ sap.ui.define([
 				type: "GET"
 			});
 			var sUrl3 = "wss://projectvmsp2002476966trial.hanatrial.ondemand.com/vms/chat/" + eId;
+			var that = this;
 			// var sUrl1 = "/VMS_Service/chat/1";
 			var webSocket = new WebSocket(sUrl3);
 			webSocket.onerror = function (event) {
@@ -159,18 +160,16 @@ sap.ui.define([
 			webSocket.onmessage = function (event) {
 				// alert(event.data);
 				var jsonData = event.data;
-				console.log(jsonData);
-				if (jsonData.content != "Connected!") {
+				var msg = JSON.parse(jsonData);
+				if (msg.content !== "Connected!") {
 					var count1 = oAdminModel.getProperty("/Notificationcount");
 					var count2 = parseInt(count1, 10);
 					count2 = count2 + 1;
 					var countupdated = count2.toString();
 					oAdminModel.setProperty("/Notificationcount", countupdated);
+					MessageBox.information(msg.content);
+					that.fndoajax(sUrl, "/CheckInDetails");
 				}
-				// count = count + 1;
-				// var countupdated = count.toString();
-				// oAdminModel.setProperty("/Notificationcount", countupdated);
-				// alert(event.data);
 
 			};
 			// this.fndoajax(sUrl5, "/Notificationcount");
@@ -1336,6 +1335,7 @@ sap.ui.define([
 			var date = oAdminModel.getProperty("/date");
 			var sUrl2 = "/VMS_Service/admin/getCheckedOutVisitors?date=" + date;
 			var sUrl3 = "/VMS_Service/admin/getAllVisitorHistory?date=" + date;
+			var oTableModel = this.getView().byId("idCheckOutTable").getModel("oAdminModel");
 			var oSource = oEvent.getSource();
 			var spath = oSource.getParent().getBindingContextPath();
 			var obj = oAdminModel.getProperty(spath);
@@ -1356,6 +1356,7 @@ sap.ui.define([
 					that.fndoajax(sUrl, "/BlackListed");
 					that.fndoajax(sUrl2, "/CheckedOutDetails");
 					that.fndoajax(sUrl3, "/Details");
+					oTableModel.refresh();
 				},
 				error: function (e) {
 					sap.m.MessageToast.show("fail");

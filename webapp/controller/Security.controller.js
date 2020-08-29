@@ -92,8 +92,8 @@ sap.ui.define([
 				type: "GET"
 			});
 			var sUrl10 = "wss://projectvmsp2002476966trial.hanatrial.ondemand.com/vms/chat/" + eId;
-			// var sUrl1 = "/VMS_Service/chat/1";
 			var webSocket = new WebSocket(sUrl10);
+			var that = this;
 			webSocket.onerror = function (event) {
 				// alert(event.data);
 
@@ -104,22 +104,18 @@ sap.ui.define([
 			};
 			webSocket.onmessage = function (event) {
 				// alert(event.data);
-				// var that=this;
-				// console.log(that);
 				var jsonData = event.data;
-				// var sUrl15 = "/VMS_Service/security/getRecentDelivery?date=" + newdate;
-				// console.log(sUrl15);
-				// that.fnGetData(sUrl15, "/DeliveryDetails");
-				if (jsonData.content !== "Connected!") {
+				var msg = JSON.parse(jsonData);
+				if (msg.content !== "Connected!") {
 					var count1 = oSecurityModel.getProperty("/Notificationcount");
 					var count2 = parseInt(count1, 10);
 					count2 = count2 + 1;
 					var countupdated = count2.toString();
 					console.log(countupdated);
 					oSecurityModel.setProperty("/Notificationcount", countupdated);
-					// var msg = jsonData.parse();
-					// console.log(msg.content);
-					MessageBox.information("You have one New Notification");
+					MessageBox.information(msg.content);
+					that.fnGetData(sUrl4, "/DeliveryDetails");
+
 				}
 				// count = count + 1;
 				// var countupdated = count.toString();
@@ -364,6 +360,7 @@ sap.ui.define([
 			var date = oSecurityModel.getProperty("/date");
 			var sUrl2 = "/VMS_Service/security/getAllVisitorHistory?date=" + date;
 			var sUrl3 = "/VMS_Service/admin/getCheckedOutVisitors?date=" + date;
+			var oTableModel = this.getView().byId("idCheckOutTable").getModel("oSecurityModel");
 			var oSource = oEvent.getSource();
 			var spath = oSource.getParent().getBindingContextPath();
 			var obj = oSecurityModel.getProperty(spath);
@@ -390,6 +387,7 @@ sap.ui.define([
 					that.fnGetData(sUrl1, "/BlackListed");
 					that.fnGetData(sUrl2, "/Details");
 					that.fnGetData(sUrl3, "/CheckedOutDetails");
+					oTableModel.refresh();
 				},
 				error: function (e) {
 					sap.m.MessageToast.show("fail");
