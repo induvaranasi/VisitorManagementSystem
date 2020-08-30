@@ -43,7 +43,7 @@ sap.ui.define([
 				"proofNo": "",
 				"locality": "",
 				"organisation": "",
-				"photo":""
+				"photo": ""
 					// "parkingType": "",
 					// "pId": ""
 			};
@@ -57,7 +57,7 @@ sap.ui.define([
 				"proofNo": "",
 				"locality": "",
 				"organisation": "",
-				"photo":""
+				"photo": ""
 					// "parkingType": "",
 					// "pId": ""
 			};
@@ -85,6 +85,7 @@ sap.ui.define([
 			});
 			this.bFlag = false;
 			this.bform = false;
+			this.bEdit = false;
 		},
 		onImagePress: function () {
 			this.getRouter().navTo("RouteApp");
@@ -536,13 +537,17 @@ sap.ui.define([
 			navigator.camera.getPicture(function (imageData) {
 				console.log(imageData);
 				var oVisitorModel = that.getView().getModel("oVisitorModel");
-				oVisitorModel.setProperty("/photo", imageData);
+				var res = imageData.split("base64,");
+				var image = res[1];
 				if (that.bEdit === true) {
 					Fragment.byId("idCheckinDetails", "idPhoto").setVisible(true);
+					oVisitorModel.setProperty("/photo", imageData);
 				} else if (that.bEdit === false) {
+					oVisitorModel.setProperty("/visitorData/photo", image);
 					that.getView().byId("idImage").setVisible(true);
 				} else {
 					Fragment.byId("idaddAnother", "idImage").setVisible(true);
+					oVisitorModel.setProperty("/addvisitorData/photo", image);
 				}
 
 			}, that.onFail, {
@@ -615,6 +620,7 @@ sap.ui.define([
 						MessageBox.success(
 							"Welcome to Incture Technologies!!Please Collect Access Card From the Security."
 						);
+						that.bEdit = false;
 					} else if (data.status === 300) {
 						sap.m.MessageToast.show("Having a Meeting Clash");
 					} else {

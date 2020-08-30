@@ -19,10 +19,10 @@
 						<items>
 							<IconTabFilter text="Sign In">
 								<VBox justifyContent="Center" class="styleVBox" width="220px" height="250px">
-									<Text text="Press CheckIn/CheckOut to Scan Your QR Code:" width="100%"/>
+									<Text text="Press Check In/Check Out to Scan Your QR Code:" width="100%"/>
 									<!--<Input width="100%" id="idVhid"></Input>-->
-									<Button text="Check In" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onScancodeCheckin"/>
-									<Button text="Check Out" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onScancodeCheckout"/>
+									<Button text="{i18n>CheckIn}" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onScancodeCheckin"/>
+									<Button text="{i18n>CheckOut}" type="Emphasized" class="sapUiSmallMarginTop" width="100%" press="onScancodeCheckout"/>
 									<!--<Text text="Scan Your QR Code if you are Pre-Registered"></Text>-->
 									<!--	<Text text="Please Enter the vhId sent to you"></Text>-->
 									<!--	<Input width="20%" id="idVhid"></Input>-->
@@ -102,7 +102,7 @@
 											<TimePicker id="TP2" value="{oVisitorModel>/oMeetingData/endTime}" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange"/>
 											<Label/>
 											<Button text="Take Photo" type="Emphasized" press="onCapture" width="70%"/>
-											<Image id="idImage" src="{oVisitorModel>/photo}" visible="false" width="100px" height="100px"/>
+											<Image id="idImage" src="data:image/png;base64,{oVisitorModel>/visitorData/photo}" visible="false" width="100px" height="100px"/>
 										</f:content>
 									</f:SimpleForm>
 								</VBox>
@@ -118,22 +118,22 @@
 									</headerToolbar>
 									<columns>
 										<Column width="12em" minScreenWidth="phone">
-											<Text text="Visitor Name" class="styleColumn"/>
+											<Text text="{i18n>VisitorName}" class="styleColumn"/>
 										</Column>
 										<Column minScreenWidth="Tablet" demandPopin="true">
-											<Text text="Email" class="styleColumn"/>
+											<Text text="{i18n>MailID}" class="styleColumn"/>
 										</Column>
 										<Column minScreenWidth="Desktop" demandPopin="true">
-											<Text text="Mobile" class="styleColumn"/>
+											<Text text="{i18n>MobileNo}" class="styleColumn"/>
 										</Column>
 										<Column minScreenWidth="Desktop" demandPopin="true">
-											<Text text="Organization" class="styleColumn"/>
+											<Text text="{i18n>Organization}" class="styleColumn"/>
 										</Column>
 										<!--<Column minScreenWidth="Desktop" demandPopin="true">-->
 										<!--	<Text text="Date of Visit"/>-->
 										<!--</Column>-->
 										<Column minScreenWidth="phone" demandPopin="true">
-											<Text text="Action" class="styleColumn"/>
+											<Text text="{i18n>Action}" class="styleColumn"/>
 										</Column>
 									</columns>
 									<items>

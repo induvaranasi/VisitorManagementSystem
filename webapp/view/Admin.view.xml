@@ -458,16 +458,16 @@
 								</headerToolbar>
 								<columns>
 									<Column width="12em" minScreenWidth="phone" demandPopin="true">
-										<Text text="{i18n>Meeting Purpose}" class="styleColumn"/>
+										<Text text="{i18n>MeetingPurpose}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Tablet" demandPopin="true">
-										<Text text="{i18n>Begin Time}" class="styleColumn"/>
+										<Text text="{i18n>BeginTime}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>End Time}" class="styleColumn"/>
+										<Text text="{i18n>EndTime}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Room Name}" class="styleColumn"/>
+										<Text text="{i18n>RoomName}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="phone" demandPopin="true">
 										<Text text="{i18n>Status}" class="styleColumn"/>
@@ -553,7 +553,7 @@
 										<Text text="{i18n>HostName}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Date Visited}" class="styleColumn"/>
+										<Text text="{i18n>Date}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
 										<Text text="{i18n>Remarks}" class="styleColumn"/>

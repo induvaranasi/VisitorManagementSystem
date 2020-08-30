@@ -1,11 +1,11 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
-	<Dialog title="Access Card" draggable="true" contentWidth="35rem" resizable="true" class="sapUiSizeCompact" verticalScrolling="true">
+	<Dialog title="Access Card" draggable="true" contentWidth="30rem" resizable="true" class="sapUiSizeCompact" verticalScrolling="true">
 		<content>
-			<VBox>
+			<VBox alignItems="Center">
 				<HBox class="sapUiTinyMarginTop">
 					<!--<Avatar src="data:image/png;base64,{oAdminModel>/userDetails/photo}" displaySize="M" class="sapUiTinyMarginBegin avatarStyle"></Avatar>-->
 					<!--<Label text="Sarath Kumar" design="Bold" class=" sapUiTinyMarginBegin sapUiSmallMarginTop"></Label>-->
-					<Image src="./Images/sarathprofile.jpg" alt="Image not found" height="80px" width="80px" class="sapUiTinyMarginBegin avatarStyle"></Image>
+					<Image src="data:image/png;base64,{oSecurityModel>/CheckInVisitorDetails/photo}" alt="Image not found" height="80px" width="80px" class="sapUiTinyMarginBegin avatarStyle"></Image>
 				</HBox>
 				<HBox class="sapUiTinyMarginTop">
 					<Label text="Name:" design="Bold" class="sapUiTinyMarginBegin"></Label>

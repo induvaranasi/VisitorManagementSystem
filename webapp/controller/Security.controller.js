@@ -501,7 +501,7 @@ sap.ui.define([
 				url: "/VMS_Service/security/addDelivery",
 				type: "POST",
 				data: {
-					"date": obj.date,
+					"date": date,
 					"deliveryType": sSignature,
 					"mobileNo": obj.mobileNo
 
