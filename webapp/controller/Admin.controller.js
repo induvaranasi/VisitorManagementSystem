@@ -134,7 +134,7 @@ sap.ui.define([
 					sap.m.MessageToast.show("Destination Failed");
 				},
 				success: function (data) {
-					sap.m.MessageToast.show("Data Successfully Loaded");
+					// sap.m.MessageToast.show("Data Successfully Loaded");
 					console.log(data);
 					count = data.count;
 					var countupdated = count.toString();
@@ -221,7 +221,7 @@ sap.ui.define([
 					sap.m.MessageToast.show("Destination Failed");
 				},
 				success: function (data) {
-					sap.m.MessageToast.show("Data Successfully Loaded");
+					// sap.m.MessageToast.show("Data Successfully Loaded");
 					// console.log(data);
 					oHostModel.setProperty("/notificationList", data);
 					console.log(oHostModel);
@@ -289,7 +289,7 @@ sap.ui.define([
 							sap.m.MessageToast.show("Delivery Accepted");
 
 						} else if (data.status === 300) {
-							sap.m.MessageToast.show("Your Delivery Needs Signature");
+							MessageBox.information("Your Delivery Needs Signature");
 						} else {
 							sap.m.MessageToast.show("Something Went Wrong");
 						}
@@ -493,7 +493,7 @@ sap.ui.define([
 					sap.m.MessageToast.show("Destination Failed");
 				},
 				success: function (data) {
-					sap.m.MessageToast.show("Data Successfully Loaded");
+					// sap.m.MessageToast.show("Data Successfully Loaded");
 
 					oAdminModel.setProperty("/PreRegistration", data);
 
@@ -523,7 +523,7 @@ sap.ui.define([
 					sap.m.MessageToast.show("Destination Failed");
 				},
 				success: function (data) {
-					sap.m.MessageToast.show("Data Successfully Loaded");
+					// sap.m.MessageToast.show("Data Successfully Loaded");
 					// console.log(data);
 
 					oAdminModel.setProperty("/UpcomingMeetings", data);
@@ -636,7 +636,7 @@ sap.ui.define([
 
 				// dataType: "json",
 				success: function (data, status, response) {
-					sap.m.MessageToast.show("Success");
+					// sap.m.MessageToast.show("Success");
 					console.log(data);
 					oAdminModel.setProperty("/AvailableRooms", data);
 					console.log(status);
@@ -677,7 +677,7 @@ sap.ui.define([
 
 				// dataType: "json",
 				success: function (data, status, response) {
-					sap.m.MessageToast.show("Success");
+					// sap.m.MessageToast.show("Success");
 					console.log(data);
 					oAdminModel.setProperty("/AvailableParkingSlots", data);
 					console.log(status);
@@ -717,7 +717,7 @@ sap.ui.define([
 
 				// dataType: "json",
 				success: function (data, status, response) {
-					sap.m.MessageToast.show("Success");
+					// sap.m.MessageToast.show("Success");
 					console.log(data);
 					oAdminModel.setProperty("/AvailableParkingSlots", data);
 					console.log(status);
@@ -798,7 +798,7 @@ sap.ui.define([
 
 							// dataType: "json",
 							success: function (data, status, response) {
-								sap.m.MessageToast.show("Success");
+								// sap.m.MessageToast.show("Success");
 								console.log(data);
 
 								// that.fnGetData();
@@ -1102,7 +1102,7 @@ sap.ui.define([
 					sap.m.MessageToast.show("Destination Failed");
 				},
 				success: function (data) {
-					sap.m.MessageToast.show("Data Successfully Loaded");
+					// sap.m.MessageToast.show("Data Successfully Loaded");
 					console.log(data);
 
 					oAdminModel.setProperty("/Details", data);
@@ -1124,7 +1124,7 @@ sap.ui.define([
 					sap.m.MessageToast.show("Destination Failed");
 				},
 				success: function (data, status, response) {
-					sap.m.MessageToast.show("Data Successfully Loaded");
+					// sap.m.MessageToast.show("Data Successfully Loaded");
 					oAdminModel.setProperty("/BlackListed", data);
 
 					// oToken = response.getResponseHeader("x-csrf-token");
@@ -1145,7 +1145,7 @@ sap.ui.define([
 					sap.m.MessageToast.show("Destination Failed");
 				},
 				success: function (data) {
-					sap.m.MessageToast.show("Data Successfully Loaded");
+					// sap.m.MessageToast.show("Data Successfully Loaded");
 
 					oAdminModel.setProperty("/RoomStatus", data);
 
@@ -1165,7 +1165,7 @@ sap.ui.define([
 					sap.m.MessageToast.show("Destination Failed");
 				},
 				success: function (data, status, response) {
-					sap.m.MessageToast.show("Data Successfully Loaded");
+					// sap.m.MessageToast.show("Data Successfully Loaded");
 					// oToken = response.getResponseHeader("x-csrf-token");
 					// // that.getView().getModel("oToken").setProperty("/csrftoken", oToken);
 					oAdminModel.setProperty("/Requests", data);
@@ -1186,7 +1186,7 @@ sap.ui.define([
 					sap.m.MessageToast.show("Destination Failed");
 				},
 				success: function (data, status, response) {
-					sap.m.MessageToast.show("Data Successfully Loaded");
+					// sap.m.MessageToast.show("Data Successfully Loaded");
 					console.log(data);
 					// oToken = response.getResponseHeader("x-csrf-token");
 					// // that.getView().getModel("oToken").setProperty("/csrftoken", oToken);
@@ -1208,7 +1208,7 @@ sap.ui.define([
 					sap.m.MessageToast.show("Destination Failed");
 				},
 				success: function (data) {
-					sap.m.MessageToast.show("Data Successfully Loaded");
+					// sap.m.MessageToast.show("Data Successfully Loaded");
 
 					oAdminModel.setProperty("/FrequentVisits", data);
 
@@ -1381,7 +1381,7 @@ sap.ui.define([
 					sap.m.MessageToast.show("Destination Failed");
 				},
 				success: function (data) {
-					sap.m.MessageToast.show("Data Successfully Loaded");
+					// sap.m.MessageToast.show("Data Successfully Loaded");
 					oAdminModel.setProperty(sProperty, data);
 
 				},

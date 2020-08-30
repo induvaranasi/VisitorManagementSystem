@@ -239,7 +239,7 @@ sap.ui.define([
 
 				// dataType: "json",
 				success: function (data, status, response) {
-					sap.m.MessageToast.show("Success");
+					// sap.m.MessageToast.show("Success");
 					console.log(status);
 
 					// that.fnGetData();
@@ -301,7 +301,7 @@ sap.ui.define([
 				success: function (data, status, response) {
 					console.log(response);
 					if (response.status === 200) {
-						sap.m.MessageToast.show("Success");
+						// sap.m.MessageToast.show("Success");
 						// console.log(data);
 						oHostModel.setProperty("/AvailableRooms", data);
 
@@ -343,7 +343,7 @@ sap.ui.define([
 
 				// dataType: "json",
 				success: function (data, status, response) {
-					sap.m.MessageToast.show("Success");
+					// sap.m.MessageToast.show("Success");
 					console.log(data);
 					oHostModel.setProperty("/AvailableParkingSlots", data);
 					console.log(status);
@@ -385,7 +385,7 @@ sap.ui.define([
 
 				// dataType: "json",
 				success: function (data, status, response) {
-					sap.m.MessageToast.show("Success");
+					// sap.m.MessageToast.show("Success");
 					console.log(data);
 					oHostModel.setProperty("/AvailableParkingSlots", data);
 					console.log(status);
@@ -460,7 +460,7 @@ sap.ui.define([
 
 							// dataType: "json",
 							success: function (data, status, response) {
-								sap.m.MessageToast.show("Success");
+								// sap.m.MessageToast.show("Success");
 								console.log(data);
 
 								// that.fnGetData();
@@ -720,7 +720,7 @@ sap.ui.define([
 							sap.m.MessageToast.show("Delivery Accepted");
 
 						} else if (data.status === 300) {
-							sap.m.MessageToast.show("Your Delivery Needs Signature");
+							MessageBox.information("Your Delivery Needs Signature");
 						} else {
 							sap.m.MessageToast.show("Something Went Wrong");
 						}
@@ -1087,7 +1087,7 @@ sap.ui.define([
 					sap.m.MessageToast.show("Destination Failed");
 				},
 				success: function (data) {
-					sap.m.MessageToast.show("Data Successfully Loaded");
+					// sap.m.MessageToast.show("Data Successfully Loaded");
 					// console.log(data);
 					oHostModel.setProperty(sProperty, data);
 

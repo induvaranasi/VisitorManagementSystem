@@ -75,7 +75,7 @@ sap.ui.define([
 					sap.m.MessageToast.show("Destination Failed");
 				},
 				success: function (data) {
-					sap.m.MessageToast.show("Data Successfully Loaded");
+					// sap.m.MessageToast.show("Data Successfully Loaded");
 
 					oVisitorModel.setProperty("/getEmployeeList", data);
 					console.log(oVisitorModel);
@@ -151,7 +151,7 @@ sap.ui.define([
 						sap.m.MessageToast.show("Destination Failed");
 					},
 					success: function (data) {
-						sap.m.MessageToast.show("Data Successfully Loaded");
+						// sap.m.MessageToast.show("Data Successfully Loaded");
 						console.log(data);
 						if (data.status === 200) {
 							MessageBox.success(
@@ -193,7 +193,7 @@ sap.ui.define([
 					sap.m.MessageToast.show("Destination Failed");
 				},
 				success: function (data) {
-					sap.m.MessageToast.show("Data Successfully Loaded");
+					// sap.m.MessageToast.show("Data Successfully Loaded");
 					console.log(data);
 					if (data.status === 200) {
 						oVisitorModel.setProperty("/visitorData", data);
@@ -240,7 +240,7 @@ sap.ui.define([
 						sap.m.MessageToast.show("Destination Failed");
 					},
 					success: function (data) {
-						sap.m.MessageToast.show("Data Successfully Loaded");
+						// sap.m.MessageToast.show("Data Successfully Loaded");
 						console.log(data);
 						if (data.status === 200) {
 							Fragment.byId("idaddAnother", "label").setVisible(true);
@@ -278,7 +278,7 @@ sap.ui.define([
 					sap.m.MessageToast.show("Destination Failed");
 				},
 				success: function (data) {
-					sap.m.MessageToast.show("Data Successfully Loaded");
+					// sap.m.MessageToast.show("Data Successfully Loaded");
 					console.log(data);
 					if (data.status === 200) {
 						oVisitorModel.setProperty("/addvisitorData", data);
