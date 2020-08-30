@@ -168,7 +168,7 @@
 										<Text text="Purpose" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Date Visited" class="styleColumn"/>
+										<Text text="Organization" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
 										<Text text="Status" class="styleColumn"/>
@@ -212,7 +212,7 @@
 										<Text text="Purpose" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Date Visited" class="styleColumn"/>
+										<Text text="Organization" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
 										<Text text="Status" class="styleColumn"/>
@@ -260,7 +260,7 @@
 										<Text text="Purpose" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="Date Visited" class="styleColumn"/>
+										<Text text="Organization" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
 										<Text text="Status" class="styleColumn"/>
