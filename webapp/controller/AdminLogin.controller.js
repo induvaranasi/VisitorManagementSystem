@@ -119,6 +119,7 @@ sap.ui.define([
 				},
 				error: function (e) {
 					MessageBox.information("Server Not Responding");
+					oDialog.close();
 					console.log(e);
 					// that.getRouter().navTo("AdminDetails");
 				}

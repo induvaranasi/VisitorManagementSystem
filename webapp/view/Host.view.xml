@@ -297,7 +297,7 @@
 									</OverflowToolbar>
 								</headerToolbar>
 								<columns>
-								<Column width="12em">
+									<Column width="12em">
 										<Text text="{i18n>VisitorName}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Tablet" demandPopin="true">
@@ -310,13 +310,13 @@
 										<Text text="{i18n>Purpose}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Organization}" class="styleColumn"/>
+										<Text text="{i18n>Date}" class="styleColumn"/>
 									</Column>
 									<Column minScreenWidth="Desktop" demandPopin="true">
-										<Text text="{i18n>Status}" class="styleColumn"/>
+										<Text text="{i18n>Organization}" class="styleColumn"/>
 									</Column>
-									<!--<Column>-->
-									<!--	<Text text="Action"/>-->
+									<!--<Column minScreenWidth="Desktop" demandPopin="true">-->
+									<!--	<Text text="{i18n>Status}" class="styleColumn"/>-->
 									<!--</Column>-->
 								</columns>
 								<items>

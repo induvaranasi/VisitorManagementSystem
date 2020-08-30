@@ -287,7 +287,7 @@ sap.ui.define([
 					success: function (data, status, response) {
 						if (data.status === 200) {
 							sap.m.MessageToast.show("Delivery Accepted");
-
+							that.fnGetNotificationsData();
 						} else if (data.status === 300) {
 							MessageBox.information("Your Delivery Needs Signature");
 						} else {
@@ -315,6 +315,7 @@ sap.ui.define([
 
 						if (data.status === 200) {
 							sap.m.MessageToast.show("Meeting Accepted");
+							that.fnGetNotificationsData();
 						} else {
 							sap.m.MessageToast.show("Something Went Wrong");
 						}

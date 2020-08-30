@@ -12,7 +12,7 @@
 							<Input id="idEmail" value="{oHostModel>/addvisitorData/email}" type="Email" liveChange="handleUserInput"></Input>
 							<Label text="Locality"/>
 							<Input id="idLocality" value="{oHostModel>/addvisitorData/locality}"></Input>
-							<Label text="ID Type" required="true"></Label>
+							<Label text="ID Type"></Label>
 							<ComboBox selectedKey="{oHostModel>/addvisitorData/proofType}">
 								<core:Item text="Aadhar" key="Aadhar"/>
 								<core:Item text="Passport" key="Passport"/>
@@ -37,7 +37,7 @@
 			<f:SimpleForm>
 				<f:content>
 					<core:Title text="Parking Details"></core:Title>
-					<Label text="vehicle Type"></Label>
+					<Label text="Vehicle Type"></Label>
 					<ComboBox selectedKey="{oHostModel>/addvisitorData/parkingType}">
 						<core:Item text="Two Wheeler" key="2"></core:Item>
 						<core:Item text="Four Wheeler" key="4"></core:Item>

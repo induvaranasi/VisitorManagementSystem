@@ -19,7 +19,7 @@
 					<Input id="idLocality" value="{oHostModel>/visitorData/locality}"></Input>
 					<Label text="Organization"/>
 					<Input id="idOrganization" value="{oHostModel>/visitorData/organisation}"></Input>
-					<Label text="ID Type" required="true"></Label>
+					<Label text="ID Type"></Label>
 					<ComboBox selectedKey="{oHostModel>/visitorData/proofType}">
 						<core:Item text="Aadhar" key="Aadhar"/>
 						<core:Item text="Passport" key="Passport"/>
@@ -54,9 +54,11 @@
 					<Label text="Capacity" required="true"></Label>
 					<Input id="idCapacity" value="{oHostModel>/oMeetingData/capacity}"></Input>
 					<Label text="Choose Your Room Facilities"/>
-					<CheckBox id="idwifi" text="Wi-Fi" select="onCheck"/>
-					<CheckBox id="idconference" text="Conference Calling" select="onCheck"/>
-					<CheckBox id="idboard" text="Board" select="onCheck"/>
+					<VBox>
+						<CheckBox id="idwifi" text="Wi-Fi" select="onCheck"/>
+						<CheckBox id="idconference" text="Conference Calling" select="onCheck"/>
+						<CheckBox id="idboard" text="Board" select="onCheck"/>
+					</VBox>
 					<Button text="Availability" type="Success" press="onAvailabilityPress"></Button>
 					<Label text="Available Rooms"/>
 					<ComboBox id="idRoomAvailability" items="{oHostModel>/AvailableRooms}" selectedKey="{oHostModel>/oMeetingData/rId}" visible="false"
@@ -68,7 +70,7 @@
 			<f:SimpleForm>
 				<f:content>
 					<core:Title text="Parking Details"></core:Title>
-					<Label text="vehicle Type"></Label>
+					<Label text="Vehicle Type"></Label>
 					<ComboBox selectedKey="{oHostModel>/visitorData/parkingType}">
 						<core:Item text="Two Wheeler" key="2"></core:Item>
 						<core:Item text="Four Wheeler" key="4"></core:Item>

@@ -148,6 +148,22 @@ sap.ui.define([
 			var oBinding = oList.getBinding("items");
 			oBinding.filter(aFilters, "Application");
 		},
+		onSearchDelivery: function (oEvent) {
+			// add filter for search
+			var aFilters = [];
+			var sQuery = oEvent.getSource().getValue();
+			if (sQuery && sQuery.length > 0) {
+				var filter = new Filter("hostName", FilterOperator.Contains, sQuery);
+				aFilters.push(filter);
+			}
+
+			// update list binding
+			// var oList = this.byId("idVisitorsTable");
+			var oList = oEvent.getSource().getParent().getParent();
+			var oBinding = oList.getBinding("items");
+			oBinding.filter(aFilters, "Application");
+		},
+		
 		fnGetNotificationsData: function () {
 			var oSecurityModel = this.getView().getModel("oSecurityModel");
 			var oHostModel = this.getOwnerComponent().getModel("oHostModel");

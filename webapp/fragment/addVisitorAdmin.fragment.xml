@@ -16,7 +16,7 @@
 							<!--<DatePicker id="DP1" placeholder="Enter Date ..." value="{oAdminModel>/oFormData/date}"/>-->
 							<!--<Label text="Meeting Start Time" required="true"/>-->
 							<!--<TimePicker id="TP1" value="{oAdminModel>/oFormData/beginTime}" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange"/>-->
-							<Label text="ID Type" required="true"></Label>
+							<Label text="ID Type"></Label>
 							<ComboBox selectedKey="{oAdminModel>/addvisitorData/proofType}">
 								<core:Item text="Aadhar" key="Aadhar"/>
 								<core:Item text="Passport" key="Passport"/>
@@ -45,7 +45,7 @@
 			<f:SimpleForm>
 				<f:content>
 					<core:Title text="Parking Details"></core:Title>
-					<Label text="vehicle Type"></Label>
+					<Label text="Vehicle Type"></Label>
 					<ComboBox selectedKey="{oAdminModel>/addvisitorData/parkingType}">
 						<core:Item text="Two Wheeler" key="2"></core:Item>
 						<core:Item text="Four Wheeler" key="4"></core:Item>

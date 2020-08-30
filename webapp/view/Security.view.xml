@@ -392,7 +392,7 @@
 										<content>
 											<Title text="Recent Delivery" level="H3"/>
 											<ToolbarSpacer></ToolbarSpacer>
-											<SearchField width="20%" liveChange="onSearch"></SearchField>
+											<SearchField width="20%" liveChange="onSearchDelivery"></SearchField>
 										</content>
 									</OverflowToolbar>
 								</headerToolbar>
