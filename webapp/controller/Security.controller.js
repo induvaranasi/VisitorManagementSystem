@@ -491,12 +491,12 @@ sap.ui.define([
 			// var oSecurityModel = this.getView().getModel("oSecurityModel");
 			var obj = oSecurityModel.getProperty("/oDeliveryData");
 			// console.log(obj);
-			var payload = {
-				"date": date,
-				"deliveryType": sSignature,
-				"mobileNo": obj.mobileNo
-			};
-			console.log(payload);
+			// var payload = {
+			// 	"date": date,
+			// 	"deliveryType": sSignature,
+			// 	"mobileNo": obj.mobileNo
+			// };
+			// console.log(payload);
 			$.ajax({
 				url: "/VMS_Service/security/addDelivery",
 				type: "POST",
