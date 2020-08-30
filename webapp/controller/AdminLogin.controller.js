@@ -66,9 +66,9 @@ sap.ui.define([
 		onLoginPress: function () {
 			var oDialog = new sap.m.BusyDialog();
 			oDialog.open();
-			setTimeout(function () {
-				oDialog.close();
-			}, 3000);
+			// setTimeout(function () {
+			// 	oDialog.close();
+			// }, 3000);
 			var that = this;
 			var sUrl = "/VMS_Service/admin/login";
 			var oSecurityModel = this.getOwnerComponent().getModel("oSecurityModel");
@@ -95,6 +95,7 @@ sap.ui.define([
 				// },
 				dataType: "json",
 				success: function (data, status, response) {
+					oDialog.close();
 					sap.m.MessageToast.show("Success");
 					oLoginModel.setProperty("/userDetails", data);
 					console.log(data);
