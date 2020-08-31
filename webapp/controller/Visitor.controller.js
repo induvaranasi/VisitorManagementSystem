@@ -450,10 +450,11 @@ sap.ui.define([
 							);
 						} else if (data.status === 300) {
 							sap.m.MessageToast.show("Having a Meeting Clash");
+						} else if (data.status === 301) {
+							MessageBox.information("End time can't be less than Begin time");
 						} else {
 							sap.m.MessageToast.show("Something Went Wrong");
 						}
-
 						console.log(status);
 						console.log(response);
 						oVisitorModel.setProperty("/oMeetingData", {});

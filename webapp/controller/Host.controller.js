@@ -783,6 +783,12 @@ sap.ui.define([
 						// that.fnGetData(sUrl1, "/BlackListed");
 						// that.fnGetData(sUrl2, "/CheckOutDetails");
 						// that.fnGetData(sUrl3, "/Details");
+						var eId = oHostModel.getProperty("/userDetails").eId;
+						var date = oHostModel.getProperty("/date");
+						var sUrl = "/VMS_Service/employee/getUpcomingMeetings?eId=" + eId + "&date=" + date;
+
+						that.fnGetData(sUrl, "/UpcomingMeetings");
+
 					},
 					error: function (e) {
 						sap.m.MessageToast.show("fail");
@@ -797,6 +803,7 @@ sap.ui.define([
 			// oList.removeItem(oSource);
 		},
 		onRejectPress: function (oEvent) {
+			var that = this;
 			var oHostModel = this.getView().getModel("oHostModel");
 			var oSource = oEvent.getSource();
 			var spath = oSource.getParent().getParent().getBindingContextPath();
@@ -867,6 +874,11 @@ sap.ui.define([
 						// that.fnGetData(sUrl1, "/BlackListed");
 						// that.fnGetData(sUrl2, "/CheckOutDetails");
 						// that.fnGetData(sUrl3, "/Details");
+						var eId = oHostModel.getProperty("/userDetails").eId;
+						var date = oHostModel.getProperty("/date");
+						var sUrl = "/VMS_Service/employee/getUpcomingMeetings?eId=" + eId + "&date=" + date;
+
+						that.fnGetData(sUrl, "/UpcomingMeetings");
 					},
 					error: function (e) {
 						sap.m.MessageToast.show("fail");

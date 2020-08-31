@@ -308,6 +308,7 @@ sap.ui.define([
 			this.getView().byId("idParkingAvailability").setVisible(false);
 		},
 		onCheckOut: function () {
+			var that = this;
 			var oParkingModel = this.getView().getModel("oParkingModel");
 			var pId = oParkingModel.getProperty("/sSelectedKey");
 			$.ajax({
@@ -324,6 +325,8 @@ sap.ui.define([
 					MessageBox.success("Thank You For Visiting!!Visit Again!!");
 					oParkingModel.setProperty("/sSelectedKey", "");
 					console.log(data);
+					var sUrl = "/VMS_Service/visitor/getAllParking";
+					that.fnGetData(sUrl, "/AllParkingSlots");
 
 					// that.fnGetData();
 
@@ -336,7 +339,7 @@ sap.ui.define([
 		},
 		fnGetData: function (sUrl, sProperty) {
 			var that = this;
-			var oSecurityModel = that.getOwnerComponent().getModel("oSecurityModel");
+			var oParkingModel = that.getView().getModel("oParkingModel");
 			$.ajax({
 				url: sUrl,
 				data: null,
@@ -351,7 +354,7 @@ sap.ui.define([
 				},
 				success: function (data) {
 					// sap.m.MessageToast.show("Data Successfully Loaded");
-					oSecurityModel.setProperty(sProperty, data);
+					oParkingModel.setProperty(sProperty, data);
 
 				},
 				type: "GET"
