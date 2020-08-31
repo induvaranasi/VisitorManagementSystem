@@ -1126,11 +1126,14 @@ sap.ui.define([
 			var that = this;
 			var oLoginModel = that.getOwnerComponent().getModel("oLoginModel");
 			var obj = oLoginModel.getProperty("/oLoginFormData");
+			var obj2 = oLoginModel.getProperty("/userDetails");
 			var oHostModel = that.getView().getModel("oHostModel");
 			var eId = oHostModel.getProperty("/userDetails").eId;
 			var payload = {
 				"username": obj.username,
 				"password": obj.password,
+				"email": obj2.email,
+				"contactNo": obj2.contactNo,
 				"eId": eId
 			};
 			$.ajax({

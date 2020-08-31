@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
-	<Dialog title="Edit Profile" draggable="true" contentWidth="12rem" contentHeight="10rem" resizable="true" class="sapUiSizeCompact"
+	<Dialog title="Edit Profile" draggable="true" contentWidth="12rem" contentHeight="17rem" resizable="true" class="sapUiSizeCompact"
 		verticalScrolling="true">
 		<content>
 			<VBox class="sapUiSmallMarginBegin sapUiSmallMarginEnd">
@@ -7,8 +7,10 @@
 				<Input value="{oLoginModel>/oLoginFormData/username}"></Input>
 				<Label text="Password" class="sapUiTinyMarginTop"></Label>
 				<Input value="{oLoginModel>/oLoginFormData/password}"></Input>
-				<!--<Label text="Mobile No" class="sapUiTinyMarginTop"></Label>-->
-				<!--<Input value="{oLoginModel>/oLoginFormData/contactNo}"></Input>-->
+				<Label text="Mail" class="sapUiTinyMarginTop"></Label>
+				<Input value="{oLoginModel>/userDetails/email}"></Input>
+				<Label text="Mobile No" class="sapUiTinyMarginTop"></Label>
+				<Input value="{oLoginModel>/userDetails/contactNo}"></Input>
 			</VBox>
 		</content>
 		<Toolbar>

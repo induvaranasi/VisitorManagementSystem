@@ -272,7 +272,7 @@ sap.ui.define([
 			var oSecurityModel = this.getView().getModel("oSecurityModel");
 			var date = oSecurityModel.getProperty("/date");
 			var sUrl = "/VMS_Service/security/getExpectedVisitors?date=" + date;
-			this.fnGetData(sUrl7, "/ExpectedVisitorDetails");
+			this.fnGetData(sUrl, "/ExpectedVisitorDetails");
 			this.getView().byId("idCheckInTable").setVisible(false);
 			this.getView().byId("idCheckOutTable").setVisible(false);
 			this.getView().byId("idYetToVisitTable").setVisible(true);
@@ -665,11 +665,14 @@ sap.ui.define([
 			var that = this;
 			var oLoginModel = that.getOwnerComponent().getModel("oLoginModel");
 			var obj = oLoginModel.getProperty("/oLoginFormData");
+			var obj2 = oLoginModel.getProperty("/userDetails");
 			var oSecurityModel = that.getView().getModel("oSecurityModel");
 			var eId = oSecurityModel.getProperty("/userDetails").eId;
 			var payload = {
 				"username": obj.username,
 				"password": obj.password,
+				"email": obj2.email,
+				"contactNo": obj2.contactNo,
 				"eId": eId
 			};
 			$.ajax({
