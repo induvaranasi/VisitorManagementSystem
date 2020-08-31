@@ -1435,6 +1435,9 @@ sap.ui.define([
 
 				dataType: "json",
 				success: function (data, status, response) {
+					var sUrl = "wss://projectvmsp2002476966trial.hanatrial.ondemand.com/vms/chat/" + eId;
+					var webSocket = new WebSocket(sUrl);
+					webSocket.close();
 					sap.m.MessageToast.show("Successfully LoggedOut");
 					that.getRouter().navTo("RouteApp");
 					console.log(response);

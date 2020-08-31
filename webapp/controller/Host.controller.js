@@ -894,6 +894,11 @@ sap.ui.define([
 
 		},
 		CheckInPress: function () {
+			var oHostModel = this.getView().getModel("oHostModel");
+			var date = oHostModel.getProperty("/date");
+			var eId = oHostModel.getProperty("/userDetails").eId;
+			var sUrl = "/VMS_Service/employee/getCheckedInVisitors?eId=" + eId + "&date=" + date;
+			this.fnGetData(sUrl, "/CheckInDetails");
 			this.getView().byId("idCheckInTable").setVisible(true);
 			this.getView().byId("idCheckOutTable").setVisible(false);
 			this.getView().byId("idYetToVisitTable").setVisible(false);
@@ -903,6 +908,11 @@ sap.ui.define([
 			this.getView().byId("idCheckin").addStyleClass("HomeStyleTile");
 		},
 		CheckOutPress: function () {
+			var oHostModel = this.getView().getModel("oHostModel");
+			var date = oHostModel.getProperty("/date");
+			var eId = oHostModel.getProperty("/userDetails").eId;
+			var sUrl = "/VMS_Service/employee/getCheckedOutVisitors?eId=" + eId + "&date=" + date;
+			this.fnGetData(sUrl, "/CheckOutDetails");
 			this.getView().byId("idCheckInTable").setVisible(false);
 			this.getView().byId("idCheckOutTable").setVisible(true);
 			this.getView().byId("idYetToVisitTable").setVisible(false);
@@ -912,6 +922,11 @@ sap.ui.define([
 			this.getView().byId("idCheckout").addStyleClass("HomeStyleTile");
 		},
 		YetToVisitPress: function () {
+			var oHostModel = this.getView().getModel("oHostModel");
+			var date = oHostModel.getProperty("/date");
+			var eId = oHostModel.getProperty("/userDetails").eId;
+			var sUrl = "/VMS_Service/employee/getExpectedVisitors?eId=" + eId + "&date=" + date;
+			this.fnGetData(sUrl, "/ExpectedVisitorDetails");
 			this.getView().byId("idCheckInTable").setVisible(false);
 			this.getView().byId("idCheckOutTable").setVisible(false);
 			this.getView().byId("idYetToVisitTable").setVisible(true);
@@ -1153,6 +1168,9 @@ sap.ui.define([
 
 				dataType: "json",
 				success: function (data, status, response) {
+					var sUrl = "wss://projectvmsp2002476966trial.hanatrial.ondemand.com/vms/chat/" + eId;
+					var webSocket = new WebSocket(sUrl);
+					webSocket.close();
 					sap.m.MessageToast.show("Successfully LoggedOut");
 					that.getRouter().navTo("RouteApp");
 					console.log(response);

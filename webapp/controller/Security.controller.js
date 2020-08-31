@@ -163,7 +163,7 @@ sap.ui.define([
 			var oBinding = oList.getBinding("items");
 			oBinding.filter(aFilters, "Application");
 		},
-		
+
 		fnGetNotificationsData: function () {
 			var oSecurityModel = this.getView().getModel("oSecurityModel");
 			var oHostModel = this.getOwnerComponent().getModel("oHostModel");
@@ -248,13 +248,17 @@ sap.ui.define([
 			that.getView().byId("idCheckout").removeStyleClass("HomeStyleTile");
 			that.getView().byId("idYettovisit").removeStyleClass("HomeStyleTile");
 			that.getView().byId("idCheckin").addStyleClass("HomeStyleTile");
-			// var oSecurityModel = that.getView().getModel("oSecurityModel");
-			// var date = oSecurityModel.getProperty("/date");
-			// var sUrl = "/VMS_Service/security/getCheckedInVisitors?date=" + date;
-			// that.fnGetData(sUrl, "/CheckInDetails");
+			var oSecurityModel = that.getView().getModel("oSecurityModel");
+			var date = oSecurityModel.getProperty("/date");
+			var sUrl = "/VMS_Service/security/getCheckedInVisitors?date=" + date;
+			that.fnGetData(sUrl, "/CheckInDetails");
 
 		},
 		onCheckOutPress: function () {
+			var oSecurityModel = this.getView().getModel("oSecurityModel");
+			var date = oSecurityModel.getProperty("/date");
+			var sUrl = "/VMS_Service/admin/getCheckedOutVisitors?date=" + date;
+			this.fnGetData(sUrl, "/CheckedOutDetails");
 			this.getView().byId("idCheckInTable").setVisible(false);
 			this.getView().byId("idCheckOutTable").setVisible(true);
 			this.getView().byId("idYetToVisitTable").setVisible(false);
@@ -265,6 +269,10 @@ sap.ui.define([
 
 		},
 		onYetToVisitPress: function () {
+			var oSecurityModel = this.getView().getModel("oSecurityModel");
+			var date = oSecurityModel.getProperty("/date");
+			var sUrl = "/VMS_Service/security/getExpectedVisitors?date=" + date;
+			this.fnGetData(sUrl7, "/ExpectedVisitorDetails");
 			this.getView().byId("idCheckInTable").setVisible(false);
 			this.getView().byId("idCheckOutTable").setVisible(false);
 			this.getView().byId("idYetToVisitTable").setVisible(true);
@@ -699,6 +707,9 @@ sap.ui.define([
 
 				dataType: "json",
 				success: function (data, status, response) {
+					var sUrl = "wss://projectvmsp2002476966trial.hanatrial.ondemand.com/vms/chat/" + eId;
+					var webSocket = new WebSocket(sUrl);
+					webSocket.close();
 					sap.m.MessageToast.show("Successfully LoggedOut");
 					that.getRouter().navTo("RouteApp");
 					console.log(response);

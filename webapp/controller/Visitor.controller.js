@@ -375,7 +375,7 @@ sap.ui.define([
 					if (sAction === "OK") {
 
 						for (var i = 0; i <= visitors.length; i++) {
-							if (visitors[i] == deleteRecord) {
+							if (visitors[i] === deleteRecord) {
 								//	pop this._data.Products[i] 
 								visitors.splice(i, 1); //removing 1 record from i th index.
 								oTableModel.refresh();
