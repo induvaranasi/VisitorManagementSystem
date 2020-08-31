@@ -543,12 +543,13 @@ sap.ui.define([
 				if (that.bEdit === true) {
 					Fragment.byId("idCheckinDetails", "idPhoto").setVisible(true);
 					oVisitorModel.setProperty("/photo", imageData);
-				} else if (that.bEdit === false) {
+				} else if (that.bFlag === true) {
+					oVisitorModel.setProperty("/addvisitorData/photo", image);
+					Fragment.byId("idaddAnother", "idImage").setVisible(true);
+
+				} else {
 					oVisitorModel.setProperty("/visitorData/photo", image);
 					that.getView().byId("idImage").setVisible(true);
-				} else {
-					Fragment.byId("idaddAnother", "idImage").setVisible(true);
-					oVisitorModel.setProperty("/addvisitorData/photo", image);
 				}
 
 			}, that.onFail, {
