@@ -1391,6 +1391,7 @@ sap.ui.define([
 		},
 		onEditProfileConfirm: function () {
 			var that = this;
+			// var edit =
 			var oLoginModel = that.getOwnerComponent().getModel("oLoginModel");
 			var obj = oLoginModel.getProperty("/oLoginFormData");
 			var obj2 = oLoginModel.getProperty("/userDetails");
