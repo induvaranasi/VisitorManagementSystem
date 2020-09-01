@@ -28,7 +28,7 @@
 			</tnt:header>
 			<tnt:sideContent>
 				<tnt:SideNavigation expanded="true" itemSelect=".onItemSelect" class="masterPage">
-					<tnt:NavigationList >
+					<tnt:NavigationList>
 						<tnt:NavigationListItem icon="sap-icon://bbyd-dashboard" text="Dashboard" key="detail1"/>
 						<tnt:NavigationListItem icon="sap-icon://activity-individual" text="Pre-registration" key="detail2"/>
 						<tnt:NavigationListItem icon="sap-icon://employee-rejections" text="BlackListed Visitors" key="detail3"/>

@@ -202,12 +202,18 @@ html.sap-desktop .sapMGT:hover:not(.sapMGTPressActive):not(.sapMGTBackgroundImag
     margin-left: auto;
     width: 90%;
     height: 550px;
-   
 }
 
 .styleRegisterForm.sapMFlexBoxBGTransparent {
     background-color: white;
 }
+
+.sapTntNavLIItemSelected:not(.sapTntNavLIItemDisabled) {
+    border-bottom: 1px solid #0854a0;
+    background-color: #496b8a !important;
+}
+
+
 /*.styleITB .sapMITBContent {*/
 
 
