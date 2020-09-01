@@ -92,6 +92,7 @@ sap.ui.define([
 			this.fndoajax(sUrl12, "/CheckOutDetails");
 			var sUrl13 = "/VMS_Service/admin/getExpectedVisitors?date=" + newdate;
 			this.fndoajax(sUrl13, "/ExpectedVisitorDetails");
+			var sUrl1 = "/VMS_Service/admin/getAllVisitorHistory?date=" + newdate;
 			console.log(oAdminModel);
 			var oViewData = {
 				"accept": "Accept",
@@ -169,6 +170,7 @@ sap.ui.define([
 					oAdminModel.setProperty("/Notificationcount", countupdated);
 					MessageBox.information(msg.content);
 					that.fndoajax(sUrl, "/CheckInDetails");
+					that.fndoajax(sUrl1,"/Details");
 				}
 
 			};

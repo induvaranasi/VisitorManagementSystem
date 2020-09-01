@@ -115,7 +115,8 @@ sap.ui.define([
 					oSecurityModel.setProperty("/Notificationcount", countupdated);
 					MessageBox.information(msg.content);
 					that.fnGetData(sUrl4, "/DeliveryDetails");
-
+                    that.fnGetData(sUrl1, "/Details");
+                    that.fnGetData(sUrl5, "/CheckInDetails");
 				}
 				// count = count + 1;
 				// var countupdated = count.toString();
