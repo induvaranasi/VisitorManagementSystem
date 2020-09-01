@@ -1051,7 +1051,7 @@ sap.ui.define([
 			var sUrl1 = "/VMS_Service/employee/getAllBlacklistedVisitors?eId=" + eId;
 			var sUrl2 = "/VMS_Service/employee/getCheckedOutVisitors?eId=" + eId + "&date=" + date;
 			var sUrl3 = "/VMS_Service/employee/getVisitorHistory?eId=" + eId + "&date=" + date;
-			var oSource = oHostModel.getProperty("/BlackListedSource");
+			// var oSource = oHostModel.getProperty("/BlackListedSource");
 			var spath = oHostModel.getProperty("/BlackListedPath");
 			var obj = oHostModel.getProperty(spath);
 			console.log(obj);
@@ -1087,7 +1087,7 @@ sap.ui.define([
 					setTimeout(function () {
 						oDialog.close();
 					}, 3000);
-					oSource.setEnabled(false);
+					// oSource.setEnabled(false);
 					if (data.status === 300) {
 						MessageBox.warning("Already Blaacklisted");
 					}

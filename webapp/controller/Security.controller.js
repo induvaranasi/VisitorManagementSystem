@@ -441,7 +441,7 @@ sap.ui.define([
 			var sUrl1 = "/VMS_Service/admin/getAllBlackListedVisitors";
 			var sUrl2 = "/VMS_Service/admin/getCheckedOutVisitors?date=" + date;
 			var sUrl3 = "/VMS_Service/security/getAllVisitorHistory?date=" + date;
-			var oSource = oSecurityModel.getProperty("/BlackListedSource");
+			// var oSource = oSecurityModel.getProperty("/BlackListedSource");
 			var spath = oSecurityModel.getProperty("/BlackListedPath");
 			console.log(spath);
 			var obj = oSecurityModel.getProperty(spath);
@@ -479,7 +479,7 @@ sap.ui.define([
 					that.fnGetData(sUrl2, "/CheckedOutDetails");
 					that.fnGetData(sUrl1, "/BlackListed");
 					that.fnGetData(sUrl3, "/Details");
-					oSource.setEnabled(false);
+					// oSource.setEnabled(false);
 				},
 				error: function (e) {
 					sap.m.MessageToast.show("fail");

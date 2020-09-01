@@ -1271,7 +1271,7 @@ sap.ui.define([
 			var sUrl1 = "/VMS_Service/admin/getAllBlackListedVisitors";
 			var sUrl2 = "/VMS_Service/admin/getCheckedOutVisitors?date=" + date;
 			var sUrl3 = "/VMS_Service/admin/getAllVisitorHistory?date=" + date;
-			var oSource = oAdminModel.getProperty("/BlackListedSource");
+			// var oSource = oAdminModel.getProperty("/BlackListedSource");
 			var spath = oAdminModel.getProperty("/BlackListedPath");
 			console.log(spath);
 			var obj = oAdminModel.getProperty(spath);
@@ -1309,7 +1309,7 @@ sap.ui.define([
 					that.fndoajax(sUrl2, "/CheckedOutDetails");
 					that.fndoajax(sUrl1, "/BlackListed");
 					that.fndoajax(sUrl3, "/Details");
-					oSource.setEnabled(false);
+					// oSource.setEnabled(false);
 					if (data.status === 300) {
 						MessageBox.warning("Already Blacklisted");
 					}
