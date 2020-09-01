@@ -112,9 +112,9 @@ sap.ui.define([
 			// var oTokenModel = new JSONModel(token);
 			// this.getView().setModel(oTokenModel, "oTokenModel");
 			// var sample 
-			var sUrl1 = "/VMS_Service/admin/getPurposePercent";
+			var sUrl10 = "/VMS_Service/admin/getPurposePercent";
 			var sUrl2 = "/VMS_Service/admin/getOrganisationPercent";
-			this.fndoajax(sUrl1, "/PurposePercent");
+			this.fndoajax(sUrl10, "/PurposePercent");
 			this.fndoajax(sUrl2, "/OrganisationPercent");
 			this.fnGetData();
 			this.bFlag = true;
@@ -170,7 +170,7 @@ sap.ui.define([
 					oAdminModel.setProperty("/Notificationcount", countupdated);
 					MessageBox.information(msg.content);
 					that.fndoajax(sUrl, "/CheckInDetails");
-					that.fndoajax(sUrl1,"/Details");
+					that.fndoajax(sUrl1, "/Details");
 				}
 
 			};
@@ -415,6 +415,8 @@ sap.ui.define([
 			var sUrl = "/VMS_Service/admin/getCheckedInVisitors?date=" + date;
 			console.log(sUrl);
 			that.fndoajax(sUrl, "/CheckInDetails");
+			var sUrl1 = "/VMS_Service/admin/getAllVisitorHistory?date=" + date;
+			that.fndoajax(sUrl1, "/Details");
 
 		},
 		onCheckOutPress: function () {
@@ -435,6 +437,8 @@ sap.ui.define([
 			console.log(sUrl);
 			that.fndoajax(sUrl, "/CheckOutDetails");
 			console.log(oAdminModel);
+			var sUrl1 = "/VMS_Service/admin/getAllVisitorHistory?date=" + date;
+			that.fndoajax(sUrl1, "/Details");
 		},
 		onYetToVisitPress: function () {
 			var that = this;

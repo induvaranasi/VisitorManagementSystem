@@ -115,8 +115,8 @@ sap.ui.define([
 					oSecurityModel.setProperty("/Notificationcount", countupdated);
 					MessageBox.information(msg.content);
 					that.fnGetData(sUrl4, "/DeliveryDetails");
-                    that.fnGetData(sUrl1, "/Details");
-                    that.fnGetData(sUrl5, "/CheckInDetails");
+					that.fnGetData(sUrl1, "/Details");
+					that.fnGetData(sUrl5, "/CheckInDetails");
 				}
 				// count = count + 1;
 				// var countupdated = count.toString();
@@ -253,6 +253,8 @@ sap.ui.define([
 			var date = oSecurityModel.getProperty("/date");
 			var sUrl = "/VMS_Service/security/getCheckedInVisitors?date=" + date;
 			that.fnGetData(sUrl, "/CheckInDetails");
+			var sUrl1 = "/VMS_Service/security/getAllVisitorHistory?date=" + date;
+			that.fnGetData(sUrl1, "/Details");
 
 		},
 		onCheckOutPress: function () {
@@ -260,6 +262,8 @@ sap.ui.define([
 			var date = oSecurityModel.getProperty("/date");
 			var sUrl = "/VMS_Service/admin/getCheckedOutVisitors?date=" + date;
 			this.fnGetData(sUrl, "/CheckedOutDetails");
+			var sUrl1 = "/VMS_Service/security/getAllVisitorHistory?date=" + date;
+			this.fnGetData(sUrl1, "/Details");
 			this.getView().byId("idCheckInTable").setVisible(false);
 			this.getView().byId("idCheckOutTable").setVisible(true);
 			this.getView().byId("idYetToVisitTable").setVisible(false);

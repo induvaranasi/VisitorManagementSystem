@@ -899,6 +899,8 @@ sap.ui.define([
 			var eId = oHostModel.getProperty("/userDetails").eId;
 			var sUrl = "/VMS_Service/employee/getCheckedInVisitors?eId=" + eId + "&date=" + date;
 			this.fnGetData(sUrl, "/CheckInDetails");
+			var sUrl1 = "/VMS_Service/employee/getVisitorHistory?eId=" + eId + "&date=" + date;
+			this.fnGetData(sUrl1, "/Details");
 			this.getView().byId("idCheckInTable").setVisible(true);
 			this.getView().byId("idCheckOutTable").setVisible(false);
 			this.getView().byId("idYetToVisitTable").setVisible(false);
@@ -913,6 +915,8 @@ sap.ui.define([
 			var eId = oHostModel.getProperty("/userDetails").eId;
 			var sUrl = "/VMS_Service/employee/getCheckedOutVisitors?eId=" + eId + "&date=" + date;
 			this.fnGetData(sUrl, "/CheckOutDetails");
+			var sUrl1 = "/VMS_Service/employee/getVisitorHistory?eId=" + eId + "&date=" + date;
+			this.fnGetData(sUrl1, "/Details");
 			this.getView().byId("idCheckInTable").setVisible(false);
 			this.getView().byId("idCheckOutTable").setVisible(true);
 			this.getView().byId("idYetToVisitTable").setVisible(false);
