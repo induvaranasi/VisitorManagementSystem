@@ -5,8 +5,22 @@
 				<HBox class="sapUiTinyMarginTop">
 					<!--<Avatar src="data:image/png;base64,{oAdminModel>/userDetails/photo}" displaySize="M" class="sapUiTinyMarginBegin avatarStyle"></Avatar>-->
 					<!--<Label text="Sarath Kumar" design="Bold" class=" sapUiTinyMarginBegin sapUiSmallMarginTop"></Label>-->
-					<Image src="data:image/png;base64,{oSecurityModel>/CheckInVisitorDetails/photo}" alt="Image not found" height="80px" width="80px" class="sapUiTinyMarginBegin avatarStyle"></Image>
+					<Image src="data:image/png;base64,{oSecurityModel>/CheckInVisitorDetails/photo}" alt="Image not found" height="80px" width="80px"
+						class="sapUiTinyMarginBegin avatarStyle"></Image>
 				</HBox>
+				<!--<f:SimpleForm id="idSimpleForm" editable="false">-->
+				<!--	<f:content>-->
+				<!--		<Label text="Visitor Name"></Label>-->
+				<!--		<Text text="{oSecurityModel>/CheckInVisitorDetails/visitorName}"></Text>-->
+				<!--		<Label text="Email"></Label>-->
+				<!--		<Text text="{oSecurityModel>/CheckInVisitorDetails/email}"></Text>-->
+				<!--		<Label text="Host Name"></Label>-->
+				<!--		<Text text="{oSecurityModel>/CheckInVisitorDetails/hostName}"></Text>-->
+				<!--		<Label text="Room Name"></Label>-->
+				<!--		<Text text="{oSecurityModel>/CheckInVisitorDetails/roomName}"></Text>-->
+				<!--		<Label text="Accescard No:"></Label>-->
+				<!--	</f:content>-->
+				<!--</f:SimpleForm>-->
 				<HBox class="sapUiTinyMarginTop">
 					<Label text="Name:" design="Bold" class="sapUiTinyMarginBegin"></Label>
 					<Text text="{oSecurityModel>/CheckInVisitorDetails/visitorName}" class="sapUiTinyMarginBegin"></Text>

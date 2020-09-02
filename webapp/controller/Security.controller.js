@@ -51,14 +51,12 @@ sap.ui.define([
 			this.getView().setModel(oModel, "oSignatureModel");
 			var sUrl1 = "/VMS_Service/security/getAllVisitorHistory?date=" + newdate;
 			var sUrl2 = "/VMS_Service/admin/getAllBlackListedVisitors";
-			var sUrl3 = "/VMS_Service/security/getParkingSlots";
 			var sUrl4 = "/VMS_Service/security/getRecentDelivery?date=" + newdate;
 			var sUrl5 = "/VMS_Service/security/getCheckedInVisitors?date=" + newdate;
 			var sUrl6 = "/VMS_Service/admin/getCheckedOutVisitors?date=" + newdate;
 			var sUrl7 = "/VMS_Service/security/getExpectedVisitors?date=" + newdate;
 
 			this.fnGetData(sUrl1, "/Details");
-			this.fnGetData(sUrl3, "/ParkingDetails");
 			this.fnGetData(sUrl2, "/BlackListed");
 			this.fnGetData(sUrl4, "/DeliveryDetails");
 			this.fnGetData(sUrl5, "/CheckInDetails");

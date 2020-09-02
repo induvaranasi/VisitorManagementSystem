@@ -26,11 +26,11 @@
 				<f:content>
 					<HBox>
 						<VBox width="100%">
-							<Label text="First Name"></Label>
+							<Label text="First Name" required="true"></Label>
 							<Input value="{oVisitorModel>/userDetails/firstName}"></Input>
-							<Label text="Mobile No"></Label>
+							<Label text="Mobile No" required="true"></Label>
 							<Input value="{oVisitorModel>/userDetails/contactNo}"></Input>
-							<Label text="ID Type"></Label>
+							<Label text="ID Type" required="true"></Label>
 							<ComboBox selectedKey="{oVisitorModel>/userDetails/proofType}" width="100%">
 								<core:Item text="Aadhar" key="Aadhar"/>
 								<core:Item text="Passport" key="Passport"/>
@@ -38,17 +38,17 @@
 								<core:Item text="Drving Licence" key="Drving Licence"/>
 								<core:Item text="Pancard" key="Pancard"/>
 							</ComboBox>
-							<Label text="Locality"></Label>
+							<Label text="Locality" required="true"></Label>
 							<Input value="{oVisitorModel>/userDetails/locality}"></Input>
-							<Label text="Organization"></Label>
+							<Label text="Organization" required="true"></Label>
 							<Input value="{oVisitorModel>/userDetails/organisation}"></Input>
 						</VBox>
 						<VBox class="sapUiLargeMarginBegin" width="100%">
-							<Label text="Last Name"></Label>
+							<Label text="Last Name" required="true"></Label>
 							<Input value="{oVisitorModel>/userDetails/lastName}"></Input>
-							<Label text="Mail Id"></Label>
+							<Label text="Mail Id" required="true"></Label>
 							<Input value="{oVisitorModel>/userDetails/email}"></Input>
-							<Label text="ID No"></Label>
+							<Label text="ID No" required="true"></Label>
 							<Input value="{oVisitorModel>/userDetails/proofNo}"></Input>
 							<Label></Label>
 							<HBox>

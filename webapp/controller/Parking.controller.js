@@ -199,6 +199,7 @@ sap.ui.define([
 
 		},
 		onLoginSubmitPress: function () {
+			var that=this;
 			var oParkingModel = this.getView().getModel("oParkingModel");
 			var pId = oParkingModel.getProperty("/visitorParkingData").pId;
 			var vehicleNumber = oParkingModel.getProperty("/visitorParkingData").vehicleNo;
@@ -222,6 +223,8 @@ sap.ui.define([
 						// this.getView().byId("idVehicleNumber").setValue("");
 
 						MessageBox.success("Please Go ahead and Park Your Vehicle");
+						var sUrl = "/VMS_Service/visitor/getAllParking";
+						that.fnGetData(sUrl, "/AllParkingSlots");
 
 					} else {
 						MessageToast.show("Something Went Wrong");
