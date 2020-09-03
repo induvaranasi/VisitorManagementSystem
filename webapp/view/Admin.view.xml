@@ -578,7 +578,7 @@
 						<ScrollContainer id="evacuation" horizontal="false" vertical="true" height="100%" class="sapUiSizeCompact">
 							<Toolbar>
 								<ToolbarSpacer/>
-								<Button text="Send Alert" type="Reject" press="onSendAlertPress" class="styleRejectBtn"></Button>
+								<Button text="Send Alert" type="Critical" press="onSendAlertPress" class="styleRejectBtn"></Button>
 							</Toolbar>
 							<Table id="idAdminEvacuationtable" items="{oAdminModel>/CheckInDetails}" alternateRowColors="true" mode="MultiSelect">
 								<headerToolbar>
